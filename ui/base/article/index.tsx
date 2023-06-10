@@ -1,13 +1,13 @@
 import classNames from "classnames";
 
 type ArticleProps = {
-    children: React.ReactNode;
-    articleClassName?: string;
+  children: React.ReactNode;
+  articleClassName?: string;
 };
 
 export default function ArticleProps({
-    children,
-    articleClassName,
+  children,
+  articleClassName,
 }: ArticleProps) {
-    return <article className={articleClassName}>{children}</article>;
+  return <article className={articleClassName}>{children}</article>;
 }
