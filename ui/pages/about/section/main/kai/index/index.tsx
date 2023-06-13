@@ -5,11 +5,11 @@ import Article from "@/ui/base/article";
 import Section from "@/ui/base/section";
 import Icon from "@/ui/base/icons";
 
-type AboutMarieProps = {
+type AboutKaiProps = {
 	toggleProfile: string;
 };
 
-const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
+const AboutKai = forwardRef<HTMLDivElement, AboutKaiProps>((props, ref) => {
 	return (
 		<Article
 			articleClassName={classNames(
@@ -30,17 +30,17 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
 						<div className="relative min-w-[18.75rem] min-h-[31.25rem]">
 							<Image
 								alt=""
-								src="/images/LINE_ALBUM_230610.jpg"
+								src="/images/LINE_ALBUM_230613.jpg"
 								fill
 								style={{
 									objectFit: "contain",
 								}}
 							/>
 						</div>
-						<div>
+						<div className="">
 							<h3>
-								小嶋 麻莉恵
-								Marie Kojima
+								小嶋 凱 Kai
+								Kojima
 							</h3>
 							<div className="my-4">
 								<p>
@@ -65,20 +65,7 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
 									)}
 								>
 									<a
-										href="https://note.com/kwkm711"
-										className={classNames(
-											"text-white bg-black p-[0.375rem] rounded-full duration-[530ms]",
-											"hover:text-black hover:bg-transparent"
-										)}
-									>
-										<Icon
-											name="sns-note"
-											width="w-6"
-											height="h-6"
-										/>
-									</a>
-									<a
-										href="https://twitter.com/koji_mari7"
+										href="https://twitter.com/kaikojima0724"
 										className={classNames(
 											"text-white bg-black p-[0.375rem] rounded-full duration-[530ms]",
 											"hover:text-black hover:bg-transparent"
@@ -109,5 +96,5 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
 	);
 });
 
-AboutMarie.displayName = "AboutMarie";
-export default AboutMarie;
+AboutKai.displayName = "AboutKai";
+export default AboutKai;
