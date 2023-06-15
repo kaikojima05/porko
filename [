@@ -9,21 +9,16 @@ import AboutKai from "@/ui/pages/about/section/main/kai/index";
 import Button from "@/ui/base/button";
 
 export type Works = {
-	id: string;
-	createdAt: string;
-	updatedAt: string;
-	publishedAt: string;
-	revisedAt: string;
-	content: string;
-	category: string;
-	appeal: boolean;
-};
+	id: string
+	createdAt: string
+	updatedAt: string
+	publishedAt: string
+	revisedAt: string
+	content: string
+	category: string
+}
 
-type AboutProps = {
-	works: Works[];
-};
-
-export default function About({ works }: AboutProps) {
+export default function About() {
 	const [isProfile, setIsProfile] = useState("");
 	const backgroundRef = useOnScrollAnimation({ removeAnimation: false });
 	const MarieRef = useOnScrollAnimation();
@@ -86,7 +81,6 @@ export default function About({ works }: AboutProps) {
 							? "animate-in"
 							: ""
 					}
-					works={works}
 				/>
 				<AboutKai
 					ref={KaiRef}
@@ -110,8 +104,6 @@ export const getStaticProps = async () => {
 	const data = await client.get({ endpoint: "works" });
 
 	return {
-		props: {
-			works: data.contents,
-		},
+		works: data.contents,
 	};
 };

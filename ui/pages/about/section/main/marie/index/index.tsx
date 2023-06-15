@@ -4,9 +4,11 @@ import classNames from "classnames";
 import Article from "@/ui/base/article";
 import Section from "@/ui/base/section";
 import Icon from "@/ui/base/icons";
+import { Works } from "@/pages/about/index";
 
 type AboutMarieProps = {
 	toggleProfile: string;
+	works: Works[];
 };
 
 const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
@@ -102,7 +104,45 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
 						"text-[1.125rem] text-black"
 					)}
 				>
-					<h2 className="text-center">Work</h2>
+					<h2 className="text-center">works</h2>
+					<div
+						className={classNames(
+							"mt-4 grid grid-cols-4 gap-3"
+						)}
+					>
+						{props.works
+							.filter(
+								(work) =>
+									work.appeal
+							)
+							.map((work, index) => (
+								<div
+									key={
+										index
+									}
+									dangerouslySetInnerHTML={{
+										__html: work.content,
+									}}
+									className="opacity-70 duration-500 hover:opacity-100 hover:translate-y-[-1rem]"
+								/>
+							))}
+						{props.works
+							.filter(
+								(work) =>
+									!work.appeal
+							)
+							.map((work, index) => (
+								<div
+									key={
+										index
+									}
+									dangerouslySetInnerHTML={{
+										__html: work.content,
+									}}
+									className="opacity-70 duration-500 hover:opacity-100 hover:translate-y-[-1rem]"
+								/>
+							))}
+					</div>
 				</div>
 			</Section>
 		</Article>
