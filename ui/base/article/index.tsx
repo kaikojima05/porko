@@ -1,13 +1,19 @@
-import classNames from "classnames";
+import { RefObject } from "react";
 
 type ArticleProps = {
-  children: React.ReactNode;
-  articleClassName?: string;
+	children: React.ReactNode;
+	articleClassName?: string;
+	ref?: RefObject<HTMLDivElement>;
 };
 
 export default function ArticleProps({
-  children,
-  articleClassName,
+	children,
+	articleClassName,
+	ref,
 }: ArticleProps) {
-  return <article className={articleClassName}>{children}</article>;
+	return (
+		<article className={articleClassName} ref={ref}>
+			{children}
+		</article>
+	);
 }

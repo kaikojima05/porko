@@ -1,0 +1,185 @@
+import Link from 'next/link'
+import Icon from "@/ui/base/icons/index";
+import Image from "next/image";
+import classNames from "classnames";
+import Section from "@/ui/base/section";
+import Article from "@/ui/base/article";
+
+type AboutBodyLayoutProps = {
+	toggleProfileFunction: string;
+	name: string
+	profileImageSrc: string;
+	profileSentence: React.ReactNode
+	sns: {
+		note?: {
+			href?: string;
+		};
+		twitter?: {
+			href?: string;
+		};
+	};
+};
+
+export default function AboutBodyLayout({
+	toggleProfileFunction,
+	profileImageSrc,
+	sns,
+}: AboutBodyLayoutProps) {
+	return (
+		<Article
+			articleClassName={classNames(
+				toggleProfileFunction,
+				"duration-[1050ms] translate-x-0 absolute"
+			)}
+		>
+			<Section isTopMargin={true}>
+				<div ref={ref} className="before-scroll-repeat">
+					<div className="text-black text-[1.125rem] text-center">
+						<h2>about me</h2>
+					</div>
+					<div
+						className={classNames(
+							"flex justify-center items-start gap-6 mt-6 flex-col",
+							"md:flex-row"
+						)}
+					>
+						<div className="relative min-w-[18.75rem] min-h-[31.25rem]">
+							<Image
+								alt=""
+								src={
+									profileImageSrc
+								}
+								fill
+								style={{
+									objectFit: "cover",
+								}}
+							/>
+						</div>
+						<div>
+							<h3>
+								小嶋 麻莉恵
+								Marie Kojima
+							</h3>
+							<div
+								className={classNames(
+									"mt-4 mb-4",
+									"md:mb-6"
+								)}
+							>
+								<p>
+									埼玉県寄居町出身の27歳。
+									<br />
+									現在は東京都八王子市在住。夫（凱）と共に、ひそやかでのんびりとした夫婦ふたり暮らしを愉しんでいます。
+								</p>
+								<p>
+									会社員を5年ほど経験したのち、2022年にフリーランスライターとして独立しました。
+									ライフスタイル・おでかけ・キャリア等の多ジャンルに渡るメディア記事・プレスリリース・SEO・インタビュー等、記事執筆や校正業務を幅広く行っています。そのほか、Instagramのキャプション制作や商品付随のブランディングレター制作など、「ことば」にまつわるあらゆるお仕事に柔軟に対応させていただいています。
+								</p>
+								<p>
+									元々「書く」ことが好きで、7歳前後から物語の創作をするようになりました。高校を卒業する頃から、インターネット上での投稿活動を開始。
+									<br />
+									不定期ではありますが、今でも創作は続けています。小説のほか、今はエッセイの創作も精力的に行っています。
+								</p>
+							</div>
+							<div className="">
+								<h3
+									className={classNames()}
+								>
+									On the
+									web
+								</h3>
+								<div
+									className={classNames(
+										"flex justify-start items-center text-black mt-4 gap-2"
+									)}
+								>
+									{sns.note && (
+										<a
+											href={
+												sns
+													.note
+													.href
+											}
+											className={classNames(
+												"text-white bg-black p-[0.375rem] rounded-full duration-[530ms]",
+												"hover:text-black hover:bg-transparent"
+											)}
+										>
+											<Icon
+												name="sns-note"
+												width="w-6"
+												height="h-6"
+											/>
+										</a>
+									)}
+									{sns.twitter && (
+										<a
+											href={
+												sns
+													.twitter
+													.href
+											}
+											className={classNames(
+												"text-white bg-black p-[0.375rem] rounded-full duration-[530ms]",
+												"hover:text-black hover:bg-transparent"
+											)}
+										>
+											<Icon
+												name="sns-twitter"
+												width="w-6"
+												height="h-6"
+											/>
+										</a>
+									)}
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</Section>
+			<Section>
+				<div
+					className={classNames(
+						"text-[1.125rem] text-black"
+					)}
+				>
+					<h2 className="text-center">works</h2>
+					<div
+						className={classNames(
+							"my-4 grid grid-cols-3 gap-3"
+						)}
+					>
+						{props.works
+							.slice(0, 3)
+							.map((work, index) => {
+								return (
+									<div
+										key={
+											work._id
+										}
+										ref={
+											worksRefs
+												.current[
+												index
+											]
+										}
+									/>
+								);
+							})}
+					</div>
+					{props.works.length >= 4 && (
+						<p
+							className={classNames(
+								"text-right"
+							)}
+						>
+							<Link href="/about/">
+								more...
+							</Link>
+						</p>
+					)}
+				</div>
+			</Section>
+		</Article>
+	);
+}

@@ -11,6 +11,14 @@ body {
 	color: #000000;
 }
 
+.w {
+	height: 250px;
+}
+
+.wf {
+	height: 100%;
+}
+
 .writing-vertical {
 	writing-mode: vertical-rl;
 }
