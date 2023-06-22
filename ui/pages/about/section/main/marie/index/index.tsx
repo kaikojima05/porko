@@ -10,9 +10,13 @@ type AboutMarieProps = {
 	works: Works[];
 };
 
-const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
+type WorksComponentProps = {
+	works: Works[];
+};
+
+function WorksComponent({ works }: WorksComponentProps) {
 	const worksRefs = useRef<RefObject<HTMLDivElement>[]>([]);
-	props.works.map((_, index) => {
+	works.map((_, index) => {
 		worksRefs.current[index] = createRef<HTMLDivElement>();
 	});
 
@@ -21,7 +25,7 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
 			return;
 		}
 
-		props.works.forEach((work, index) => {
+		works.forEach((work, index) => {
 			const fragment = document
 				.createRange()
 				.createContextualFragment(work.RefLink.html);
@@ -68,44 +72,39 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
 				observer.disconnect();
 			};
 		});
-	}, [props.works]);
+	}, [works]);
 
-	const WorksComponent = () => {
-		return (
-			<>
-				<div
-					className={classNames(
-						"my-4 grid grid-cols-3 gap-3"
-					)}
-				>
-					{props.works
-						.slice(0, 3)
-						.map((work, index) => {
-							return (
-								<div
-									key={
-										work._id
-									}
-									ref={
-										worksRefs
-											.current[
-											index
-										]
-									}
-								/>
-							);
-						})}
-				</div>
-				{props.works.length >= 4 && (
-					<p className={classNames("text-right")}>
-						<Link href="/about/">
-							more...
-						</Link>
-					</p>
+	return (
+		<>
+			<div
+				className={classNames(
+					"my-4 grid grid-cols-3 gap-3"
 				)}
-			</>
-		);
-	};
+			>
+				{works.slice(0, 3).map((work, index) => {
+					return (
+						<div
+							key={work._id}
+							ref={
+								worksRefs
+									.current[
+									index
+								]
+							}
+						/>
+					);
+				})}
+			</div>
+			{works.length >= 4 && (
+				<p className={classNames("text-right")}>
+					<Link href="/about/">more...</Link>
+				</p>
+			)}
+		</>
+	);
+}
+
+const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
 	return (
 		<>
 			<AboutBodyLayout
@@ -150,7 +149,7 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
 						href: "https://twitter.com/koji_mari7",
 					},
 				}}
-				works={<WorksComponent />}
+				works={<WorksComponent works={props.works} />}
 				ref={ref}
 			/>
 		</>
