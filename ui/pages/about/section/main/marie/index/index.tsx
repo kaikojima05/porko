@@ -1,9 +1,10 @@
-import { useRef, useLayoutEffect, createRef, RefObject } from "react";
+import { useRef, useEffect, createRef, RefObject } from "react";
 import Link from "next/link";
 import type { Works } from "@/ui/base/types/works";
 import { forwardRef } from "react";
 import classNames from "classnames";
 import AboutBodyLayout from "@/ui/base/about/body/index";
+import Icon from "@/ui/base/icons/index";
 
 type AboutMarieProps = {
 	toggleProfile: string;
@@ -20,7 +21,7 @@ function WorksComponent({ works }: WorksComponentProps) {
 		worksRefs.current[index] = createRef<HTMLDivElement>();
 	});
 
-	useLayoutEffect(() => {
+	useEffect(() => {
 		if (!worksRefs.current) {
 			return;
 		}
@@ -30,15 +31,21 @@ function WorksComponent({ works }: WorksComponentProps) {
 				.createRange()
 				.createContextualFragment(work.RefLink.html);
 
-			worksRefs.current[index]?.current?.appendChild(
-				fragment
-			);
-
 			const currentElement =
 				worksRefs.current[index]?.current;
 			if (!currentElement) {
 				return; // currentElementがnullの場合は早期リターン
 			}
+
+			while (currentElement.firstChild) {
+				currentElement.removeChild(
+					currentElement.firstChild
+				);
+			}
+
+			worksRefs.current[index]?.current?.appendChild(
+				fragment
+			);
 
 			const observer = new MutationObserver((mutations) => {
 				mutations.forEach((mutation) => {
@@ -78,10 +85,11 @@ function WorksComponent({ works }: WorksComponentProps) {
 		<>
 			<div
 				className={classNames(
-					"my-4 grid grid-cols-3 gap-3"
+					"my-4 grid grid-cols-2 gap-3 relative",
+					"md:grid-cols-4"
 				)}
 			>
-				{works.slice(0, 3).map((work, index) => {
+				{works.slice(0, 4).map((work, index) => {
 					return (
 						<div
 							key={work._id}
@@ -91,9 +99,18 @@ function WorksComponent({ works }: WorksComponentProps) {
 									index
 								]
 							}
-						/>
+						></div>
 					);
 				})}
+				<Icon
+					name="push-pin"
+					width="w-5"
+					height="h-5"
+					className={classNames(
+						"absolute top-[-1rem] left-[-0.875rem] z-[9999]",
+						"md:left-[-1rem] md:top-[-0.75rem]"
+					)}
+				/>
 			</div>
 			{works.length >= 4 && (
 				<p className={classNames("text-right")}>
@@ -122,6 +139,7 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
 							<br />
 							現在は東京都八王子市在住。夫（凱）と共に、ひそやかでのんびりとした夫婦ふたり暮らしを愉しんでいます。
 						</p>
+						<br />
 						<p
 							className={classNames(
 								"box-border"
@@ -130,6 +148,7 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
 							会社員を5年ほど経験したのち、2022年にフリーランスライターとして独立しました。
 							ライフスタイル・おでかけ・キャリア等の多ジャンルに渡るメディア記事・プレスリリース・SEO・インタビュー等、記事執筆や校正業務を幅広く行っています。そのほか、Instagramのキャプション制作や商品付随のブランディングレター制作など、「ことば」にまつわるあらゆるお仕事に柔軟に対応させていただいています。
 						</p>
+						<br />
 						<p
 							className={classNames(
 								"box-border"

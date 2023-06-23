@@ -7,8 +7,14 @@
 
 body {
 	background-image: url("/images/porko-bg-image.svg");
-	font-size: 16px;
+	font-size: 14px;
 	color: #000000;
+}
+
+@media screen and (max-width: 768px) {
+	body {
+		font-size: 13px;
+	}
 }
 
 .w {

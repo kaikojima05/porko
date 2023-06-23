@@ -14,17 +14,10 @@ export const useOnScrollAnimation = ({
 			([entry]) => {
 				if (entry.isIntersecting) {
 					ref.current?.classList.add("on-scroll");
-				} else if (
-					!entry.isIntersecting &&
-					removeAnimation
-				) {
-					ref.current?.classList.remove(
-						"on-scroll"
-					);
 				}
 			},
 			{
-				threshold: 0.1,
+				threshold: 0.2,
 			}
 		);
 

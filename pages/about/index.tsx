@@ -11,9 +11,9 @@ import type { Works } from "@/ui/base/types/works";
 
 export default function About({ works }: { works: Works[] }) {
 	const [isProfile, setIsProfile] = useState("");
-	const backgroundRef = useOnScrollAnimation({ removeAnimation: false });
-	const MarieRef = useOnScrollAnimation();
-	const KaiRef = useOnScrollAnimation();
+	const backgroundRef = useOnScrollAnimation({ removeAnimation: true });
+	const MarieRef = useOnScrollAnimation({ removeAnimation: true });
+	const KaiRef = useOnScrollAnimation({ removeAnimation: true });
 
 	const handleToggleProfile = (
 		event: React.MouseEvent<HTMLButtonElement>

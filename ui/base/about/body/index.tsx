@@ -38,10 +38,11 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
 				articleClassName={classNames(
 					toggleProfileFunction,
 					"duration-[1050ms] translate-x-0 absolute top-[3.5rem] bottom-0 right-[1rem] left-[1rem]",
-					"md:right-[17%] md:left-[17%]",
+					"md:right-[10%] md:left-[10%]",
 					"xl:right-[22%] xl:left-[22%]"
 				)}
 			>
+				<Icon name="push-pin" />
 				<Section isTopMargin={true}>
 					<div
 						className="before-scroll-repeat"
@@ -58,7 +59,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
 						>
 							<div
 								className={classNames(
-									"relative",
+									"relative w-full h-[18.75rem]",
 									"md:min-w-[40%] md:min-h-[18.75rem] md:max-h-[31.25rem]"
 								)}
 							>
@@ -71,6 +72,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
 									style={{
 										objectFit: "cover",
 									}}
+									className="rounded"
 								/>
 							</div>
 							<div>
@@ -95,7 +97,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
 									</h3>
 									<div
 										className={classNames(
-											"flex justify-start items-center text-black mt-4 gap-2"
+											"flex justify-start items-center text-black mt-4 gap-3"
 										)}
 									>
 										{sns.note && (
@@ -112,8 +114,8 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
 											>
 												<Icon
 													name="sns-note"
-													width="w-6"
-													height="h-6"
+													width="w-5"
+													height="h-5"
 												/>
 											</a>
 										)}
@@ -131,8 +133,8 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
 											>
 												<Icon
 													name="sns-twitter"
-													width="w-6"
-													height="h-6"
+													width="w-5"
+													height="h-5"
 												/>
 											</a>
 										)}
@@ -145,10 +147,10 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
 				<Section>
 					<div
 						className={classNames(
-							"text-[1.125rem] text-black"
+							"text-black"
 						)}
 					>
-						<h2 className="text-center">
+						<h2 className="text-center text-[1.125rem]">
 							works
 						</h2>
 						{works}

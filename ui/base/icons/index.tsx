@@ -1,11 +1,12 @@
 import classNames from "classnames";
 import SnsNote from "./SnsNote";
-import SnsTeitter from "./SnsTwitter";
 import SnsTwitter from "./SnsTwitter";
+import PushPin from "./PushPin";
 
 const Icons = {
 	"sns-note": SnsNote,
 	"sns-twitter": SnsTwitter,
+	"push-pin": PushPin,
 };
 
 const keys = Object.keys(Icons) as (keyof typeof Icons)[];
