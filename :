@@ -12,15 +12,12 @@ import type { Works } from "@/ui/base/types/works";
 import ToggleProfileFooter from "@/ui/base/toggleProfileFooter/index";
 
 export default function About({ works }: { works: Works[] }) {
-  const [isProfile, setIsProfile] = useState("");
+  const [isProfile, setIsProfile] = useState("Marie Kojima");
   const backgroundRef = useOnScrollAnimation();
   const MarieRef = useOnScrollAnimation();
   const KaiRef = useOnScrollAnimation();
 
   const handleToggleProfile = (event: React.MouseEvent<HTMLButtonElement>) => {
-    if (isProfile === "" && event.currentTarget.innerText === "Marie Kojima") {
-      return;
-    }
     event.preventDefault();
     setIsProfile(event.currentTarget.innerText);
   };
@@ -50,8 +47,8 @@ export default function About({ works }: { works: Works[] }) {
         </h2>
         <div
           className={classNames(
-            "hidden gap-4 justify-evenly items-center my-3",
-            "md:justify-center md:gap-10 md:flex"
+            "flex gap-4 justify-evenly items-center my-3",
+            "md:justify-center md:gap-10"
           )}
         >
           <Button

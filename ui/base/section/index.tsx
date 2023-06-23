@@ -1,24 +1,27 @@
 import classNames from "classnames";
 
 type sectionProps = {
-	isTopMargin?: boolean;
-	children: React.ReactNode;
-	sectionClassName?: string;
+  isTopMargin?: boolean;
+  isAbout?: boolean;
+  children: React.ReactNode;
+  sectionClassName?: string;
 };
 
 export default function sectionProps({
-	isTopMargin = false,
-	sectionClassName,
-	children,
+  isTopMargin = false,
+  isAbout = false,
+  sectionClassName,
+  children,
 }: sectionProps) {
-	return (
-		<section
-			className={classNames(
-				`${isTopMargin ? "mt-14" : "mt-10"}`,
-				`${sectionClassName}`
-			)}
-		>
-			{children}
-		</section>
-	);
+  return (
+    <section
+      className={classNames(
+        `${!isAbout && `${isTopMargin ? "mt-14" : "mt-10"}`}`,
+        `${isAbout && `${isTopMargin ? "mt-0" : "mt-10"}`}`,
+        `${sectionClassName}`
+      )}
+    >
+      {children}
+    </section>
+  );
 }
