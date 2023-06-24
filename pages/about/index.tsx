@@ -12,6 +12,7 @@ import type { Works } from "@/ui/base/types/works";
 import ToggleProfileFooter from "@/ui/base/toggleProfileFooter/index";
 
 export default function About({ works }: { works: Works[] }) {
+  const [showOverlay, setShowOverlay] = useState(false);
   const [isProfile, setIsProfile] = useState("");
   const backgroundRef = useOnScrollAnimation();
   const MarieRef = useOnScrollAnimation();
@@ -23,12 +24,15 @@ export default function About({ works }: { works: Works[] }) {
     }
     event.preventDefault();
     setIsProfile(event.currentTarget.innerText);
+    setShowOverlay(true);
+    setTimeout(() => setShowOverlay(false), 1800);
   };
 
   return (
     <useIsProfileContext.Provider
       value={{ profile: isProfile, isProfile: setIsProfile }}
     >
+      {showOverlay && <div className="disabled-overlay" />}
       <Body
         isBackground={true}
         backgroundImage={

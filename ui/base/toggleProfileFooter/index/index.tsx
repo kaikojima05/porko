@@ -1,9 +1,10 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import classNames from "classnames";
 import Button from "@/ui/base/button";
 import { useIsProfileContext } from "@/ui/hooks/useIsProfile";
 
 export default function ToggleProfileFooter() {
+  const [showOverlay, setShowOverlay] = useState<boolean>(false);
   const { profile, isProfile } = useContext(useIsProfileContext);
 
   const handleToggleProfile = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -12,6 +13,8 @@ export default function ToggleProfileFooter() {
     }
     event.preventDefault();
     isProfile(event.currentTarget.innerText);
+    setShowOverlay(true);
+    setTimeout(() => setShowOverlay(false), 1800);
   };
 
   const buttonClass = "px-4 py-2";
@@ -23,6 +26,7 @@ export default function ToggleProfileFooter() {
         "md:hidden"
       )}
     >
+      {showOverlay && <div className="disabled-overlay" />}
       <div className="border border-black rounded-full m-auto inline-block gap-6 backdrop-blur">
         <div className="flex py-1">
           <div
