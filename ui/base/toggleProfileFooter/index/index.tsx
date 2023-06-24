@@ -5,7 +5,8 @@ import { useIsProfileContext } from "@/ui/hooks/useIsProfile";
 
 export default function ToggleProfileFooter() {
   const [showOverlay, setShowOverlay] = useState<boolean>(false);
-  const { profile, isProfile } = useContext(useIsProfileContext);
+  const { profile, isProfile, isHamburgerOpen } =
+    useContext(useIsProfileContext);
 
   const handleToggleProfile = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (profile === "" && event.currentTarget.innerText === "Marie Kojima") {
@@ -22,8 +23,9 @@ export default function ToggleProfileFooter() {
   return (
     <article
       className={classNames(
-        "z-[100] fixed bottom-2 w-full text-center",
-        "md:hidden"
+        "z-[30] fixed bottom-2 w-full text-center duration-300",
+        "md:hidden",
+        `${isHamburgerOpen && "opacity-0"}`
       )}
     >
       {showOverlay && <div className="disabled-overlay" />}

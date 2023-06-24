@@ -14,6 +14,7 @@ import ToggleProfileFooter from "@/ui/base/toggleProfileFooter/index";
 export default function About({ works }: { works: Works[] }) {
   const [showOverlay, setShowOverlay] = useState(false);
   const [isProfile, setIsProfile] = useState("");
+  const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
   const backgroundRef = useOnScrollAnimation();
   const MarieRef = useOnScrollAnimation();
   const KaiRef = useOnScrollAnimation();
@@ -30,7 +31,12 @@ export default function About({ works }: { works: Works[] }) {
 
   return (
     <useIsProfileContext.Provider
-      value={{ profile: isProfile, isProfile: setIsProfile }}
+      value={{
+        profile: isProfile,
+        isProfile: setIsProfile,
+        isHamburgerOpen: isHamburgerOpen,
+        setIsHamburgerOpen: setIsHamburgerOpen,
+      }}
     >
       {showOverlay && <div className="disabled-overlay" />}
       <Body

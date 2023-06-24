@@ -1,12 +1,16 @@
+import { useContext } from "react";
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import classNames from "classnames";
+import { useIsProfileContext } from "@/ui/hooks/useIsProfile";
 
 export default function Header() {
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [fontColor, setFontColor] = useState<string>("text-white");
   const [hamburgerColor, setHamburgerColor] = useState<string>("bg-white");
+  const { isHamburgerOpen, setIsHamburgerOpen } =
+    useContext(useIsProfileContext);
 
   useEffect(() => {
     setLoading(true);
@@ -33,6 +37,8 @@ export default function Header() {
 
   const toggleHamburgerMenu = (e: React.MouseEvent<HTMLElement>) => {
     setOpen((prev) => !prev);
+    const prevHamburgerOpen = isHamburgerOpen;
+    setIsHamburgerOpen(!prevHamburgerOpen);
     e.stopPropagation();
   };
 
@@ -41,7 +47,7 @@ export default function Header() {
       {open && (
         <div
           className="z-[40] fixed w-screen h-screen"
-          onClick={() => setOpen(false)}
+          onClick={toggleHamburgerMenu}
         />
       )}
       <nav
@@ -49,7 +55,7 @@ export default function Header() {
           "z-50 w-full fixed header-border header-blur",
           `${loading ? "border-animation blur-animation" : ""}`
         )}
-        onClick={() => setOpen(false)}
+        onClick={toggleHamburgerMenu}
       >
         <header
           className={classNames(
