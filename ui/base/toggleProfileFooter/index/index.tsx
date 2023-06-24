@@ -51,7 +51,7 @@ export default function ToggleProfileFooter() {
                 profile === "Kai Kojima"
                   ? "animate-border animate-border-in"
                   : profile === "Marie Kojima"
-                  ? "aniate-border animate-border-out"
+                  ? "animate-border animate-border-out"
                   : ""
               }`
             )}

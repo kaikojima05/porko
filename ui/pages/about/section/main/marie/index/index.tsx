@@ -1,6 +1,5 @@
 import type { Works } from "@/ui/base/types/works";
 import { forwardRef } from "react";
-import classNames from "classnames";
 import AboutBodyLayout from "@/ui/base/about/body/index";
 import WorksCard from "@/ui/base/worksCard/index";
 

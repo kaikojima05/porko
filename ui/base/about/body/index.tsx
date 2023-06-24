@@ -48,9 +48,6 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
         >
           <Section isTopMargin={true} isAbout={true}>
             <div className="before-scroll-repeat" ref={ref}>
-              <div className="text-black text-[1.125rem] text-center">
-                <h2>about me</h2>
-              </div>
               <div
                 className={classNames(
                   "flex justify-center items-start gap-6 mt-6 flex-col",

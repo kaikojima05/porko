@@ -64,6 +64,21 @@ body {
   transform: scaleX(1);
 }
 
+.elevator {
+  height: 3.5rem;
+  transition: all 0.5s ease;
+}
+
+@media screen and (min-width: 768px) {
+  .elevator {
+    height: 4.3125rem;
+  }
+}
+
+.elevator.going-down {
+  height: 70vh;
+}
+
 /*ヘッダーの blur アニメーション*/
 .header-blur {
   backdrop-filter: blur(0px);
@@ -119,7 +134,7 @@ body {
 .animate-border.animate-border-in::after {
   transform: scaleX(0);
   transform-origin: left;
-  animation: border-in 1.1s forwards 1.1s;
+  animation: border-in 1.1s forwards 0.25s;
 }
 
 @keyframes border-in {
@@ -143,5 +158,55 @@ body {
   }
   100% {
     transform: scaleX(0);
+  }
+}
+
+.hamburger-menu {
+  position: relative;
+  width: 24px;
+  height: 24px;
+}
+
+.hamburger-menu span {
+  display: block;
+  width: 100%;
+  height: 1px;
+  transition: all 0.5s ease;
+}
+
+.hamburger-menu-bar-top {
+  position: absolute;
+  top: 7px;
+  transform-origin: center;
+}
+
+.hamburger-menu-bar-top.top-open {
+  top: 11.5px;
+  transform: rotate(45deg);
+}
+
+.hamburger-menu-bar-bottom {
+  position: absolute;
+  bottom: 7px;
+  transform-origin: center;
+}
+
+.hamburger-menu-bar-bottom.bottom-open {
+  bottom: 11.5px;
+  transform: rotate(-45deg);
+}
+
+/*ヘッダーコンテンツの delay 表示*/
+.delay-display {
+  opacity: 0;
+  animation: softy-display 0.35s forwards 0.5s;
+}
+
+@keyframes softy-display {
+  0% {
+    opacitry: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
