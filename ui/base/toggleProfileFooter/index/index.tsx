@@ -19,7 +19,7 @@ export default function ToggleProfileFooter() {
   return (
     <article
       className={classNames(
-        "z-[9999] fixed bottom-2 w-full text-center",
+        "z-[100] fixed bottom-2 w-full text-center",
         "md:hidden"
       )}
     >

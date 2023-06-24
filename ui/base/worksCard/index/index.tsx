@@ -2,7 +2,6 @@ import { useState, useEffect, useRef, createRef, RefObject } from "react";
 import { Works } from "@/ui/base/types/works";
 import classNames from "classnames";
 import { useOnscrollAnimations } from "@/ui/hooks/useOnScrollAnimations";
-import Icon from "@/ui/base/icons";
 import Link from "next/link";
 
 type WorksCardProps = {
@@ -10,7 +9,6 @@ type WorksCardProps = {
 };
 
 export default function WorksCard({ works }: WorksCardProps) {
-  const [worksProps, setWorksProps] = useState();
   const worksRefs = useRef<RefObject<HTMLDivElement>[]>([]);
   works.map((_, index) => {
     worksRefs.current[index] = createRef<HTMLDivElement>();
