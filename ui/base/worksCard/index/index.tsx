@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, createRef, RefObject } from "react";
+import { useEffect, useRef, createRef, RefObject } from "react";
 import { Works } from "@/ui/base/types/works";
 import classNames from "classnames";
 import { useOnscrollAnimations } from "@/ui/hooks/useOnScrollAnimations";
