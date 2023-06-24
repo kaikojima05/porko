@@ -1,115 +1,100 @@
-import { useEffect, useRef, createRef, RefObject } from "react";
+import { useState, useEffect, useRef, createRef, RefObject } from "react";
 import { Works } from "@/ui/base/types/works";
 import classNames from "classnames";
+import { useOnscrollAnimations } from "@/ui/hooks/useOnScrollAnimations";
 import Icon from "@/ui/base/icons";
 import Link from "next/link";
 
 type WorksCardProps = {
-	works: Works[];
+  works: Works[];
 };
 
 export default function WorksCard({ works }: WorksCardProps) {
-	const worksRefs = useRef<RefObject<HTMLDivElement>[]>([]);
-	works.map((_, index) => {
-		worksRefs.current[index] = createRef<HTMLDivElement>();
-	});
+  const [worksProps, setWorksProps] = useState();
+  const worksRefs = useRef<RefObject<HTMLDivElement>[]>([]);
+  works.map((_, index) => {
+    worksRefs.current[index] = createRef<HTMLDivElement>();
+  });
 
-	useEffect(() => {
-		if (!worksRefs.current) {
-			return;
-		}
+  const showElement = (entries: IntersectionObserverEntry[]) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("on-scroll");
+      }
+    });
+  };
 
-		works.forEach((work, index) => {
-			const fragment = document
-				.createRange()
-				.createContextualFragment(work.RefLink.html);
+  useOnscrollAnimations(worksRefs.current, showElement, { threshold: 0.1 });
 
-			const currentElement =
-				worksRefs.current[index]?.current;
-			if (!currentElement) {
-				return; // currentElementがnullの場合は早期リターン
-			}
+  useEffect(() => {
+    if (!worksRefs.current) {
+      return;
+    }
 
-			while (currentElement.firstChild) {
-				currentElement.removeChild(
-					currentElement.firstChild
-				);
-			}
+    works.forEach((work, index) => {
+      const fragment = document
+        .createRange()
+        .createContextualFragment(work.RefLink.html);
 
-			worksRefs.current[index]?.current?.appendChild(
-				fragment
-			);
+      const currentElement = worksRefs.current[index]?.current;
+      if (!currentElement) {
+        return;
+      }
 
-			const observer = new MutationObserver((mutations) => {
-				mutations.forEach((mutation) => {
-					const elements = worksRefs.current[
-						index
-					]?.current?.querySelectorAll(
-						".iframely-embed > div"
-					);
-					elements?.forEach((element) => {
-						const newStyle =
-							document.createElement(
-								"style"
-							);
-						newStyle.textContent = `
+      while (currentElement.firstChild) {
+        currentElement.removeChild(currentElement.firstChild);
+      }
+
+      worksRefs.current[index]?.current?.appendChild(fragment);
+
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          const elements = worksRefs.current[index]?.current?.querySelectorAll(
+            ".iframely-embed > div"
+          );
+          elements?.forEach((element) => {
+            const newStyle = document.createElement("style");
+            newStyle.textContent = `
 .e {padding-bottom:  75% !important;}
 `;
-						element.shadowRoot?.appendChild(
-							newStyle
-						);
-					});
-				});
-			});
+            element.shadowRoot?.appendChild(newStyle);
+          });
+        });
+      });
 
-			observer.observe(currentElement, {
-				childList: true,
-				subtree: true,
-			});
+      observer.observe(currentElement, {
+        childList: true,
+        subtree: true,
+      });
 
-			// Cleanup function
-			return () => {
-				observer.disconnect();
-			};
-		});
-	}, [works]);
+      return () => {
+        observer.disconnect();
+      };
+    });
+  }, [works]);
 
-	return (
-		<>
-			<div
-				className={classNames(
-					"my-4 grid grid-cols-2 gap-3 relative",
-					"md:grid-cols-4"
-				)}
-			>
-				{works.slice(0, 4).map((work, index) => {
-					return (
-						<div
-							key={work._id}
-							ref={
-								worksRefs
-									.current[
-									index
-								]
-							}
-						></div>
-					);
-				})}
-				<Icon
-					name="push-pin"
-					width="w-5"
-					height="h-5"
-					className={classNames(
-						"absolute top-[-1rem] left-[-0.875rem] z-[9999]",
-						"md:left-[-1rem] md:top-[-0.75rem]"
-					)}
-				/>
-			</div>
-			{works.length >= 4 && (
-				<p className={classNames("text-right")}>
-					<Link href="/about/">more...</Link>
-				</p>
-			)}
-		</>
-	);
+  return (
+    <>
+      <div
+        id="worksCards"
+        className={classNames("my-4 grid grid-cols-2 gap-3", "md:grid-cols-4")}
+      >
+        {works.slice(0, 4).map((work, index) => {
+          return (
+            <div
+              key={work._id}
+              ref={worksRefs.current[index]}
+              className="before-scroll-repeat relative"
+              style={{ transitionDelay: `${index * 0.4}s` }}
+            ></div>
+          );
+        })}
+      </div>
+      {works.length >= 4 && (
+        <p className={classNames("text-right")}>
+          <Link href="/about/">more...</Link>
+        </p>
+      )}
+    </>
+  );
 }
