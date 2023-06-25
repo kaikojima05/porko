@@ -18,7 +18,7 @@ export default function Button({
       className={classNames(
         buttonClassName,
         `${buttonBorder && "border"}`,
-        "rounded-full px-2",
+        "rounded-full px-2 py-[0.15rem]",
         "md:px-3 md:py-1"
       )}
     >

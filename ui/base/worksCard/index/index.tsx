@@ -6,9 +6,15 @@ import Link from "next/link";
 
 type WorksCardProps = {
   works: Works[];
+  isMap?: boolean;
+  isSlice?: boolean;
 };
 
-export default function WorksCard({ works }: WorksCardProps) {
+export default function WorksCard({
+  works,
+  isMap = false,
+  isSlice = false,
+}: WorksCardProps) {
   const worksRefs = useRef<RefObject<HTMLDivElement>[]>([]);
   works.map((_, index) => {
     worksRefs.current[index] = createRef<HTMLDivElement>();
@@ -16,7 +22,7 @@ export default function WorksCard({ works }: WorksCardProps) {
 
   const showElement = (entries: IntersectionObserverEntry[]) => {
     entries.forEach((entry) => {
-      if (entry.isIntersecting) {
+      if (entry.isIntersecting && isSlice) {
         entry.target.classList.add("on-scroll");
       }
     });
@@ -77,18 +83,23 @@ export default function WorksCard({ works }: WorksCardProps) {
         id="worksCards"
         className={classNames("my-4 grid grid-cols-2 gap-3", "md:grid-cols-4")}
       >
-        {works.slice(0, 4).map((work, index) => {
-          return (
-            <div
-              key={work._id}
-              ref={worksRefs.current[index]}
-              className="before-scroll-repeat relative"
-              style={{ transitionDelay: `${index * 0.4}s` }}
-            ></div>
-          );
-        })}
+        {isMap &&
+          works.map((work, index) => {
+            return <div key={work._id} ref={worksRefs.current[index]}></div>;
+          })}
+        {isSlice &&
+          works.slice(0, 4).map((work, index) => {
+            return (
+              <div
+                key={work._id}
+                ref={worksRefs.current[index]}
+                className="before-scroll-repeat relative"
+                style={{ transitionDelay: `${index * 0.4}s` }}
+              ></div>
+            );
+          })}
       </div>
-      {works.length >= 4 && (
+      {isSlice && works.length >= 4 && (
         <p className={classNames("text-right")}>
           <Link href="/about/">more...</Link>
         </p>

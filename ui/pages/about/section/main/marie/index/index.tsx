@@ -39,7 +39,7 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
             href: "https://twitter.com/koji_mari7",
           },
         }}
-        works={<WorksCard works={props.works} />}
+        works={<WorksCard works={props.works} isSlice={true} />}
         ref={ref}
       />
     </>
