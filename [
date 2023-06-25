@@ -118,6 +118,7 @@ body {
 
 @media screen and (max-width: 768px) {
   .current {
+    display: block;
     padding: 0.125rem 1.5rem;
     color: #fff !important;
   }
@@ -129,6 +130,7 @@ body {
 
 .induction {
   padding: 0.25rem 1.5rem;
+  border-bottom: 1px dotted black;
 }
 
 @media screen and (max-width: 768px) {

@@ -1,16 +1,31 @@
-import { useContext } from "react";
 import Link from "next/link";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
+import { useRouter } from "next/router";
 import classNames from "classnames";
 import { useIsProfileContext } from "@/ui/hooks/useIsProfile";
 
 export default function Header() {
+  const router = useRouter();
   const [open, setOpen] = useState<boolean>(false);
   const [loading, setLoading] = useState<boolean>(false);
   const [fontColor, setFontColor] = useState<string>("text-white");
   const [hamburgerColor, setHamburgerColor] = useState<string>("bg-white");
   const { isHamburgerOpen, setIsHamburgerOpen } =
     useContext(useIsProfileContext);
+  const navItems = [
+    {
+      href: "/about",
+      title: "about",
+    },
+    {
+      href: "/news",
+      title: "news",
+    },
+    {
+      href: "/contact",
+      title: "contact",
+    },
+  ];
 
   useEffect(() => {
     setLoading(true);
@@ -36,10 +51,12 @@ export default function Header() {
   }, []);
 
   const toggleHamburgerMenu = (e: React.MouseEvent<HTMLElement>) => {
-    setOpen((prev) => !prev);
-    const prevHamburgerOpen = isHamburgerOpen;
-    setIsHamburgerOpen(!prevHamburgerOpen);
-    e.stopPropagation();
+    if (window.innerWidth <= 768) {
+      setOpen((prev) => !prev);
+      const prevHamburgerOpen = isHamburgerOpen;
+      setIsHamburgerOpen(!prevHamburgerOpen);
+      e.stopPropagation();
+    }
   };
 
   return (
@@ -72,15 +89,22 @@ export default function Header() {
           </div>
           <div className={classNames("hidden", "md:block")}>
             <ul className={classNames("flex gap-12")}>
-              <li>
-                <Link href="/about/">about</Link>
-              </li>
-              <li>
-                <Link href="/news/">news</Link>
-              </li>
-              <li>
-                <Link href="/contact/">contact</Link>
-              </li>
+              {navItems.map((item, index) => {
+                return (
+                  <li key={index} className="[&>a]:block">
+                    <Link
+                      href={item.href}
+                      className={classNames(
+                        router.pathname === item.href
+                          ? `current ${loading ? "animate-current" : ""}`
+                          : "induction"
+                      )}
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div
@@ -93,18 +117,25 @@ export default function Header() {
             <ul
               className={classNames(
                 " flex flex-col gap-y-6",
-                "[&>]:block [&>li]:text-[1.125rem] [&>li]:text-center [&>li]:border-b [&>li]:border-dotted [&>li]:border-black"
+                "[&>]:block [&>li]:text-[1.125rem] [&>li]:text-center "
               )}
             >
-              <li>
-                <Link href="/about/">about</Link>
-              </li>
-              <li>
-                <Link href="/news/">news</Link>
-              </li>
-              <li>
-                <Link href="/contact/">contact</Link>
-              </li>
+              {navItems.map((item, index) => {
+                return (
+                  <li key={index} className="[&>a]:block">
+                    <Link
+                      href={item.href}
+                      className={
+                        router.pathname === item.href
+                          ? `current ${open && "animate-current"}`
+                          : "induction"
+                      }
+                    >
+                      {item.title}
+                    </Link>
+                  </li>
+                );
+              })}
             </ul>
           </div>
           <div
