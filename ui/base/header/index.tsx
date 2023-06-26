@@ -35,8 +35,8 @@ export default function Header() {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
       if (currentScrollY > 200) {
-        setFontColor("text-black");
-        setHamburgerColor("bg-black");
+        setFontColor("text-base");
+        setHamburgerColor("bg-base");
       } else {
         setFontColor("text-white");
         setHamburgerColor("bg-white");

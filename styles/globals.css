@@ -261,3 +261,7 @@ body {
   background-color: rgba(0, 0, 0, 0);
   z-index: 9999;
 }
+
+/*付箋スタイル*/
+.post-it {
+}
