@@ -31,41 +31,32 @@ export default function ToggleProfileFooter() {
       {showOverlay && <div className="disabled-overlay" />}
       <div className="border border-base-black rounded-full m-auto inline-block gap-6 backdrop-blur">
         <div className="flex py-1">
-          <div
-            className={classNames(
-              "animate-border",
-              `${buttonClass}`,
-              `${
-                profile === "Marie Kojima"
-                  ? "animate-border-in"
-                  : profile === "Kai Kojima"
-                  ? "animate-border-out"
-                  : ""
-              }`
-            )}
-          >
+          <div className={classNames(`${buttonClass}`)}>
             <Button
               buttonText="Marie Kojima"
               buttonBorder={false}
               clickHandler={handleToggleProfile}
+              buttonClassName={`${
+                profile === "Marie Kojima"
+                  ? "animate-border animate-border-in"
+                  : profile === "Kai Kojima"
+                  ? "animate-border animate-border-out"
+                  : "animate-border"
+              }`}
             />
           </div>
-          <div
-            className={classNames(
-              `${buttonClass}`,
-              `${
+          <div className={classNames(`${buttonClass}`)}>
+            <Button
+              buttonText="Kai Kojima"
+              buttonBorder={false}
+              clickHandler={handleToggleProfile}
+              buttonClassName={`${
                 profile === "Kai Kojima"
                   ? "animate-border animate-border-in"
                   : profile === "Marie Kojima"
                   ? "animate-border animate-border-out"
                   : ""
-              }`
-            )}
-          >
-            <Button
-              buttonText="Kai Kojima"
-              buttonBorder={false}
-              clickHandler={handleToggleProfile}
+              }`}
             />
           </div>
         </div>
