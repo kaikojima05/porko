@@ -34,7 +34,7 @@ export default function Header() {
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > 200) {
+      if (currentScrollY > 180) {
         setFontColor("text-base-black");
         setHamburgerColor("bg-base-black");
       } else {
@@ -88,10 +88,10 @@ export default function Header() {
             </h1>
           </div>
           <div className={classNames("hidden", "md:block")}>
-            <ul className={classNames("flex gap-12")}>
+            <ul className={classNames("flex items-center gap-12")}>
               {navItems.map((item, index) => {
                 return (
-                  <li key={index} className="[&>a]:block">
+                  <li key={index} className="flex items-center">
                     <Link
                       href={item.href}
                       className={classNames(
@@ -125,11 +125,13 @@ export default function Header() {
                   <li key={index} className="[&>a]:block">
                     <Link
                       href={item.href}
-                      className={
-                        router.pathname === item.href
-                          ? `current ${open && "animate-current"}`
-                          : "induction"
-                      }
+                      className={classNames(
+                        `${
+                          router.pathname === item.href
+                            ? `current ${open && "animate-current"}`
+                            : "induction"
+                        }`
+                      )}
                     >
                       {item.title}
                     </Link>

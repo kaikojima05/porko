@@ -8,7 +8,7 @@
 body {
   background-image: url("/images/porko-bg-image.svg");
   font-size: 14px;
-  color: rgba(0, 0, 0, 0.5);
+  color: rgba(0, 0, 0, 0.67);
 }
 
 @media screen and (max-width: 768px) {
@@ -49,6 +49,7 @@ body {
 /*ヘッダーのボーダーアニメーション*/
 .header-border::after {
   content: "";
+  opacity: 1;
   position: relative;
   display: block;
   bottom: 0;
@@ -57,11 +58,12 @@ body {
   border-bottom: 1px solid rgba(0, 0, 0, 0.5);
   transform: scaleX(0);
   transform-origin: center;
-  transition: all 2.3s ease-out;
+  transition: transform 2.3s ease-out, opacity 0.5s ease-out 2.33s;
 }
 
 .header-border.border-animation::after {
   transform: scaleX(1);
+  opacity: 0;
 }
 
 .elevator {
@@ -90,21 +92,39 @@ body {
   z-index: -1;
   content: "";
   position: absolute;
-  top: 0px;
-  left: 0px;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(245, 177, 153, 0.475) !important;
-  border-top-right-radius: 9999px;
-  border-bottom-right-radius: 9999px;
+  background-color: rgba(245, 177, 153, 0.53) !important;
   transform: scaleX(0);
   transition: transform 0.4s;
   transition-delay: 2.3s;
   transform-origin: left;
 }
 
+.current::before {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  background-color: rgba(245, 177, 153, 0.53);
+  top: 0;
+  left: 0;
+  width: 1.25rem;
+  height: 100%;
+  clip-path: polygon(0 0, 0% 100%, 100% 50%);
+  opacity: 0;
+  transition: opacity 0s, left 0.4s;
+  transition-delay: 2.3s;
+}
+
 .current.animate-current::after {
   transform: scaleX(1);
+}
+
+.current.animate-current::before {
+  opacity: 1;
+  left: 100%;
 }
 
 @media screen and (max-width: 768px) {
@@ -119,7 +139,7 @@ body {
 }
 
 .induction {
-  padding: 0.25rem 1.5rem;
+  padding: 0 1.5rem;
 }
 
 @media screen and (max-width: 768px) {
@@ -264,4 +284,18 @@ body {
 
 /*付箋スタイル*/
 .post-it {
+  display: inline-block;
+  position: relative;
+  background-color: rgba(245, 177, 153, 0.53);
+}
+
+.post-it::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 15px;
+  height: 100%;
+  left: 100%;
+  background-color: rgba(245, 177, 153, 0.53);
+  clip-path: polygon(0 0, 0% 100%, 100% 50%);
 }
