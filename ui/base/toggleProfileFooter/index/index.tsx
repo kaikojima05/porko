@@ -29,7 +29,7 @@ export default function ToggleProfileFooter() {
       )}
     >
       {showOverlay && <div className="disabled-overlay" />}
-      <div className="border border-black rounded-full m-auto inline-block gap-6 backdrop-blur">
+      <div className="border border-base rounded-full m-auto inline-block gap-6 backdrop-blur">
         <div className="flex py-1">
           <div
             className={classNames(

@@ -86,7 +86,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                         <a
                           href={sns.note.href}
                           className={classNames(
-                            "text-white bg-black p-[0.375rem] rounded-full duration-[530ms]",
+                            "text-white bg-accent p-[0.375rem] rounded-full duration-[530ms]",
                             "hover:text-black hover:bg-transparent"
                           )}
                         >
@@ -97,7 +97,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                         <a
                           href={sns.twitter.href}
                           className={classNames(
-                            "text-white bg-black p-[0.375rem] rounded-full duration-[530ms]",
+                            "text-white bg-accent p-[0.375rem] rounded-full duration-[530ms]",
                             "hover:text-black hover:bg-transparent"
                           )}
                         >
@@ -108,7 +108,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                         <a
                           href={github.href}
                           className={classNames(
-                            "text-white bg-black p-[0.375rem] rounded-full duration-[530ms]",
+                            "text-white bg-accent p-[0.375rem] rounded-full duration-[530ms]",
                             "hover:text-black hover:bg-transparent"
                           )}
                         >

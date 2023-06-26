@@ -9,7 +9,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "rgba(245, 177, 153, 0.37)",
+        base: "rgba(0, 0, 0, 0.5)",
+        primary: "rgba(245, 177, 153, 0.475)",
         accent: "rgba(128, 171, 169, 0.56)",
       },
       backgroundImage: {
