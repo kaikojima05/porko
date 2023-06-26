@@ -9,7 +9,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        base: "rgba(0, 0, 0, 0.5)",
+        "base-black": "rgba(0, 0, 0, 0.5)",
         primary: "rgba(245, 177, 153, 0.475)",
         accent: "rgba(128, 171, 169, 0.56)",
       },

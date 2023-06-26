@@ -122,7 +122,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
             </div>
           </Section>
           <Section isTopMargin={false} isAbout={true}>
-            <div className={classNames("text-base")}>
+            <div className={classNames("text-base-black")}>
               <h2 className="text-center text-[1.125rem]">works</h2>
               {works}
             </div>
