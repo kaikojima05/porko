@@ -50,12 +50,18 @@ export default function Header() {
     };
   }, []);
 
-  const toggleHamburgerMenu = (e: React.MouseEvent<HTMLElement>) => {
+  const toggleHamburgerButton = () => {
     if (window.innerWidth <= 768) {
       setOpen((prev) => !prev);
       const prevHamburgerOpen = isHamburgerOpen;
       setIsHamburgerOpen(!prevHamburgerOpen);
-      e.stopPropagation();
+    }
+  };
+
+  const toggleHamburgerMenu = () => {
+    if (window.innerWidth <= 768 && open) {
+      setOpen(false);
+      setIsHamburgerOpen(false);
     }
   };
 
@@ -112,7 +118,7 @@ export default function Header() {
               "hidden",
               `${open && "!flex items-center justify-center delay-display"}`
             )}
-            onClick={(e) => e.stopPropagation()}
+            onClick={toggleHamburgerMenu}
           >
             <ul
               className={classNames(
@@ -142,7 +148,7 @@ export default function Header() {
           </div>
           <div
             className={classNames("hamburger-menu", "md:hidden")}
-            onClick={toggleHamburgerMenu}
+            onClick={toggleHamburgerButton}
           >
             <span
               className={classNames(
