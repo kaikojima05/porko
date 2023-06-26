@@ -69,7 +69,7 @@ export default function Header() {
       )}
       <nav
         className={classNames(
-          "z-50 w-full fixed header-border header-blur",
+          "z-50 w-full fixed header-border backdrop-blur",
           `${loading ? "border-animation blur-animation" : ""}`
         )}
         onClick={toggleHamburgerMenu}

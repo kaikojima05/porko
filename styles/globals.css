@@ -79,16 +79,6 @@ body {
   height: 70vh;
 }
 
-/*ヘッダーの blur アニメーション*/
-.header-blur {
-  backdrop-filter: blur(0px);
-  transition: all 2.5s ease-in-out;
-}
-
-.header-blur.blur-animation {
-  backdrop-filter: blur(8px);
-}
-
 /* current href or not current href に当てるスタイル */
 .current {
   position: relative;
