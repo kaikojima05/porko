@@ -297,6 +297,8 @@ body {
 
 /*付箋スタイル*/
 .post-it {
+  padding: 0.125rem 0.25rem;
+  color: #fff;
   display: inline-block;
   position: relative;
   background-color: rgba(245, 177, 153, 0.53);
@@ -308,7 +310,7 @@ body {
   top: 0;
   width: 15px;
   height: 100%;
-  left: 100%;
+  left: 99.5%;
   background-color: rgba(245, 177, 153, 0.53);
   clip-path: polygon(0 0, 0% 100%, 100% 50%);
 }
