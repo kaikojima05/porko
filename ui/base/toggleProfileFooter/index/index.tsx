@@ -12,7 +12,10 @@ export default function ToggleProfileFooter() {
     if (profile === "" && event.currentTarget.innerText === "Marie Kojima") {
       return;
     }
-    event.preventDefault();
+    console.log(profile);
+    if (profile === event.currentTarget.innerText) {
+      return;
+    }
     isProfile(event.currentTarget.innerText);
     setShowOverlay(true);
     setTimeout(() => setShowOverlay(false), 1800);
