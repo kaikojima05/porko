@@ -170,7 +170,7 @@ br {
 @keyframes slide-in {
   0% {
     opacity: 0;
-    transform: translateX(70%);
+    transform: translateX(-70%);
   }
   100% {
     opacity: 1;
@@ -185,11 +185,11 @@ br {
   }
   95% {
     opacity: 0;
-    transform: translateX(-50%);
+    transform: translateX(50%);
   }
   100% {
     opacity: 0;
-    transform: translateX(-200%);
+    transform: translateX(200%);
   }
 }
 
