@@ -8,7 +8,7 @@ import Footer from "@/ui/base/footer";
 
 type AboutBodyLayoutProps = {
   toggleProfileFunction: string;
-  name: string;
+  name: React.ReactNode;
   profileImageSrc: string;
   profileSentence: React.ReactNode;
   sns: {
@@ -70,16 +70,21 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                     className="rounded"
                   />
                 </div>
-                <div>
-                  <h3>{name}</h3>
-                  <div className={classNames("mt-4 mb-4", "md:mb-6")}>
+                <div className="overflow-hidden">
+                  <h3
+                    className={classNames(
+                      "inline-block pr-10 pb-2 border-b border-base-black"
+                    )}
+                  >
+                    {name}
+                  </h3>
+                  <div className={classNames("my-5", "md:my-6")}>
                     <p>{profileSentence}</p>
                   </div>
-                  <div className="">
-                    <h3 className={classNames()}>On the web</h3>
+                  <div className="flex justify-end">
                     <div
                       className={classNames(
-                        "flex justify-start items-center text-black mt-4 gap-3"
+                        "flex items-center text-black gap-3 relative pr-16 pb-2 pl-1 border-b border-base-black"
                       )}
                     >
                       {sns.note && (

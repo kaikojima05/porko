@@ -11,6 +11,12 @@ body {
   color: rgba(0, 0, 0, 0.67);
 }
 
+br {
+  display: block;
+  content: "";
+  height: 0.5rem;
+}
+
 @media screen and (max-width: 768px) {
   body {
     font-size: 13px;

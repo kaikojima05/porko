@@ -3,7 +3,6 @@ import { forwardRef } from "react";
 import AboutBodyLayout from "@/ui/base/about/body/index";
 import WorksCard from "@/ui/base/worksCard/index";
 
-
 type AboutMarieProps = {
   toggleProfile: string;
   works: Works[];
@@ -22,10 +21,8 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
             <br />
             現在は東京都八王子市在住。夫（凱）と共に、ひそやかでのんびりとした夫婦ふたり暮らしを愉しんでいます。
             <br />
-            <br />
             会社員を5年ほど経験したのち、2022年にフリーランスライターとして独立しました。
             ライフスタイル・おでかけ・キャリア等の多ジャンルに渡るメディア記事・プレスリリース・SEO・インタビュー等、記事執筆や校正業務を幅広く行っています。そのほか、Instagramのキャプション制作や商品付随のブランディングレター制作など、「ことば」にまつわるあらゆるお仕事に柔軟に対応させていただいています。
-            <br />
             <br />
             元々「書く」ことが好きで、7歳前後から物語の創作をするようになりました。高校を卒業する頃から、インターネット上での投稿活動を開始。
             <br />

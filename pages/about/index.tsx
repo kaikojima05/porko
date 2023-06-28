@@ -55,9 +55,7 @@ export default function About({ works }: { works: Works[] }) {
         }
         bodyClassName="z-0 h-[200rem]"
       >
-        <h2 className={classNames("text-[1.35rem] text-center")}>
-          Our Profile
-        </h2>
+        <h2 className={classNames("text-[1.35rem] text-center")}>about us</h2>
         <div
           className={classNames(
             "hidden gap-4 justify-evenly items-center my-3",
