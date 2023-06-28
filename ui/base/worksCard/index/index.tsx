@@ -2,7 +2,9 @@ import { useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Works } from "@/ui/base/types/works";
 import classNames from "classnames";
 import { useOnscrollAnimations } from "@/ui/hooks/useOnScrollAnimations";
-import Link from "next/link";
+import PostIt from "@/ui/base/postIt";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 type WorksCardProps = {
   works: Works[];
@@ -119,11 +121,12 @@ export default function WorksCard({
             })}
       </div>
       {isSlice && works.length >= 4 && (
-        <p className={classNames("text-right")}>
-          <Link href="about/worksList" className="post-it">
-            more...
-          </Link>
-        </p>
+        <PostIt
+          title="more..."
+          icon={<FontAwesomeIcon icon={faArrowUpRightFromSquare} />}
+          isLink={true}
+          href="about/worksList/"
+        />
       )}
     </>
   );

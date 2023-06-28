@@ -3,6 +3,7 @@ import { forwardRef } from "react";
 import AboutBodyLayout from "@/ui/base/about/body/index";
 import WorksCard from "@/ui/base/worksCard/index";
 
+
 type AboutMarieProps = {
   toggleProfile: string;
   works: Works[];
