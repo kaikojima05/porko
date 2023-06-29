@@ -23,14 +23,6 @@ br {
   }
 }
 
-.w {
-  height: 250px;
-}
-
-.wf {
-  height: 100%;
-}
-
 .writing-vertical {
   writing-mode: vertical-rl;
 }
@@ -194,48 +186,120 @@ br {
 }
 
 /*レスポンス時に表示されるフッターのアニメーション*/
-.animate-border {
-  position: relative;
+.animate-toggle-after-text {
+  display: inline-block;
+  color: #fffffc;
+  transform: translateY(-0.25rem);
 }
-.animate-border::after {
+
+.animate-toggle-before-text {
+  display: inline-block;
+}
+
+.animate-toggle-after-text.animate-toggle-after-text-on {
+  animation: currentProfile 0.7s forwards;
+}
+
+.animate-toggle-after-text.animate-toggle-after-text-off {
+  animation: lastProfile 0.7s forwards;
+}
+
+.animate-toggle-before-text.animate-toggle-before-text-on {
+  animation: currentProfile 0.7s forwards;
+}
+
+.animate-toggle-before-text.animate-toggle-before-text-off {
+  animation: lastProfile 0.7s forwards;
+}
+
+@keyframes currentProfile {
+  0% {
+    color: rgba(0, 0, 0, 0.67);
+    transform: translateY(0);
+  }
+  100% {
+    color: #fffffc;
+    transform: translateY(-0.25rem);
+  }
+}
+
+@keyframes lastProfile {
+  0% {
+    color: #fffffc;
+    transform: translateY(-0.25rem);
+  }
+  100% {
+    color: rgba(0, 0, 0, 0.67);
+    transform: translateY(0);
+  }
+}
+
+.animate-toggle-after::after {
   z-index: -1;
   content: "";
   position: absolute;
-  bottom: 0.2rem;
-  left: 0;
-  width: 100%;
-  height: 0.5rem;
-  background-color: rgba(128, 171, 169, 0.59);
-  border-radius: 0.125rem;
+  top: 10%;
+  right: 52.5%;
+  height: 75%;
+  width: 45%;
+  opacity: 1;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  border-radius: 9999px;
+  background-color: rgba(245, 177, 153, 0.53);
+  transform: translateY(-0.125rem);
 }
 
-.animate-border.animate-border-in::after {
-  transform: scaleX(0);
-  transform-origin: left;
-  animation: border-in 1.5s forwards 0.26s;
+.animate-toggle-after.animate-toggle-after-on::after {
+  animation: on 0.7s forwards;
 }
 
-@keyframes border-in {
+.animate-toggle-after.animate-toggle-after-off::after {
+  animation: off 0.7s forwards;
+}
+
+.animate-toggle-before::before {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  top: 12.5%;
+  left: 52.5%;
+  height: 75%;
+  width: 45%;
+  border-radius: 9999px;
+  background-color: rgba(245, 177, 153, 0.53);
+}
+
+.animate-toggle-before.animate-toggle-before-on::before {
+  animation: on 1s forwards;
+}
+
+.animate-toggle-before.animate-toggle-before-off::before {
+  animation: off 1s forwards;
+}
+
+@keyframes on {
   0% {
-    transform: scaleX(0);
+    opacity: 0;
+    transform: translateY(0.125rem);
+    box-shadow: none;
   }
   100% {
-    transform: scaleX(1);
+    opacity: 1;
+    transform: translateY(-0.125rem);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
 }
 
-.animate-border.animate-border-out::after {
-  transform: scaleX(1);
-  transform-origin: right;
-  animation: border-out 1.1s forwards;
-}
-
-@keyframes border-out {
+@keyframes off {
   0% {
-    transform: scaleX(1);
+    opacity: 1;
+    transform: translateY(-0.125rem);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
   100% {
-    transform: scaleX(0);
+    opacity: 0;
+    transform: translateY(0.125rem);
+    box-shadow: none;
   }
 }
 

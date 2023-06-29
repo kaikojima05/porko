@@ -4,6 +4,7 @@ type ButtonProps = {
   buttonText: "Marie Kojima" | "Kai Kojima";
   buttonBorder?: boolean;
   buttonClassName?: string;
+  textClassName?: string;
   clickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
@@ -11,6 +12,7 @@ export default function Button({
   buttonText,
   buttonBorder = true,
   buttonClassName,
+  textClassName,
   clickHandler,
 }: ButtonProps) {
   return (
@@ -23,7 +25,9 @@ export default function Button({
       )}
     >
       <button onClick={clickHandler}>
-        <span className="text-[14px] text-black">{buttonText}</span>
+        <span className={`${textClassName} text-[14px] text-black`}>
+          {buttonText}
+        </span>
       </button>
     </div>
   );

@@ -12,7 +12,6 @@ export default function ToggleProfileFooter() {
     if (profile === "" && event.currentTarget.innerText === "Marie Kojima") {
       return;
     }
-    console.log(profile);
     if (profile === event.currentTarget.innerText) {
       return;
     }
@@ -32,8 +31,12 @@ export default function ToggleProfileFooter() {
       )}
     >
       {showOverlay && <div className="disabled-overlay" />}
-      <div className="border border-base-black rounded-full m-auto inline-block gap-6 backdrop-blur">
-        <div className="flex py-1">
+      <div
+        className={classNames(
+          "overflow-hidden relative border border-base-black rounded-full m-auto inline-block gap-6 backdrop-blur"
+        )}
+      >
+        <div className="flex py-1 grid grid-cols-2">
           <div className={classNames(`${buttonClass}`)}>
             <Button
               buttonText="Marie Kojima"
@@ -41,10 +44,17 @@ export default function ToggleProfileFooter() {
               clickHandler={handleToggleProfile}
               buttonClassName={`${
                 profile === "Marie Kojima"
-                  ? "animate-border animate-border-in"
+                  ? "animate-toggle-after animate-toggle-after-on"
                   : profile === "Kai Kojima"
-                  ? "animate-border animate-border-out"
-                  : "animate-border"
+                  ? "animate-toggle-after animate-toggle-after-off"
+                  : "animate-toggle-after"
+              }`}
+              textClassName={`${
+                profile === "Marie Kojima"
+                  ? "animate-toggle-after-text animate-toggle-after-text-on"
+                  : profile === "Kai Kojima"
+                  ? "animate-toggle-after-text animate-toggle-after-text-off"
+                  : "animate-toggle-after-text"
               }`}
             />
           </div>
@@ -55,9 +65,16 @@ export default function ToggleProfileFooter() {
               clickHandler={handleToggleProfile}
               buttonClassName={`${
                 profile === "Kai Kojima"
-                  ? "animate-border animate-border-in"
+                  ? "animate-toggle-before animate-toggle-before-on"
                   : profile === "Marie Kojima"
-                  ? "animate-border animate-border-out"
+                  ? "animate-toggle-before animate-toggle-before-off"
+                  : ""
+              }`}
+              textClassName={`${
+                profile === "Kai Kojima"
+                  ? "animate-toggle-before-text animate-toggle-before-text-on"
+                  : profile === "Marie Kojima"
+                  ? "animate-toggle-before-text animate-toggle-before-text-off"
                   : ""
               }`}
             />
