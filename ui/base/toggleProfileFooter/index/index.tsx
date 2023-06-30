@@ -50,7 +50,7 @@ export default function ToggleProfileFooter() {
                 : profile === "Kai Kojima"
                   ? "animate-toggle-after-text-off"
                   : ""
-                } animate-toggle-after-text`}
+                } animate-toggle-after-text whitespace-nowrap`}
             />
           </div>
           <div className={classNames(`${buttonClass}`)}>
