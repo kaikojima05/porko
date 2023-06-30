@@ -188,11 +188,13 @@ br {
 /*レスポンス時に表示されるフッターのアニメーション*/
 .animate-toggle-after-text {
   display: inline-block;
-  color: #fffffc;
+  transform: translateY(0);
 }
 
 .animate-toggle-before-text {
   display: inline-block;
+  transform: translateY(-0.25rem);
+  color: #fffffc;
 }
 
 .animate-toggle-after-text.animate-toggle-after-text-on {
@@ -213,58 +215,39 @@ br {
 
 @keyframes lastProfile {
   0% {
-    color: #fffffc;
+    color: rgba(0, 0, 0, 0.67);
+    transform: translateY(0rem);
   }
   100% {
-    color: rgba(0, 0, 0, 0.67);
+    color: #fffffc;
+    transform: translateY(-0.25rem);
   }
 }
 
 @keyframes currentProfile {
   0% {
-    color: rgba(0, 0, 0, 0.67);
+    color: #fffffc;
+    transform: translateY(-0.25rem);
   }
   100% {
-    color: #fffffc;
+    color: rgba(0, 0, 0, 0.67);
+    transform: translateY(0);
   }
 }
 
 .toggleProfile::before {
-  z-index: -1;
   position: absolute;
   content: "";
-  top: 12.5%;
-  right: 52.5%;
+  top: 10%;
+  left: 10%;
   width: 45%;
   height: 75%;
-  background-color: rgba(245, 177, 153, 0.63);
+  background-color: #000;
   border-radius: 9999px;
 }
 
-.toggleProfile.kai::before {
-  animation: move-right 0.8s forwards;
-}
-
-.toggleProfile.marie::before {
-  animation: move-left 0.8s forwards;
-}
-
-@keyframes move-right {
-  0% {
-    right: 52.5%;
-}
-  100% {
-    right: 2.5%;
-}
-}
-
-@keyframes move-left {
-  0% {
-    right: 2.5%;
-}
-  100% {
-    right: 52.5%;
-}
+.toggleProfile::before {
+  
 }
 
 /* ハンバーガーメニュー */

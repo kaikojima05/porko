@@ -87,37 +87,37 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                         "flex items-center text-black gap-3 relative pr-16 pb-2 pl-1 border-b border-base-black"
                       )}
                     >
-                      {sns.note && (
-                        <a
-                          href={sns.note.href}
-                          className={classNames(
-                            "text-white bg-accent p-[0.375rem] rounded-full duration-[530ms]",
-                            "hover:text-black hover:bg-transparent"
-                          )}
-                        >
-                          <Icon name="sns-note" width="w-5" height="h-5" />
-                        </a>
-                      )}
                       {sns.twitter && (
                         <a
                           href={sns.twitter.href}
                           className={classNames(
-                            "text-white bg-accent p-[0.375rem] rounded-full duration-[530ms]",
+                            "bg-white text-accent rounded-full duration-[530ms]",
                             "hover:text-black hover:bg-transparent"
                           )}
                         >
-                          <Icon name="sns-twitter" width="w-5" height="h-5" />
+                          <Icon name="sns-twitter" width="w-8" height="h-8" />
+                        </a>
+                      )}
+                      {sns.note && (
+                        <a
+                          href={sns.note.href}
+                          className={classNames(
+                            "text-accent bg-white rounded-full duration-[530ms]",
+                            "hover:text-black hover:bg-transparent"
+                          )}
+                        >
+                          <Icon name="sns-note" width="w-8" height="h-8" />
                         </a>
                       )}
                       {github && (
                         <a
                           href={github.href}
                           className={classNames(
-                            "text-white bg-accent p-[0.375rem] rounded-full duration-[530ms]",
+                            "text-accent bg-white rounded-full duration-[530ms]",
                             "hover:text-black hover:bg-transparent"
                           )}
                         >
-                          <Icon name="github" width="w-5" height="h-5" />
+                          <Icon name="github" width="w-8" height="h-8" />
                         </a>
                       )}
                     </div>

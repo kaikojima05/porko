@@ -25,8 +25,8 @@ type Props = {
 export default function Icon({
   className,
   name,
-  width = "w-4",
-  height = "h-4",
+  width = "w-8",
+  height = "h-8",
 }: Props) {
   const Icon = Icons[name];
   return (
@@ -39,7 +39,7 @@ export default function Icon({
       )}
       xmlns="http://www.w3.org/2000/svg"
       aria-labelledby={name}
-      viewBox="0 0 24 24"
+      viewBox="0 0 32 32"
       role="presentation"
     >
       <Icon />

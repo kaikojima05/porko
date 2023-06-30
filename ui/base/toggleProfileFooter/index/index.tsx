@@ -33,29 +33,24 @@ export default function ToggleProfileFooter() {
       {showOverlay && <div className="disabled-overlay" />}
       <div
         className={classNames(
-          "overflow-hidden relative border border-base-black rounded-full m-auto inline-block gap-6 backdrop-blur"
+          "overflow-hidden relative border border-base-black rounded-full m-auto inline-block gap-6 backdrop-blur w-[16.5625rem] h-[3.25rem]",
+          `${profile === "Marie Kojima" ? "marie" : profile === "Kai Kojima" ? "kai" : ""}`, "toggleProfile"
         )}
       >
-        <div className="flex py-1 grid grid-cols-2">
-          <div className={classNames(`${buttonClass}`)}>
+        <div className={classNames("flex py-1 grid grid-cols-2",
+        )}>
+          < div className={classNames(`${buttonClass}`)}>
             <Button
               buttonText="Marie Kojima"
               buttonBorder={false}
               clickHandler={handleToggleProfile}
-              buttonClassName={`${
-                profile === "Marie Kojima"
-                  ? "animate-toggle-after animate-toggle-after-on"
-                  : profile === "Kai Kojima"
-                  ? "animate-toggle-after animate-toggle-after-off"
+              buttonClassName=""
+              textClassName={`${profile === "Marie Kojima"
+                ? "animate-toggle-after-text-on"
+                : profile === "Kai Kojima"
+                  ? "animate-toggle-after-text-off"
                   : ""
-              }`}
-              textClassName={`${
-                profile === "Marie Kojima"
-                  ? "animate-toggle-after-text animate-toggle-after-text-on"
-                  : profile === "Kai Kojima"
-                  ? "animate-toggle-after-text animate-toggle-after-text-off"
-                  : ""
-              }`}
+                } animate-toggle-after-text`}
             />
           </div>
           <div className={classNames(`${buttonClass}`)}>
@@ -63,24 +58,17 @@ export default function ToggleProfileFooter() {
               buttonText="Kai Kojima"
               buttonBorder={false}
               clickHandler={handleToggleProfile}
-              buttonClassName={`${
-                profile === "Kai Kojima"
-                  ? "animate-toggle-before animate-toggle-before-on"
-                  : profile === "Marie Kojima"
-                  ? "animate-toggle-before animate-toggle-before-off"
-                  : "animate-toggle-before"
-              }`}
-              textClassName={`${
-                profile === "Kai Kojima"
-                  ? "animate-toggle-before-text animate-toggle-before-text-on"
-                  : profile === "Marie Kojima"
+              buttonClassName=''
+              textClassName={`${profile === "Kai Kojima"
+                ? "animate-toggle-before-text animate-toggle-before-text-on"
+                : profile === "Marie Kojima"
                   ? "animate-toggle-before-text animate-toggle-before-text-off"
                   : "animate-toggle-before-text"
-              }`}
+                }`}
             />
           </div>
         </div>
-      </div>
-    </article>
+      </div >
+    </article >
   );
 }
