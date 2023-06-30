@@ -78,7 +78,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                   >
                     {name}
                   </h3>
-                  <div className={classNames("my-5", "md:my-6")}>
+                  <div className={classNames("my-6", "md:my-6")}>
                     <p>{profileSentence}</p>
                   </div>
                   <div className="flex justify-end">

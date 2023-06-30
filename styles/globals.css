@@ -331,74 +331,9 @@ br {
 
 /*付箋スタイル*/
 .post-it {
-  color: #fff;
+  position: relative;
+  border-right: 1px solid rgba(0, 0, 0, 0.67);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.67);
 }
 
-.post-it:hover {
-  animation: post-font-color 1s ease;
-}
 
-.post-it::after {
-  z-index: -1;
-  position: absolute;
-  content: "";
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 1;
-  transform: scaleX(1);
-  transform-origin: right;
-  background-color: rgba(245, 177, 153, 0.53);
-  border-radius: 6px;
-}
-
-.post-it:hover::after {
-  animation: post-move 1s ease;
-}
-
-@keyframes post-font-color {
-  0% {
-    color: #fff;
-  }
-  25% {
-    color: rgba(0, 0, 0, 0.67);
-  }
-  50% {
-    color: rgba(0, 0, 0, 0.67);
-  }
-  75% {
-    color: rgba(0, 0, 0, 0.67);
-  }
-  100% {
-    color: #fff;
-  }
-}
-
-@keyframes post-move {
-  0% {
-    opacity: 1;
-    transform: scaleX(1);
-    transform-origin: right;
-  }
-  25% {
-    opacity: 0.5;
-    transform: scaleX(0);
-    transform-origin: right;
-  }
-  50% {
-    opacity: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-  }
-  75% {
-    opacity: 0.5;
-    transform: scaleX(0);
-    transform-origin: left;
-  }
-  100% {
-    opacity: 1;
-    transform: scaleX(1);
-    transform-origin: left;
-  }
-}

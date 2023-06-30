@@ -92,7 +92,7 @@ export default function WorksCard({
     <>
       <div
         id="worksCards"
-        className={classNames("my-4 grid grid-cols-2 gap-3", "md:grid-cols-4")}
+        className={classNames("my-6 grid grid-cols-2 gap-3", "md:grid-cols-4")}
       >
         {isMap &&
           sortWorks.map((work, index) => {

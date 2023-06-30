@@ -20,10 +20,10 @@ export default function PostIt({
     <div className=" flex justify-end">
       <div
         className={classNames(
-          "overflow-hidden px-8 py-1.5 flex items-center gap-2 post-it relative"
+          "pl-16 pr-2 py-1.5 flex items-center gap-10 post-it"
         )}
       >
-        <p className="inline-block">{title}</p>
+        <p className="inline-block text-[0.9375rem]">{title}</p>
         {icon}
       </div>
     </div>
