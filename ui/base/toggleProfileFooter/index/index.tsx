@@ -47,14 +47,14 @@ export default function ToggleProfileFooter() {
                   ? "animate-toggle-after animate-toggle-after-on"
                   : profile === "Kai Kojima"
                   ? "animate-toggle-after animate-toggle-after-off"
-                  : "animate-toggle-after"
+                  : ""
               }`}
               textClassName={`${
                 profile === "Marie Kojima"
                   ? "animate-toggle-after-text animate-toggle-after-text-on"
                   : profile === "Kai Kojima"
                   ? "animate-toggle-after-text animate-toggle-after-text-off"
-                  : "animate-toggle-after-text"
+                  : ""
               }`}
             />
           </div>
@@ -68,14 +68,14 @@ export default function ToggleProfileFooter() {
                   ? "animate-toggle-before animate-toggle-before-on"
                   : profile === "Marie Kojima"
                   ? "animate-toggle-before animate-toggle-before-off"
-                  : ""
+                  : "animate-toggle-before"
               }`}
               textClassName={`${
                 profile === "Kai Kojima"
                   ? "animate-toggle-before-text animate-toggle-before-text-on"
                   : profile === "Marie Kojima"
                   ? "animate-toggle-before-text animate-toggle-before-text-off"
-                  : ""
+                  : "animate-toggle-before-text"
               }`}
             />
           </div>

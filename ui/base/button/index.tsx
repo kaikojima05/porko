@@ -25,9 +25,7 @@ export default function Button({
       )}
     >
       <button onClick={clickHandler}>
-        <span className={`${textClassName} text-[14px] text-black`}>
-          {buttonText}
-        </span>
+        <span className={`${textClassName} text-[14px]`}>{buttonText}</span>
       </button>
     </div>
   );

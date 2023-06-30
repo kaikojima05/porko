@@ -188,12 +188,13 @@ br {
 /*レスポンス時に表示されるフッターのアニメーション*/
 .animate-toggle-after-text {
   display: inline-block;
-  color: #fffffc;
-  transform: translateY(-0.25rem);
+  transform: translateY(0);
 }
 
 .animate-toggle-before-text {
   display: inline-block;
+  transform: translateY(-0.25rem);
+  color: #fffffc;
 }
 
 .animate-toggle-after-text.animate-toggle-after-text-on {
@@ -212,10 +213,10 @@ br {
   animation: lastProfile 0.7s forwards;
 }
 
-@keyframes currentProfile {
+@keyframes lastProfile {
   0% {
     color: rgba(0, 0, 0, 0.67);
-    transform: translateY(0);
+    transform: translateY(0rem);
   }
   100% {
     color: #fffffc;
@@ -223,7 +224,7 @@ br {
   }
 }
 
-@keyframes lastProfile {
+@keyframes currentProfile {
   0% {
     color: #fffffc;
     transform: translateY(-0.25rem);
@@ -242,8 +243,6 @@ br {
   right: 52.5%;
   height: 75%;
   width: 45%;
-  opacity: 1;
-  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   border-radius: 9999px;
   background-color: rgba(245, 177, 153, 0.53);
   transform: translateY(-0.125rem);
@@ -265,8 +264,11 @@ br {
   left: 52.5%;
   height: 75%;
   width: 45%;
+  opacity: 1;
+  box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   border-radius: 9999px;
   background-color: rgba(245, 177, 153, 0.53);
+  transform: translateY(-0.125rem);
 }
 
 .animate-toggle-before.animate-toggle-before-on::before {
@@ -279,27 +281,27 @@ br {
 
 @keyframes on {
   0% {
-    opacity: 0;
-    transform: translateY(0.125rem);
-    box-shadow: none;
-  }
-  100% {
     opacity: 1;
     transform: translateY(-0.125rem);
     box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(0.125rem);
+    box-shadow: none;
   }
 }
 
 @keyframes off {
   0% {
-    opacity: 1;
-    transform: translateY(-0.125rem);
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  }
-  100% {
     opacity: 0;
     transform: translateY(0.125rem);
     box-shadow: none;
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(-0.125rem);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
   }
 }
 
