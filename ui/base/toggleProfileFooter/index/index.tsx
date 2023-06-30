@@ -33,7 +33,7 @@ export default function ToggleProfileFooter() {
       {showOverlay && <div className="disabled-overlay" />}
       <div
         className={classNames(
-          "overflow-hidden relative border border-base-black rounded-full m-auto inline-block gap-6 backdrop-blur w-[16.5625rem] h-[3.25rem]",
+          "overflow-hidden relative border border-base-black rounded-full m-auto inline-block gap-6 backdrop-blur w-[16.875rem] h-[3.25rem]",
           `${profile === "Marie Kojima" ? "marie" : profile === "Kai Kojima" ? "kai" : ""}`, "toggleProfile"
         )}
       >
