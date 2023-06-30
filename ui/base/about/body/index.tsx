@@ -84,7 +84,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                   <div className="flex justify-end">
                     <div
                       className={classNames(
-                        "flex items-center text-black gap-3 relative pr-16 pb-2 pl-1 border-b border-base-black"
+                        "flex items-center text-black gap-3 relative pr-4 pb-2 pl-16 border-b border-base-black"
                       )}
                     >
                       {sns.twitter && (
