@@ -1,7 +1,6 @@
 import { useOnScrollAnimation } from "@/ui/hooks/useOnScrollAnimation";
 import Image from "next/image";
 import Body from "@/ui/base/body";
-import NewsPage from '@/ui/pages/news/section/main/index'
 
 export default function News() {
   const backgroundRef = useOnScrollAnimation();
