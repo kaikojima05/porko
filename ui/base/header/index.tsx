@@ -132,10 +132,9 @@ export default function Header() {
                     <Link
                       href={item.href}
                       className={classNames(
-                        `${
-                          router.pathname === item.href
-                            ? `current ${open && "animate-current"}`
-                            : "induction"
+                        `${router.pathname === item.href
+                          ? `current ${open && "animate-current"}`
+                          : "induction"
                         }`
                       )}
                     >

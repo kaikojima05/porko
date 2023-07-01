@@ -10,12 +10,14 @@ type WorksCardProps = {
   works: Works[];
   isMap?: boolean;
   isSlice?: boolean;
+  isWorksList?: boolean;
 };
 
 export default function WorksCard({
   works,
   isMap = false,
   isSlice = false,
+  isWorksList = false,
 }: WorksCardProps) {
   const worksRefs = useRef<RefObject<HTMLDivElement>[]>([]);
   works.map((_, index) => {
@@ -92,7 +94,7 @@ export default function WorksCard({
     <>
       <div
         id="worksCards"
-        className={classNames("my-6 grid grid-cols-2 gap-3", "md:grid-cols-4")}
+        className={classNames("my-6 grid grid-cols-2 gap-3", "md:grid-cols-4", `${(isWorksList && isMap) && 'lg:grid-cols-5'}`)}
       >
         {isMap &&
           sortWorks.map((work, index) => {
@@ -122,7 +124,7 @@ export default function WorksCard({
       </div>
       {isSlice && works.length >= 4 && (
         <PostIt
-          title="more..."
+          title="more ..."
           icon={<FontAwesomeIcon icon={faArrowUpRightFromSquare} />}
           isLink={true}
           href="about/worksList/"

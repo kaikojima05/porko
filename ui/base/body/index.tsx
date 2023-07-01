@@ -17,6 +17,7 @@ export default function Body({
   bodyClassName,
 }: BodyProps) {
   const router = useRouter();
+
   return (
     <>
       <Header />
@@ -24,9 +25,9 @@ export default function Body({
       <main
         className={classNames(
           "w-full",
-          "pt-6 px-4",
-          "md:px-[17%]",
-          "xl:px-[22%]",
+          "pt-6 px-[0.9375rem]",
+          "lg:min-w-[58.125rem] lg:max-w-[58.125rem] lg:px-0 lg:mx-auto",
+          "xl:min-w-[62.5rem] xl:max-w-[62.5rem]",
           "overflow-x-hidden",
           `${bodyClassName}`
         )}
