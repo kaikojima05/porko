@@ -1,6 +1,6 @@
 import classNames from "classnames";
 
-type ButtonProps = {
+type ProfileButtonProps = {
   buttonText: "Marie Kojima" | "Kai Kojima";
   buttonBorder?: boolean;
   buttonClassName?: string;
@@ -8,13 +8,13 @@ type ButtonProps = {
   clickHandler: (event: React.MouseEvent<HTMLButtonElement>) => void;
 };
 
-export default function Button({
+export default function ProfileButton({
   buttonText,
   buttonBorder = true,
   buttonClassName,
   textClassName,
   clickHandler,
-}: ButtonProps) {
+}: ProfileButtonProps) {
   return (
     <div
       className={classNames(

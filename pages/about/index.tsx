@@ -6,7 +6,7 @@ import { useOnScrollAnimation } from "@/ui/hooks/useOnScrollAnimation";
 import Body from "@/ui/base/body";
 import AboutMarie from "@/ui/pages/about/section/main/marie/index";
 import AboutKai from "@/ui/pages/about/section/main/kai/index";
-import Button from "@/ui/base/button";
+import ProfileButton from "@/ui/base/profileButton";
 import { getWorks } from "@/lib/newt";
 import type { Works } from "@/ui/base/types/works";
 import ToggleProfileFooter from "@/ui/base/toggleProfileFooter/index";
@@ -19,10 +19,11 @@ export default function About({ works }: { works: Works[] }) {
   const MarieRef = useOnScrollAnimation();
   const KaiRef = useOnScrollAnimation();
 
-  const handleToggleProfile = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const ToggleProfile = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (isProfile === "" && event.currentTarget.innerText === "Marie Kojima") {
       return;
     }
+    if (isProfile === event.currentTarget.innerText) { return }
     event.preventDefault();
     setIsProfile(event.currentTarget.innerText);
     setShowOverlay(true);
@@ -62,11 +63,13 @@ export default function About({ works }: { works: Works[] }) {
             "md:justify-center md:gap-10 md:flex"
           )}
         >
-          <Button
+          <ProfileButton
             buttonText="Marie Kojima"
-            clickHandler={handleToggleProfile}
+            clickHandler={ToggleProfile}
           />
-          <Button buttonText="Kai Kojima" clickHandler={handleToggleProfile} />
+          <ProfileButton buttonText="Kai Kojima"
+            clickHandler={ToggleProfile}
+          />
         </div>
         <div className="relative">
           <AboutMarie
@@ -75,8 +78,8 @@ export default function About({ works }: { works: Works[] }) {
               isProfile === "Kai Kojima"
                 ? "animate-out"
                 : isProfile === "Marie Kojima"
-                ? "animate-in"
-                : ""
+                  ? "animate-in"
+                  : ""
             }
             works={works}
           />
@@ -86,10 +89,10 @@ export default function About({ works }: { works: Works[] }) {
               isProfile === "Kai Kojima"
                 ? "animate-in"
                 : isProfile === "Marie Kojima"
-                ? "animate-out"
-                : isProfile === ""
-                ? "z-[-10] opacity-0"
-                : ""
+                  ? "animate-out"
+                  : isProfile === ""
+                    ? "z-[-10] opacity-0"
+                    : ""
             }
           />
         </div>
@@ -106,5 +109,7 @@ export const getStaticProps = async () => {
     props: {
       works,
     },
+
+    revalidate: 900
   };
 };

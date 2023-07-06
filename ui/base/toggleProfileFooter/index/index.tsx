@@ -1,6 +1,6 @@
 import { useState, useContext } from "react";
 import classNames from "classnames";
-import Button from "@/ui/base/button";
+import Button from "@/ui/base/profileButton";
 import { useIsProfileContext } from "@/ui/hooks/useIsProfile";
 
 export default function ToggleProfileFooter() {
@@ -8,7 +8,7 @@ export default function ToggleProfileFooter() {
   const { profile, isProfile, isHamburgerOpen } =
     useContext(useIsProfileContext);
 
-  const handleToggleProfile = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const ToggleProfile = (event: React.MouseEvent<HTMLButtonElement>) => {
     if (profile === "" && event.currentTarget.innerText === "Marie Kojima") {
       return;
     }
@@ -43,7 +43,7 @@ export default function ToggleProfileFooter() {
             <Button
               buttonText="Marie Kojima"
               buttonBorder={false}
-              clickHandler={handleToggleProfile}
+              clickHandler={ToggleProfile}
               buttonClassName=""
               textClassName={`${profile === "Marie Kojima"
                 ? "animate-toggle-after-text-on"
@@ -57,7 +57,7 @@ export default function ToggleProfileFooter() {
             <Button
               buttonText="Kai Kojima"
               buttonBorder={false}
-              clickHandler={handleToggleProfile}
+              clickHandler={ToggleProfile}
               buttonClassName=''
               textClassName={`${profile === "Kai Kojima"
                 ? "animate-toggle-before-text animate-toggle-before-text-on"

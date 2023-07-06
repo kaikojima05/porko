@@ -73,7 +73,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                 <div className="overflow-hidden">
                   <h3
                     className={classNames(
-                      "inline-block pr-10 pb-2 border-b border-base-black"
+                      "inline-block pr-10 pb-2 border-b border-base-black text-[1.125rem]"
                     )}
                   >
                     {name}
