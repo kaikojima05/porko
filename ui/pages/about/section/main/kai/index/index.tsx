@@ -41,7 +41,11 @@ const AboutKai = forwardRef<HTMLDivElement, AboutKaiProps>((props, ref) => {
           </p>
         }
         ref={ref}
-      />
+      >
+        <div>
+          <h2>coming soon ...</h2>
+        </div>
+      </AboutBodyLayout>
     </>
   );
 });
