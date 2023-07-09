@@ -2,26 +2,37 @@ import { useRouter } from "next/router";
 import classNames from "classnames";
 import Header from "@/ui/base/header";
 import Footer from "@/ui/base/footer";
+import Image from 'next/image'
+import { useOnScrollAnimation } from '@/ui/hooks/useOnScrollAnimation'
 
 type BodyProps = {
   children?: React.ReactNode;
-  backgroundImage?: React.ReactNode;
-  isBackground?: boolean;
   bodyClassName?: string;
 };
 
 export default function Body({
   children,
-  backgroundImage,
-  isBackground = false,
   bodyClassName,
 }: BodyProps) {
   const router = useRouter();
+  const backgroundRef = useOnScrollAnimation();
 
   return (
     <>
       <Header />
-      {isBackground ? backgroundImage : undefined}
+      <div ref={backgroundRef} className={classNames(
+        "before-scroll-once h-[400px]",
+      )}>
+        <Image
+          alt=""
+          src="/images/hero1.jpg"
+          fill
+          style={{
+            objectFit: "cover",
+            objectPosition: "center"
+          }}
+        />
+      </div>
       <main
         className={classNames(
           "w-full",

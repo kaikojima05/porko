@@ -1,7 +1,6 @@
 import classNames from "classnames";
 import { useState } from "react";
 import { useIsProfileContext } from "@/ui/hooks/useIsProfile";
-import Image from "next/image";
 import { useOnScrollAnimation } from "@/ui/hooks/useOnScrollAnimation";
 import Body from "@/ui/base/body";
 import AboutMarie from "@/ui/pages/about/section/main/marie/index";
@@ -17,7 +16,6 @@ export default function About({ works, creatives }: { works: Works[], creatives:
   const [showOverlay, setShowOverlay] = useState(false);
   const [isProfile, setIsProfile] = useState("");
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
-  const backgroundRef = useOnScrollAnimation();
   const MarieRef = useOnScrollAnimation();
   const KaiRef = useOnScrollAnimation();
 
@@ -43,19 +41,6 @@ export default function About({ works, creatives }: { works: Works[], creatives:
     >
       {showOverlay && <div className="disabled-overlay" />}
       <Body
-        isBackground={true}
-        backgroundImage={
-          <div ref={backgroundRef} className="before-scroll-once h-[600px]">
-            <Image
-              alt=""
-              src="/images/hero1.jpg"
-              fill
-              style={{
-                objectFit: "cover",
-              }}
-            />
-          </div>
-        }
         bodyClassName="z-0 h-[200rem]"
       >
         <h2 className={classNames("text-[1.35rem] text-center")}>about us</h2>
