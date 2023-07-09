@@ -1,11 +1,15 @@
 import type { Works } from "@/ui/base/types/works";
+import type { Creatives } from "@/ui/base/types/creatives";
 import { forwardRef } from "react";
 import AboutBodyLayout from "@/ui/base/about/body/index";
 import WorksCard from "@/ui/base/worksCard/index";
+import CreativesCard from "@/ui/base/creativesCard/index";
+import Section from '@/ui/base/section'
 
 type AboutMarieProps = {
   toggleProfile: string;
   works: Works[];
+  creatives: Creatives[]
 };
 
 const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
@@ -48,7 +52,14 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
         }}
         works={<WorksCard works={props.works} isSlice={true} />}
         ref={ref}
-      />
+      >
+        <Section isTopMargin={false}>
+          <div className="text-center text-[1.125rem]">
+            <h2>Creatives</h2>
+          </div>
+          <CreativesCard creatives={props.creatives} isSlice={true} />
+        </Section>
+      </AboutBodyLayout>
     </>
   );
 });

@@ -8,10 +8,12 @@ import AboutMarie from "@/ui/pages/about/section/main/marie/index";
 import AboutKai from "@/ui/pages/about/section/main/kai/index";
 import ProfileButton from "@/ui/base/profileButton";
 import { getWorks } from "@/lib/newt";
+import { getCreatives } from "@/lib/newt";
 import type { Works } from "@/ui/base/types/works";
+import type { Creatives } from "@/ui/base/types/creatives";
 import ToggleProfileFooter from "@/ui/base/toggleProfileFooter/index";
 
-export default function About({ works }: { works: Works[] }) {
+export default function About({ works, creatives }: { works: Works[], creatives: Creatives[] }) {
   const [showOverlay, setShowOverlay] = useState(false);
   const [isProfile, setIsProfile] = useState("");
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
@@ -82,6 +84,7 @@ export default function About({ works }: { works: Works[] }) {
                   : ""
             }
             works={works}
+            creatives={creatives}
           />
           <AboutKai
             ref={KaiRef}
@@ -104,12 +107,14 @@ export default function About({ works }: { works: Works[] }) {
 
 export const getStaticProps = async () => {
   const works = await getWorks();
+  const creatives = await getCreatives();
 
   return {
     props: {
       works,
+      creatives,
     },
 
-    revalidate: 900
+    revalidate: 1800
   };
 };

@@ -1,27 +1,27 @@
 import { useMemo, useEffect, useRef, createRef, RefObject } from "react";
-import { Works } from "@/ui/base/types/works";
+import { Creatives } from "@/ui/base/types/creatives";
 import classNames from "classnames";
 import { useOnscrollAnimations } from "@/ui/hooks/useOnScrollAnimations";
 import PostIt from "@/ui/base/postIt";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowUpRightFromSquare } from "@fortawesome/free-solid-svg-icons";
 
-type WorksCardProps = {
-  works: Works[];
+type CreativesCardProps = {
+  creatives: Creatives[]
   isMap?: boolean;
   isSlice?: boolean;
-  isWorksList?: boolean;
+  isCreativesList?: boolean;
 };
 
-export default function WorksCard({
-  works,
+export default function CreativesCard({
+  creatives,
   isMap = false,
   isSlice = false,
-  isWorksList = false,
-}: WorksCardProps) {
-  const worksRefs = useRef<RefObject<HTMLDivElement>[]>([]);
-  works.map((_, index) => {
-    worksRefs.current[index] = createRef<HTMLDivElement>();
+  isCreativesList = false,
+}: CreativesCardProps) {
+  const creativesRefs = useRef<RefObject<HTMLDivElement>[]>([]);
+  creatives.map((_, index) => {
+    creativesRefs.current[index] = createRef<HTMLDivElement>();
   });
 
   const showElement = (entries: IntersectionObserverEntry[]) => {
@@ -32,28 +32,28 @@ export default function WorksCard({
     });
   };
 
-  const sortWorks = useMemo(() => {
-    return [...works].sort((a, b) => {
+  const sortCreatives = useMemo(() => {
+    return [...creatives].sort((a, b) => {
       const recent = new Date(a.postDate).getTime();
       const ago = new Date(b.postDate).getTime();
 
       return ago - recent;
     });
-  }, [works]);
+  }, [creatives]);
 
-  useOnscrollAnimations(worksRefs.current, showElement, { threshold: 0.1 });
+  useOnscrollAnimations(creativesRefs.current, showElement, { threshold: 0.1 });
 
   useEffect(() => {
-    if (!worksRefs.current) {
+    if (!creativesRefs.current) {
       return;
     }
 
-    sortWorks.forEach((work, index) => {
+    sortCreatives.forEach((creative, index) => {
       const fragment = document
         .createRange()
-        .createContextualFragment(work.RefLink.html);
+        .createContextualFragment(creative.RefLink.html);
 
-      const currentElement = worksRefs.current[index]?.current;
+      const currentElement = creativesRefs.current[index]?.current;
       if (!currentElement) {
         return;
       }
@@ -62,11 +62,11 @@ export default function WorksCard({
         currentElement.removeChild(currentElement.firstChild);
       }
 
-      worksRefs.current[index]?.current?.appendChild(fragment);
+      creativesRefs.current[index]?.current?.appendChild(fragment);
 
       const observer = new MutationObserver((mutations) => {
         mutations.forEach((mutation) => {
-          const elements = worksRefs.current[index]?.current?.querySelectorAll(
+          const elements = creativesRefs.current[index]?.current?.querySelectorAll(
             ".iframely-embed > div"
           );
           elements?.forEach((element) => {
@@ -89,20 +89,20 @@ export default function WorksCard({
         observer.disconnect();
       };
     });
-  }, [sortWorks]);
+  }, [sortCreatives]);
 
   return (
     <>
       <div
-        id="worksCards"
-        className={classNames("my-6 grid grid-cols-2 gap-3", "md:grid-cols-4", `${(isWorksList && isMap) && 'lg:grid-cols-5'}`)}
+        id="creativesCards"
+        className={classNames("my-6 grid grid-cols-2 gap-3", "md:grid-cols-4", `${(isCreativesList && isMap) && 'lg:grid-cols-5'}`)}
       >
         {isMap &&
-          sortWorks.map((work, index) => {
-            return <div key={work._id} ref={worksRefs.current[index]}></div>;
+          sortCreatives.map((creative, index) => {
+            return <div key={creative._id} ref={creativesRefs.current[index]}></div>;
           })}
         {isSlice &&
-          sortWorks
+          sortCreatives
             .sort((a, b) => {
               if (a.appeal && !b.appeal) {
                 return -1;
@@ -112,23 +112,23 @@ export default function WorksCard({
               return 0;
             })
             .slice(0, 4)
-            .map((work, index) => {
+            .map((creative, index) => {
               return (
                 <div
-                  key={work._id}
-                  ref={worksRefs.current[index]}
+                  key={creative._id}
+                  ref={creativesRefs.current[index]}
                   className="before-scroll-repeat relative"
                   style={{ transitionDelay: `${index * 0.4}s` }}
                 ></div>
               );
             })}
       </div>
-      {isSlice && works.length >= 4 && (
+      {isSlice && creatives.length >= 4 && (
         <PostIt
           title="more ..."
           icon={<FontAwesomeIcon icon={faArrowUpRightFromSquare} />}
           isLink={true}
-          href="about/worksList/"
+          href="about/creativesList/"
         />
       )}
     </>

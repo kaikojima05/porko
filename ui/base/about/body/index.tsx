@@ -23,6 +23,7 @@ type AboutBodyLayoutProps = {
     href?: string;
   };
   works: React.ReactNode;
+  children: React.ReactNode;
 };
 
 const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
@@ -35,6 +36,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
       sns,
       github,
       works,
+      children
     },
     ref
   ) => {
@@ -132,6 +134,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
               {works}
             </div>
           </Section>
+          {children}
           <Footer />
         </Article>
       </>
