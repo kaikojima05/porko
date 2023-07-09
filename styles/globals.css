@@ -80,7 +80,7 @@ br {
   transition: all 0.5s ease;
 }
 
-@media screen and (min-width: 768px) {
+@media screen and (min-width: 1024px) {
   .elevator {
     height: auto;
   }

@@ -52,7 +52,7 @@ export default function Header() {
   }, []);
 
   const toggleHamburgerButton = () => {
-    if (window.innerWidth <= 768) {
+    if (window.innerWidth <= 1024) {
       setOpen((prev) => !prev);
       const prevHamburgerOpen = isHamburgerOpen;
       setIsHamburgerOpen(!prevHamburgerOpen);
@@ -60,7 +60,7 @@ export default function Header() {
   };
 
   const toggleHamburgerMenu = () => {
-    if (window.innerWidth <= 768 && open) {
+    if (window.innerWidth <= 1024 && open) {
       setOpen(false);
       setIsHamburgerOpen(false);
     }
@@ -84,7 +84,8 @@ export default function Header() {
         <header
           className={classNames(
             "flex justify-between px-4 py-4 elevator",
-            "lg:px-28 lg:py-6",
+            "lg:px-16 lg:py-6",
+            "xl:px-28",
             `${fontColor}`,
             `${open ? "going-down" : ""}`
           )}
