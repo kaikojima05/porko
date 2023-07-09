@@ -85,7 +85,7 @@ export default function Header() {
           className={classNames(
             "flex justify-between px-4 py-4 elevator",
             "lg:px-16 lg:py-6",
-            "xl:px-28",
+            "xl:px-24",
             `${fontColor}`,
             `${open ? "going-down" : ""}`
           )}
@@ -98,7 +98,11 @@ export default function Header() {
             </h1>
           </div>
           <div className={classNames("hidden", "lg:block")}>
-            <ul className={classNames("flex items-center gap-12")}>
+            <ul className={classNames(
+              "flex items-center",
+              "lg:gap-0",
+              "xl:gap-8"
+            )}>
               {navItems.map((item, index) => {
                 return (
                   <li key={index} className="flex items-center">
