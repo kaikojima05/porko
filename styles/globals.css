@@ -6,9 +6,20 @@
 }
 
 body {
-  background-image: url("/images/porko-bg-image.svg");
+  position: relative;
+  background-color: #FFF;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.67);
+}
+
+body::before {
+  content: "";
+  position: absolute;
+  background-image: url("/images/texture.png");
+  background-repeat: repeat;
+  mix-blend-mode: multiply;
+  width: 100vw;
+  height: 100%;
 }
 
 br {
@@ -65,13 +76,13 @@ br {
 }
 
 .elevator {
-  height: 3.5rem;
+  height: 3.875rem;
   transition: all 0.5s ease;
 }
 
 @media screen and (min-width: 768px) {
   .elevator {
-    height: 4.3125rem;
+    height: auto;
   }
 }
 
@@ -144,7 +155,7 @@ br {
   padding: 0 1.5rem;
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 767px) {
   .induction {
     padding: 0.125rem 1.5rem;
   }
