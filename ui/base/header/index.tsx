@@ -3,6 +3,7 @@ import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 import { useIsProfileContext } from "@/ui/hooks/useIsProfile";
+import Icon from "@/ui/base/icons";
 
 export default function Header() {
   const router = useRouter();
@@ -83,17 +84,19 @@ export default function Header() {
         <header
           className={classNames(
             "flex justify-between px-4 py-4 elevator",
-            "md:px-28 md:py-6",
+            "lg:px-28 lg:py-6",
             `${fontColor}`,
-            `${open && "going-down"}`
+            `${open ? "going-down" : ""}`
           )}
         >
-          <div onClick={(e) => e.stopPropagation()} className="h-6 w-6">
+          <div onClick={(e) => e.stopPropagation()} className="">
             <h1>
-              <Link href="/">porko</Link>
+              <Link href="/" className="">
+                <Icon name="porko" width="w-[5rem]" height="h-[1.875rem]" symbol={true} className="text-black" />
+              </Link>
             </h1>
           </div>
-          <div className={classNames("hidden", "md:block")}>
+          <div className={classNames("hidden", "lg:block")}>
             <ul className={classNames("flex items-center gap-12")}>
               {navItems.map((item, index) => {
                 return (
@@ -146,7 +149,7 @@ export default function Header() {
             </ul>
           </div>
           <div
-            className={classNames("hamburger-menu", "md:hidden")}
+            className={classNames("hamburger-menu", "lg:hidden")}
             onClick={toggleHamburgerButton}
           >
             <span

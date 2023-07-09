@@ -3,8 +3,10 @@ import SnsNote from "./SnsNote";
 import SnsTwitter from "./SnsTwitter";
 import PushPin from "./PushPin";
 import GitHub from "./GitHub";
+import Porko from './Porko'
 
 const Icons = {
+  "porko": Porko,
   "sns-note": SnsNote,
   "sns-twitter": SnsTwitter,
   github: GitHub,
@@ -16,6 +18,7 @@ export const ICON_NAMES = keys;
 export type IconName = (typeof keys)[number];
 
 type Props = {
+  symbol?: boolean;
   className?: string;
   width?: string;
   height?: string;
@@ -23,6 +26,7 @@ type Props = {
 };
 
 export default function Icon({
+  symbol = false,
   className,
   name,
   width = "w-8",
@@ -39,7 +43,7 @@ export default function Icon({
       )}
       xmlns="http://www.w3.org/2000/svg"
       aria-labelledby={name}
-      viewBox="0 0 32 32"
+      viewBox={`${symbol ? "0 0 80 30" : "0 0 32 32"}`}
       role="presentation"
     >
       <Icon />
