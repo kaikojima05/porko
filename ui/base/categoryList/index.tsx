@@ -1,15 +1,27 @@
 import classNames from 'classnames'
 import type { Works } from '@/ui/base/types/works'
+import type { Creatives } from '@/ui/base/types/creatives'
 import Article from '@/ui/base/article'
 import Section from '@/ui/base/section'
 
 type CategoryListProps = {
-  works: Works[]
+  works?: Works[]
+  creatives?: Creatives[]
 }
 
-export default function CategoryList({ works }: CategoryListProps) {
-  const categoryList = works.map((item) => item.category)
-  const filterCategoryList = Array.from(new Set(categoryList.flat()))
+export default function CategoryList({ works, creatives }: CategoryListProps) {
+  let categoryList: Works[] | Creatives[] | undefined
+
+  if (works) {
+    categoryList = works
+  } else if (creatives) {
+    categoryList = creatives
+  } else {
+    return null
+  }
+
+  const allCategory = categoryList.map((item) => item.category)
+  const filterCategoryList = Array.from(new Set(allCategory.flat()))
 
   return (
     <Article>
