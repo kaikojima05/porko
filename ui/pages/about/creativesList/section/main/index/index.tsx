@@ -1,4 +1,4 @@
-import CreativesCard from "@/ui/base/CreativesCard/index";
+import CreativesCard from "@/ui/base/creativesCard/index";
 import type { Creatives } from "@/ui/base/types/creatives";
 import Article from "@/ui/base/article";
 import Section from "@/ui/base/section";

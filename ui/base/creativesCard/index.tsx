@@ -95,7 +95,7 @@ export default function CreativesCard({
     <>
       <div
         id="creativesCards"
-        className={classNames("my-6 grid grid-cols-2 gap-3", "md:grid-cols-4", `${(isCreativesList && isMap) && 'lg:grid-cols-5'}`)}
+        className={classNames("my-6 grid grid-cols-2 gap-x-4", "md:grid-cols-4", `${(isCreativesList && isMap) && 'lg:grid-cols-5 gap-y-10'}`)}
       >
         {isMap &&
           sortCreatives.map((creative, index) => {

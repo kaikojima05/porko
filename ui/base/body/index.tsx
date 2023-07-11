@@ -33,19 +33,20 @@ export default function Body({
           }}
         />
       </div>
-      <main
-        className={classNames(
-          "w-full",
-          "pt-6 px-[0.9375rem]",
-          "lg:min-w-[58.125rem] lg:max-w-[58.125rem] lg:px-0 lg:mx-auto",
-          "xl:min-w-[62.5rem] xl:max-w-[62.5rem]",
-          "overflow-x-hidden",
-          `${bodyClassName}`
-        )}
-      >
-        {children || <p className="text-center text-[14px]">待ってます...</p>}
-      </main>
-      {router.pathname !== "/about" && <Footer />}
+      <div className="flex justify-center overflow-hidden">
+        <main
+          className={classNames(
+            "w-full mx-0",
+            "pt-6 px-[0.9375rem]",
+            "lg:min-w-[58.125rem] lg:max-w-[58.125rem]",
+            "xl:min-w-[62.5rem] xl:max-w-[62.5rem]",
+            `${bodyClassName}`
+          )}
+        >
+          {children || <p className="text-center text-[14px]">待ってます...</p>}
+        </main>
+        {router.pathname !== "/about" && <Footer />}
+      </div>
     </>
   );
 }
