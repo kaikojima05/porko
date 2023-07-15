@@ -1,11 +1,11 @@
-import CreativesCard from "@/ui/base/creativesCard/index";
+import AllCreativesCard from "@/ui/base/allCreativesCard/index";
 import type { Creatives } from "@/ui/base/types/creatives";
 import Article from "@/ui/base/article";
 import Section from "@/ui/base/section";
 import CategoryList from '@/ui/base/categoryList'
 import Heading from '@/ui/base/heading'
 
-export default function CreativesList({ creatives }: { creatives: Creatives[] }) {
+export default function AllCreativesPage({ creatives }: { creatives: Creatives[] }) {
   return (
     <Article>
       <Section isTopMargin={false}>
@@ -13,7 +13,7 @@ export default function CreativesList({ creatives }: { creatives: Creatives[] })
         <CategoryList creatives={creatives} />
       </Section>
       <Section isTopMargin={true}>
-        <CreativesCard creatives={creatives} isMap={true} isCreativesList={true} />
+        <AllCreativesCard creatives={creatives} />
       </Section>
     </Article>
   );

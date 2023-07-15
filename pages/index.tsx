@@ -26,7 +26,7 @@ export default function Home() {
                 />
               </div>
               <div className="flex flex-row-reverse gap-6">
-                <h2 className="writing-vertical">声を掬い、創って世界へ。</h2>
+                <h2 className="writing-vertical !text-[1.25rem]">声を掬い、創って世界へ。</h2>
                 <p className="leading-6 writing-vertical text-[14px]">
                   こんな想いがある
                   <br />

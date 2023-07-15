@@ -75,7 +75,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                 <div className="overflow-hidden">
                   <h3
                     className={classNames(
-                      "inline-block pr-10 pb-2 border-b border-base-black text-[1.125rem]"
+                      "inline-block pr-[9rem] pb-2 border-b border-base-black text-[1.125rem]"
                     )}
                   >
                     {name}
@@ -86,9 +86,10 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                   <div className="flex justify-end">
                     <div
                       className={classNames(
-                        "flex items-center text-black gap-3 relative pr-4 pb-2 pl-16 border-b border-base-black"
+                        "flex items-center text-black gap-3 relative pr-4 pb-2 pl-[12rem] border-b border-base-black",
                       )}
                     >
+                      <p className="text-[1.125rem]">Online -</p>
                       {sns.twitter && (
                         <a
                           href={sns.twitter.href}
@@ -97,7 +98,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                             "hover:text-black hover:bg-transparent"
                           )}
                         >
-                          <Icon name="sns-twitter" width="w-8" height="h-8" />
+                          <Icon name="sns-twitter" width="w-6" height="h-6" />
                         </a>
                       )}
                       {sns.note && (
@@ -108,7 +109,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                             "hover:text-black hover:bg-transparent"
                           )}
                         >
-                          <Icon name="sns-note" width="w-8" height="h-8" />
+                          <Icon name="sns-note" width="w-6" height="h-6" />
                         </a>
                       )}
                       {github && (
@@ -119,7 +120,7 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                             "hover:text-black hover:bg-transparent"
                           )}
                         >
-                          <Icon name="github" width="w-8" height="h-8" />
+                          <Icon name="github" width="w-6" height="h-6" />
                         </a>
                       )}
                     </div>
@@ -130,12 +131,16 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
           </Section>
           <Section isTopMargin={false} isAbout={true}>
             <div className={classNames("text-base-black")}>
-              <h2 className="text-center text-[1.125rem]">works</h2>
+              <h2 className={classNames(
+                'text-center',
+                'lg:hidden'
+              )}>
+                Works
+              </h2>
               {works}
             </div>
           </Section>
           {children}
-          <Footer />
         </Article>
       </>
     );

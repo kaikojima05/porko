@@ -1,14 +1,14 @@
 import Body from "@/ui/base/body";
 import { getCreatives } from "@/lib/newt";
 import type { Creatives } from "@/ui/base/types/creatives";
-import CreativesList from "@/ui/pages/about/creativesList/section/main/index";
+import AllCreativesPage from "@/ui/pages/about/allCreatives/section/main/index";
 
 export default function Creatives({ creatives }: { creatives: Creatives[] }) {
   return (
     <Body
       bodyClassName="z-0 h-[200rem]"
     >
-      <CreativesList creatives={creatives} />
+      <AllCreativesPage creatives={creatives} />
     </Body>
   );
 }
@@ -21,7 +21,7 @@ export const getStaticProps = async () => {
       creatives,
     },
 
-    revalidate: 900
+    revalidate: 1800
   };
 };
 

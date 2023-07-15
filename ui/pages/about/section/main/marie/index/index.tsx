@@ -2,8 +2,8 @@ import type { Works } from "@/ui/base/types/works";
 import type { Creatives } from "@/ui/base/types/creatives";
 import { forwardRef } from "react";
 import AboutBodyLayout from "@/ui/base/about/body/index";
-import WorksCard from "@/ui/base/worksCard/index";
-import CreativesCard from "@/ui/base/creativesCard/index";
+import CtaWorks from "@/ui/base/ctaWorks/index";
+import CtaCreatives from "@/ui/base/ctaCreatives/index";
 import Section from '@/ui/base/section'
 
 type AboutMarieProps = {
@@ -17,7 +17,7 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
     <>
       <AboutBodyLayout
         toggleProfileFunction={props.toggleProfile}
-        name="小嶋 麻莉恵 Marie Kojima"
+        name="小嶋 麻莉恵 - Marie Kojima"
         profileImageSrc="/images/LINE_ALBUM_230610.jpg"
         profileSentence={
           <>
@@ -50,14 +50,11 @@ const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
             href: "https://twitter.com/koji_mari7",
           },
         }}
-        works={<WorksCard works={props.works} isSlice={true} />}
+        works={<CtaWorks works={props.works} />}
         ref={ref}
       >
-        <Section isTopMargin={false}>
-          <div className="text-center text-[1.125rem]">
-            <h2>Creatives</h2>
-          </div>
-          <CreativesCard creatives={props.creatives} isSlice={true} />
+        <Section isTopMargin={false} isAbout={true}>
+          <CtaCreatives creatives={props.creatives} />
         </Section>
       </AboutBodyLayout>
     </>

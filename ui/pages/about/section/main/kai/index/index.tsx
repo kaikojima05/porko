@@ -10,7 +10,7 @@ const AboutKai = forwardRef<HTMLDivElement, AboutKaiProps>((props, ref) => {
     <>
       <AboutBodyLayout
         toggleProfileFunction={props.toggleProfile}
-        name="小嶋 凱 Kai Kojima"
+        name="小嶋 凱 - Kai Kojima"
         profileImageSrc="/images/LINE_ALBUM_230613.jpg"
         profileSentence={
           <>
@@ -42,9 +42,6 @@ const AboutKai = forwardRef<HTMLDivElement, AboutKaiProps>((props, ref) => {
         }
         ref={ref}
       >
-        <div>
-          <h2>coming soon ...</h2>
-        </div>
       </AboutBodyLayout>
     </>
   );

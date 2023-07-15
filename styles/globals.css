@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Tangerine&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,16 +7,29 @@
 }
 
 body {
+  font-family: "Helvetica Neue", Helvetica , '游ゴシック', 'Yu Gothic', YuGothic, HiraKakuProN-W3, 'メイリオ', Meiryo, sans-serif;
+  font-weight: 200;
+  letter-spacing: 1px;
   position: relative;
   background-color: #FFF;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.67);
 }
 
+h2 {
+  font-size: 2rem;
+  font-weight: 200;
+  letter-spacing: 2px;
+}
+
+a, a:focus {
+  outline: none;
+}
+
 body::before {
   content: "";
   position: absolute;
-  background-image: url("/images/texture.png");
+  background-image: url("/images/texture.webp");
   background-repeat: repeat;
   mix-blend-mode: multiply;
   width: 100vw;
@@ -168,19 +182,19 @@ br {
 }
 
 .animate-toggle-after-text.animate-toggle-after-text-on {
-  animation: currentProfile 0.7s forwards;
+  animation: currentProfile 1s forwards;
 }
 
 .animate-toggle-after-text.animate-toggle-after-text-off {
-  animation: lastProfile 0.7s forwards;
+  animation: lastProfile 1s forwards;
 }
 
 .animate-toggle-before-text.animate-toggle-before-text-on {
-  animation: currentProfile 0.7s forwards;
+  animation: currentProfile 1s forwards;
 }
 
 .animate-toggle-before-text.animate-toggle-before-text-off {
-  animation: lastProfile 0.7s forwards;
+  animation: lastProfile 1s forwards;
 }
 
 @keyframes lastProfile {
@@ -214,27 +228,31 @@ br {
 }
 
 .toggleProfile.kai::before {
-  animation: move-right 0.8s forwards;
+  animation: move-right 1s forwards;
 }
 
 .toggleProfile.marie::before {
-  animation: move-left 0.8s forwards;
+  animation: move-left 1s forwards;
 }
 
 @keyframes move-right {
   0% {
+    background-color: rgba(245, 177, 153, 0.63);
     right: 52.5%;
 }
   100% {
+    background-color: rgba(128, 171, 169, 0.70);
     right: 2.5%;
 }
 }
 
 @keyframes move-left {
   0% {
+    background-color: rgba(128, 171, 169, 0.70);
     right: 2.5%;
 }
   100% {
+    background-color: rgba(245, 177, 153, 0.63);
     right: 52.5%;
 }
 }
@@ -301,11 +319,114 @@ br {
   z-index: 9999;
 }
 
-/*付箋スタイル*/
-.post-it {
-  position: relative;
-  border-right: 1px solid rgba(0, 0, 0, 0.67);
-  border-bottom: 1px solid rgba(0, 0, 0, 0.67);
+/*カードのアニメーション*/
+.worksCard.open, 
+.creativesCard.open {
+  animation: visible 1.7s forwards;
 }
 
+.worksCard.noMove, 
+.creativesCard.noMove {
+  animation: noMove 1.7s forwards;
+}
 
+@keyframes noMove {
+0% {
+  width: auto;
+  position: static;
+  opacity: 1;
+  z-index: 10;
+}
+33% {
+  width: auto;
+  position: static;
+  opacity: 1;
+  z-index: 10;
+}
+45% {
+  width: auto;
+  position: static;
+  opacity: 0;
+  z-index: 10;
+}
+50% {
+  width: 0;
+  position: static;
+  opacity: 0;
+  z-index: -300;
+}
+55% {
+  width: 0;
+  position: absolute;
+  opacity: 0;
+  z-index: -300;
+}
+100% {
+  width: 0;
+  position: absolute;
+  opacity: 0;
+  z-index: -300;
+}
+}
+
+@keyframes visible {
+0% {
+width: 0px;
+position: absolute;
+opacity: 0;
+  }
+33% {
+width: 0px;
+position: absolute;
+opacity: 0;
+}
+66% {
+width: auto;
+position: static;
+opacity: 0;
+}
+100% {
+width: auto;
+position: static;
+opacity: 1;
+}
+}
+
+/*カードに対するCTAのアニメーション*/
+#worksBox.move, #creativesBox.move {
+  animation: down 1.7s forwards;
+}
+
+@keyframes down {
+0% {
+  transform: translateY(0%);
+}
+33% {
+  transform: translateY(0%);
+}
+85% {
+  transform: translateY(100%);
+}
+100% {
+  transform: translateY(100%);
+}
+}
+
+#worksBox.move > #worksContents, 
+#creativesBox.move > #creativesContents {
+  animation: delete 1.7s forwards;
+}
+
+@keyframes delete {
+  0% {
+    height: 40%;
+  opacity: 1;
+}
+  33% {
+    height: 0%;
+  opacity: 0;
+}
+ 100% {
+  height: 0%;
+}
+}

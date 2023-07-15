@@ -3,7 +3,6 @@ import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import classNames from "classnames";
 import { useIsProfileContext } from "@/ui/hooks/useIsProfile";
-import Icon from "@/ui/base/icons";
 
 export default function Header() {
   const router = useRouter();
@@ -83,7 +82,7 @@ export default function Header() {
       >
         <header
           className={classNames(
-            "flex justify-between px-4 py-4 elevator",
+            "flex justify-between items-center px-4 py-4 elevator",
             "lg:px-16 lg:py-6",
             "xl:px-24",
             `${fontColor}`,
@@ -91,9 +90,9 @@ export default function Header() {
           )}
         >
           <div onClick={(e) => e.stopPropagation()} className="">
-            <h1>
-              <Link href="/" className="">
-                <Icon name="porko" width="w-[5rem]" height="h-[1.875rem]" symbol={true} className="text-black" />
+            <h1 className="flex justify-center items-center">
+              <Link href="/" className="text-[1.125rem]">
+                porko .
               </Link>
             </h1>
           </div>

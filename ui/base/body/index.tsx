@@ -37,7 +37,7 @@ export default function Body({
         <main
           className={classNames(
             "w-full mx-0",
-            "pt-6 px-[0.9375rem]",
+            "pt-[5.625rem] px-[0.9375rem]",
             "lg:min-w-[58.125rem] lg:max-w-[58.125rem]",
             "xl:min-w-[62.5rem] xl:max-w-[62.5rem]",
             `${bodyClassName}`

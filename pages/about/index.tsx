@@ -43,10 +43,10 @@ export default function About({ works, creatives }: { works: Works[], creatives:
       <Body
         bodyClassName="z-0 h-[200rem]"
       >
-        <h2 className={classNames("text-[1.35rem] text-center")}>about us</h2>
+        <h2 className={classNames("text-[2rem] text-center")}>about us</h2>
         <div
           className={classNames(
-            "hidden gap-4 justify-evenly items-center my-3",
+            "hidden gap-4 justify-evenly items-center mt-10 mb-3",
             "md:justify-center md:gap-10 md:flex"
           )}
         >
@@ -100,6 +100,6 @@ export const getStaticProps = async () => {
       creatives,
     },
 
-    revalidate: 1800
+    revalidate: 5,
   };
 };
