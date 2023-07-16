@@ -19,7 +19,7 @@ export default function CtaWorks({
   const [isWriting, setIsWriting] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const hasStartedRef = useRef(false);
-  const worksIntroduction = "これまでのお仕事で執筆したWebコンテンツはこちらから"
+  const worksIntroduction = "執筆実績（企画・取材・撮影から携わったものもあります）"
 
   works.map((_, index) => {
     worksRefs.current[index] = createRef<HTMLDivElement>();
@@ -66,6 +66,7 @@ export default function CtaWorks({
 .e {padding-bottom:  75% !important; border-radius: 4px;}
 .body {box-shadow: none !important;}
 .__wc {border: none; background-color: transparent;}
+.wc {border-bottom-right-radius: 20%;}
 `;
             element.shadowRoot?.appendChild(newStyle);
           });
@@ -198,9 +199,9 @@ export default function CtaWorks({
             <div id="worksContents" className={classNames(
               "md:overflow-hidden md:h-[40%]"
             )}>
-              <h2 className="border-b border-black pb-3 text-[2rem]">Works</h2>
+              <h2 className="border-b border-black pb-3 text-right">Works</h2>
               <br />
-              <p className="mt-3">{worksIntroduction}</p>
+              <p className="mt-3 text-right">{worksIntroduction}</p>
             </div>
             <div className="text-right mt-5">
               <Link href="/about/allworks" onClick={handleCardViewEvent} className="px-6 py-2 border rounded-full border-black">

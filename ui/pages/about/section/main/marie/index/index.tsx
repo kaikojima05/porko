@@ -13,6 +13,7 @@ type AboutMarieProps = {
 };
 
 const AboutMarie = forwardRef<HTMLDivElement, AboutMarieProps>((props, ref) => {
+  console.log(props)
   return (
     <>
       <AboutBodyLayout

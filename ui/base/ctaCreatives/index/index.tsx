@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef, createRef, RefObject } from "reac
 import { Creatives } from "@/ui/base/types/creatives";
 import classNames from "classnames";
 import Link from 'next/link'
+import CircleArrow from '@/ui/base/circleArrow/index'
 
 type CtaCreativesProps = {
   creatives: Creatives[]
@@ -19,7 +20,7 @@ export default function CtaCreatives({
   const [isWriting, setIsWriting] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const hasStartedRef = useRef(false);
-  const creativesIntroduction = "私的なエッセイ等、お仕事外の自主制作コンテンツはこちらから"
+  const creativesIntroduction = "私的な想いを綴ったエッセイ等、お仕事外の自主制作コンテンツ"
 
   creatives.map((_, index) => {
     creativesRefs.current[index] = createRef<HTMLDivElement>();
@@ -66,6 +67,7 @@ export default function CtaCreatives({
 .e {padding-bottom:  75% !important; border-radius: 4px;}
 .body {box-shadow: none !important;}
 .__wc {border: none; background-color: transparent;}
+.wc {border-bottom-right-radius: 20%;}
 `;
             element.shadowRoot?.appendChild(newStyle);
           });
@@ -155,9 +157,6 @@ export default function CtaCreatives({
             "lg:h-[19.375rem] lg:max-h-[19.375rem]",
             "xl:h-[20rem] xl:max-h-[20rem]",
           )}
-          style={{
-            direction: 'rtl'
-          }}
         >
           {
             sortCreatives
@@ -197,22 +196,20 @@ export default function CtaCreatives({
 
           {/*1024px 以上*/}
           <div id="creativesBox" className={classNames(
-            "text-center absolute left-0 top-0 w-2/3 h-full hidden",
+            "text-center absolute right-0 top-0 w-2/3 h-full hidden",
             "lg:block"
           )}>
             <div id="creativesContents" className={classNames(
               "md:overflow-hidden md:h-[40%]"
             )}>
-              <h2 className="border-b border-black pb-3 text-[2rem]">Creatives</h2>
+              <h2 className="border-b border-black pb-3 text-right">Creatives</h2>
               <br />
-              <p className="mt-3">{creativesIntroduction}</p>
+              <p className="mt-3 text-right">{creativesIntroduction}</p>
             </div>
             <div
-              className="text-left mt-5"
-              style={{
-                direction: "ltr"
-              }}
+              className="mt-5 flex justify-end items-center"
             >
+              <CircleArrow />
               <Link href="/about/allcreatives" onClick={handleCardViewEvent} className="px-6 py-2 border rounded-full border-black">
                 {text}
               </Link>

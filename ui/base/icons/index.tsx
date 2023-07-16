@@ -4,6 +4,7 @@ import SnsTwitter from "./SnsTwitter";
 import PushPin from "./PushPin";
 import GitHub from "./GitHub";
 import Porko from './Porko'
+import ArrowOneSide from './ArrowOneSide'
 
 const Icons = {
   "porko": Porko,
@@ -11,6 +12,7 @@ const Icons = {
   "sns-twitter": SnsTwitter,
   github: GitHub,
   "push-pin": PushPin,
+  "arrow-one-side": ArrowOneSide,
 };
 
 const keys = Object.keys(Icons) as (keyof typeof Icons)[];
@@ -19,6 +21,7 @@ export type IconName = (typeof keys)[number];
 
 type Props = {
   symbol?: boolean;
+  symbolViewBox?: string;
   className?: string;
   width?: string;
   height?: string;
@@ -27,6 +30,7 @@ type Props = {
 
 export default function Icon({
   symbol = false,
+  symbolViewBox,
   className,
   name,
   width = "w-8",
@@ -43,7 +47,7 @@ export default function Icon({
       )}
       xmlns="http://www.w3.org/2000/svg"
       aria-labelledby={name}
-      viewBox={`${symbol ? "0 0 80 30" : "0 0 32 32"}`}
+      viewBox={`${symbol ? `${symbolViewBox}` : "0 0 32 32"}`}
       role="presentation"
     >
       <Icon />
