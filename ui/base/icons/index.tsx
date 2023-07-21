@@ -4,7 +4,6 @@ import SnsTwitter from "./SnsTwitter";
 import PushPin from "./PushPin";
 import GitHub from "./GitHub";
 import Porko from './Porko'
-import ArrowOneSide from './ArrowOneSide'
 
 const Icons = {
   "porko": Porko,
@@ -12,7 +11,6 @@ const Icons = {
   "sns-twitter": SnsTwitter,
   github: GitHub,
   "push-pin": PushPin,
-  "arrow-one-side": ArrowOneSide,
 };
 
 const keys = Object.keys(Icons) as (keyof typeof Icons)[];

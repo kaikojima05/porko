@@ -1,5 +1,6 @@
 import Body from "@/ui/base/body";
 import { getWorks } from "@/lib/newt";
+import { useRouter } from 'next/router'
 import type { Works } from "@/ui/base/types/works";
 import AllWorksPage from "@/ui/pages/about/allWorks/section/main/index/index";
 import ReactPaginate from 'react-paginate'
@@ -10,6 +11,7 @@ export type AllWorksProps = {
 }
 
 export default function AllWorks({ currentPage, totalPages }: AllWorksProps) {
+  const router = useRouter()
   return (
     <Body
       bodyClassName="z-0 h-[200rem]"
@@ -25,7 +27,7 @@ export default function AllWorks({ currentPage, totalPages }: AllWorksProps) {
         pageRangeDisplayed={5}
         onPageChange={({ selected }) => {
           const nextPage = selected + 1;
-          window.location.href = `/allworks/pages/${nextPage}`;
+          router.push(`/about/allworks/page/${nextPage}`);
         }}
         containerClassName={'pagination'}
         activeClassName={'active'}
