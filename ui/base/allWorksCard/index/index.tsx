@@ -80,10 +80,8 @@ export default function AllWorksCard({
         <div
           id="worksCards"
           className={classNames(
-            "grid gap-x-4 grid-cols-3 relative w-full h-full",
-            "lg:grid-cols-4",
-            "lg:h-[19.375rem] lg:max-h-[19.375rem]",
-            "xl:h-[20rem] xl:max-h-[20rem]",
+            "grid gap-x-4 grid-cols-2 w-full h-full",
+            "lg:grid-cols-3",
           )}
         >
           {sortWorks.map((work, index) => {
