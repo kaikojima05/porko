@@ -2,7 +2,6 @@ import { useState, useMemo, useEffect, useRef, createRef, RefObject } from "reac
 import { Creatives } from "@/ui/base/types/creatives";
 import classNames from "classnames";
 import Link from 'next/link'
-import CircleArrow from '@/ui/base/circleArrow/index'
 
 type CtaCreativesProps = {
   creatives: Creatives[]
@@ -12,13 +11,16 @@ export default function CtaCreatives({
   creatives,
 }: CtaCreativesProps) {
   const creativesRefs = useRef<RefObject<HTMLDivElement>[]>([]);
+
   const initialText = "最新の4つ";
   const finalText = "see more ...";
+
   const [clickEvent, setClickEvent] = useState<boolean>(false)
   const [text, setText] = useState<string>(initialText);
   const [isAnimating, setIsAnimating] = useState<boolean>(false);
   const [isWriting, setIsWriting] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState<number>(0);
+
   const hasStartedRef = useRef(false);
   const creativesIntroduction = "私的な想いを綴ったエッセイ等、お仕事外の自主制作コンテンツ"
 
@@ -90,7 +92,6 @@ export default function CtaCreatives({
       event.preventDefault()
       setClickEvent(true)
     }
-    console.log(clickEvent)
     const creativesCardList = document.querySelectorAll('.creativesCard')
     const creativesBox = document.getElementById('creativesBox')
     const creativesContents = document.getElementById('creativesContents')
@@ -202,15 +203,22 @@ export default function CtaCreatives({
             <div id="creativesContents" className={classNames(
               "md:overflow-hidden md:h-[40%]"
             )}>
-              <h2 className="border-b border-black pb-3 text-right">Creatives</h2>
+              <h2 className="border-b border-black pb-3 text-right">
+                Creatives
+              </h2>
               <br />
-              <p className="mt-3 text-right">{creativesIntroduction}</p>
+              <p className="mt-3 text-right">
+                {creativesIntroduction}
+              </p>
             </div>
             <div
-              className="mt-5 flex justify-end items-center"
+              className="mt-5 text-right"
             >
-              <CircleArrow />
-              <Link href="/about/allcreatives" onClick={handleCardViewEvent} className="px-6 py-2 border rounded-full border-black">
+              <Link
+                href="/about/allcreatives"
+                className="px-6 py-2 border rounded-full border-black"
+                onClick={handleCardViewEvent}
+              >
                 {text}
               </Link>
             </div>
