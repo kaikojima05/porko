@@ -52,6 +52,16 @@ br {
   writing-mode: vertical-rl;
 }
 
+/* Only opacity animation (opacity のみのアニメーション)*/
+@keyframes softy-display {
+  0% {
+    opacitry: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
 /*要素の浮上表示*/
 .before-scroll-once {
   opacity: 0;
@@ -299,14 +309,8 @@ br {
   animation: softy-display 0.35s forwards 0.5s;
 }
 
-@keyframes softy-display {
-  0% {
-    opacitry: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
+
+
 
 /*クリックイベントの防御*/
 .disabled-overlay {
