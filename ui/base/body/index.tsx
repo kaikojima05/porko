@@ -25,7 +25,7 @@ export default function Body({
       )}>
         <Image
           alt=""
-          src="/images/hero1.jpg"
+          src="/images/hero_1.webp"
           fill
           style={{
             objectFit: "cover",

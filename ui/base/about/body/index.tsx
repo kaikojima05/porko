@@ -75,7 +75,8 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                 <div className="overflow-hidden">
                   <h3
                     className={classNames(
-                      "inline-block pr-[9rem] pb-2 border-b border-base-black text-[1.125rem]"
+                      "inline-block pr-[2rem] pb-2 border-b border-base-black text-[1.125rem]",
+                      "md:pr-[9rem]"
                     )}
                   >
                     {name}
@@ -86,7 +87,8 @@ const AboutBodyLayout = forwardRef<HTMLDivElement, AboutBodyLayoutProps>(
                   <div className="flex justify-end">
                     <div
                       className={classNames(
-                        "flex items-center text-black gap-3 relative pr-4 pb-2 pl-[12rem] border-b border-base-black",
+                        "flex items-center text-black gap-3 relative pb-2 pl-[2rem] border-b border-base-black",
+                        "md:pr-4 md:pl-[12rem]"
                       )}
                     >
                       <p className="text-[1.125rem]">Online -</p>

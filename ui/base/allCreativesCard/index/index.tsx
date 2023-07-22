@@ -55,8 +55,7 @@ export default function AllCreativesCard({
 .e {padding-bottom:  75% !important; border-radius: 4px;}
 .body {box-shadow: none !important;}
 .__wc {border: none; background-color: transparent;}
-wc {border-bottom-right-radius: 20%;}
-
+.wc {border-bottom-right-radius: 20%;}
 `;
             element.shadowRoot?.appendChild(newStyle);
           });
