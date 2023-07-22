@@ -19,7 +19,6 @@ export type AllCreativesProps = {
 export default function AllCreatives({ currentPage, totalPage }: AllCreativesProps) {
   const router = useRouter()
   const pageNumberFromQuery = router.query.number ? Number(router.query.number) : 1
-  console.log(pageNumberFromQuery)
 
   return (
     <Body
