@@ -12,7 +12,7 @@ export default function CtaCreatives({
 }: CtaCreativesProps) {
   const creativesRefs = useRef<RefObject<HTMLDivElement>[]>([]);
 
-  const initialText = "最新の4つ";
+  const initialText = "latest 4 ...";
   const finalText = "see more ...";
 
   const [clickEvent, setClickEvent] = useState<boolean>(false)

@@ -1,51 +1,35 @@
-import Body from "@/ui/base/body";
-import { getWorks } from "@/lib/newt";
 import { useRouter } from 'next/router'
+import Body from "@/ui/base/body";
+import { GetStaticPropsContext } from 'next/'
+import { getWorks } from "@/lib/newt";
+import { getAllData } from '@/lib/getAllData'
 import type { Works } from "@/ui/base/types/works";
 import AllWorksPage from "@/ui/pages/about/allWorks/section/main/index/index";
-import ReactPaginate from 'react-paginate'
+import Pagination from '@/ui/base/pagination/index'
+
+export const getStaticProps = async (context: GetStaticPropsContext) => {
+  return await getAllData({ context, getData: getWorks, pageSize: 12 })
+}
 
 export type AllWorksProps = {
   currentPage: Works[]
-  totalPages: number
+  totalPage: number
 }
 
-export default function AllWorks({ currentPage, totalPages }: AllWorksProps) {
+export default function AllWorks({ currentPage, totalPage }: AllWorksProps) {
   const router = useRouter()
+  const pageNumberFromQuery = router.query.number ? Number(router.query.number) : 1
+
   return (
     <Body
-      bodyClassName="z-0 h-[200rem]"
+      bodyClassName="z-0"
     >
       <AllWorksPage works={currentPage} />
-      <ReactPaginate
-        previousLabel={'previous'}
-        nextLabel={'next'}
-        breakLabel={'...'}
-        breakClassName={'break-me'}
-        pageCount={totalPages}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={({ selected }) => {
-          const nextPage = selected + 1;
-          router.push(`/about/allworks/page/${nextPage}`);
-        }}
-        containerClassName={'pagination'}
-        activeClassName={'active'}
+      <Pagination
+        url='/about/allworks/page'
+        totalPage={totalPage}
+        currentPageNumber={pageNumberFromQuery}
       />
     </Body>
   );
 }
-
-export const getStaticProps = async () => {
-  const works = await getWorks();
-  const currentPage = works.slice(0, 12)
-  const totalPages = Math.ceil(works.length / 12)
-
-  return {
-    props: {
-      works,
-      currentPage,
-      totalPages
-    },
-  };
-};

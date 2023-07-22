@@ -45,8 +45,8 @@ export default function Body({
         >
           {children || <p className="text-center text-[14px]">待ってます...</p>}
         </main>
-        {router.pathname !== "/about" && <Footer />}
       </div>
+      {router.pathname !== "/about" && <Footer />}
     </>
   );
 }

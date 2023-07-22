@@ -1,51 +1,37 @@
+import { useRouter } from 'next/router'
 import Body from "@/ui/base/body";
 import { getCreatives } from "@/lib/newt";
-import { useRouter } from 'next/router'
+import { getFirstView } from '@/lib/getFirstView'
 import type { Creatives } from "@/ui/base/types/creatives";
 import AllCreativesPage from "@/ui/pages/about/allCreatives/section/main/index/index";
-import ReactPaginate from 'react-paginate'
+import Pagination from '@/ui/base/pagination/index'
+
+export const getStaticProps = async () => {
+  return await getFirstView({ getData: getCreatives, pageSize: 12 })
+
+}
 
 export type AllCreativesProps = {
   currentPage: Creatives[]
-  totalPages: number
+  totalPage: number
 }
 
-export default function AllCreatives({ currentPage, totalPages }: AllCreativesProps) {
+export default function AllCreatives({ currentPage, totalPage }: AllCreativesProps) {
   const router = useRouter()
+  const pageNumberFromQuery = router.query.number ? Number(router.query.number) : 1
+  console.log(pageNumberFromQuery)
 
   return (
     <Body
-      bodyClassName="z-0 h-[200rem]"
+      bodyClassName="z-0"
     >
       <AllCreativesPage creatives={currentPage} />
-      <ReactPaginate
-        previousLabel={'previous'}
-        nextLabel={'next'}
-        breakLabel={'...'}
-        breakClassName={'break-me'}
-        pageCount={totalPages}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={({ selected }) => {
-          const nextPage = selected + 1;
-          router.push(`/about/allcreatives/page/${nextPage}`);
-        }}
-        containerClassName={'pagination'}
-        activeClassName={'active'}
+      <Pagination
+        url='/about/allcreatives/page'
+        totalPage={totalPage}
+        currentPageNumber={pageNumberFromQuery}
       />
     </Body>
   );
 }
 
-export const getStaticProps = async () => {
-  const creatives = await getCreatives();
-  const currentPage = creatives.slice(0, 12)
-  const totalPages = Math.ceil(creatives.length / 12)
-
-  return {
-    props: {
-      currentPage,
-      totalPages
-    },
-  };
-};

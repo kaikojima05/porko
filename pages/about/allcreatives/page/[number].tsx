@@ -1,66 +1,39 @@
-import { GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router'
+import { GetStaticPropsContext } from 'next';
+import { getAllData } from '@/lib/getAllData';
+import { getPagesPaths } from '@/lib/getPagesPaths'
 import Body from '@/ui/base/body'
 import { getCreatives } from '@/lib/newt'
 import type { Creatives } from '@/ui/base/types/creatives'
 import AllCreativesPage from '@/ui/pages/about/allCreatives/section/main/index/index'
-import ReactPaginate from 'react-paginate'
+import Pagination from '@/ui/base/pagination/index'
 
 export const getStaticPaths = async () => {
-  const creatives = await getCreatives()
-  const totalCreatives = Math.ceil(creatives.length / 12)
-
-  const paths = Array.from({ length: totalCreatives }, (_, i) => ({
-    params: { number: (i + 1).toString() },
-  }));
-
-  return {
-    paths,
-    fallback: 'blocking',
-  }
+  return await getPagesPaths({ getData: getCreatives, pageSize: 12 })
 }
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
-  const creatives = await getCreatives();
-  const offset = (parseInt(context.params?.number as string) - 1) * 12;
-  const currentPage = creatives.slice(offset, offset + 12);
-  const totalPages = Math.ceil(creatives.length / 12);
-
-  return {
-    props: {
-      currentPage,
-      totalPages,
-    },
-  };
-};
+  return await getAllData({ context, getData: getCreatives, pageSize: 12 })
+}
 
 type CreativesPagesProps = {
   currentPage: Creatives[];
-  totalPages: number;
+  totalPage: number;
 }
 
-export default function CreativesPages({ currentPage, totalPages }: CreativesPagesProps) {
+export default function CreativesPages({ currentPage, totalPage }: CreativesPagesProps) {
   const router = useRouter()
+  const pageNumberFromQuery = router.query.number ? Number(router.query.number) : 1
 
   return (
     <Body
-      bodyClassName="z-0 h-[200rem]"
+      bodyClassName="z-0"
     >
       <AllCreativesPage creatives={currentPage} />
-      <ReactPaginate
-        previousLabel={'previous'}
-        nextLabel={'next'}
-        breakLabel={'...'}
-        breakClassName={'break-me'}
-        pageCount={totalPages}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={({ selected }) => {
-          const nextPage = selected + 1;
-          router.push(`/about/allcreatives/page/${nextPage}`);
-        }}
-        containerClassName={'pagination'}
-        activeClassName={'active'}
+      <Pagination
+        url='/about/allcreatives/page'
+        totalPage={totalPage}
+        currentPageNumber={pageNumberFromQuery}
       />
     </Body>
   );

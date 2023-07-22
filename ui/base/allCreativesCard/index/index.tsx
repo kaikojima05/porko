@@ -55,6 +55,8 @@ export default function AllCreativesCard({
 .e {padding-bottom:  75% !important; border-radius: 4px;}
 .body {box-shadow: none !important;}
 .__wc {border: none; background-color: transparent;}
+wc {border-bottom-right-radius: 20%;}
+
 `;
             element.shadowRoot?.appendChild(newStyle);
           });
@@ -81,11 +83,11 @@ export default function AllCreativesCard({
           id="creativesCards"
           className={classNames(
             "grid gap-x-4 grid-cols-2 w-full h-full",
-            "lg:grid-cols-3",
+            "lg:grid-cols-3 lg:gap-y-12",
           )}
         >
-          {sortWorks.map((work, index) => {
-            return <div key={work._id} ref={creativesRefs.current[index]}></div>;
+          {sortWorks.map((creative, index) => {
+            return <div key={creative._id} ref={creativesRefs.current[index]}></div>;
           })}
         </div>
       </div >

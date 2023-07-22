@@ -1,66 +1,39 @@
-import { GetStaticPropsContext } from 'next';
 import { useRouter } from 'next/router'
+import { GetStaticPropsContext } from 'next';
+import { getAllData } from '@/lib/getAllData';
+import { getPagesPaths } from '@/lib/getPagesPaths'
 import Body from '@/ui/base/body'
 import { getWorks } from '@/lib/newt'
 import type { Works } from '@/ui/base/types/works'
 import AllWorksPage from '@/ui/pages/about/allWorks/section/main/index/index'
-import ReactPaginate from 'react-paginate'
+import Pagination from '@/ui/base/pagination/index'
 
 export const getStaticPaths = async () => {
-  const works = await getWorks()
-  const totalWorks = Math.ceil(works.length / 12)
-
-  const paths = Array.from({ length: totalWorks }, (_, i) => ({
-    params: { number: (i + 1).toString() },
-  }));
-
-  return {
-    paths,
-    fallback: 'blocking',
-  }
+  return await getPagesPaths({ getData: getWorks, pageSize: 12 })
 }
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
-  const works = await getWorks();
-  const offset = (parseInt(context.params?.number as string) - 1) * 12;
-  const currentPage = works.slice(offset, offset + 12);
-  const totalPages = Math.ceil(works.length / 12);
-
-  return {
-    props: {
-      currentPage,
-      totalPages,
-    },
-  };
-};
+  return await getAllData({ context, getData: getWorks, pageSize: 12 })
+}
 
 type WorksPagesProps = {
   currentPage: Works[];
-  totalPages: number;
+  totalPage: number;
 }
 
-export default function WorksPages({ currentPage, totalPages }: WorksPagesProps) {
+export default function WorksPages({ currentPage, totalPage }: WorksPagesProps) {
   const router = useRouter()
+  const pageNumberFromQuery = router.query.number ? Number(router.query.number) : 1
 
   return (
     <Body
-      bodyClassName="z-0 h-[200rem]"
+      bodyClassName="z-0"
     >
       <AllWorksPage works={currentPage} />
-      <ReactPaginate
-        previousLabel={'previous'}
-        nextLabel={'next'}
-        breakLabel={'...'}
-        breakClassName={'break-me'}
-        pageCount={totalPages}
-        marginPagesDisplayed={2}
-        pageRangeDisplayed={5}
-        onPageChange={({ selected }) => {
-          const nextPage = selected + 1;
-          router.push(`/about/allworks/page/${nextPage}`);
-        }}
-        containerClassName={'pagination'}
-        activeClassName={'active'}
+      <Pagination
+        url='/about/allworks/page'
+        totalPage={totalPage}
+        currentPageNumber={pageNumberFromQuery}
       />
     </Body>
   );
