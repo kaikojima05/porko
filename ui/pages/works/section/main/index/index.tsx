@@ -3,13 +3,15 @@ import type { Works } from "@/ui/base/types/works";
 import Article from "@/ui/base/article";
 import Section from "@/ui/base/section";
 import CategoryList from '@/ui/base/categoryList'
-import Heading from '@/ui/base/heading'
+import { HeadingH2 } from '@/ui/base/heading'
 
-export default function AllWorksPage({ works }: { works: Works[] }) {
+export default function WorksPage({ works }: { works: Works[] }) {
   return (
     <Article>
       <Section isTopMargin={false}>
-        <Heading heading="all works" />
+        <HeadingH2>
+          all works
+        </HeadingH2>
         <CategoryList works={works} />
       </Section>
       <Section isTopMargin={true}>

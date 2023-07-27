@@ -153,7 +153,7 @@ export default function CtaCreatives({
         <div
           id="creativesCard"
           className={classNames(
-            "grid gap-x-4 grid-cols-3 relative w-full h-full",
+            "grid gap-x-4 grid-cols-2 relative w-full h-full",
             "lg:grid-cols-4",
             "lg:h-[19.375rem] lg:max-h-[19.375rem]",
             "xl:h-[20rem] xl:max-h-[20rem]",
@@ -189,10 +189,16 @@ export default function CtaCreatives({
               })}
           {/*1024px 未満*/}
           <div className={classNames(
-            'w-1/2',
+            'w-full flex flex-col justify-between',
             'lg:hidden'
           )}>
-            <div></div>
+            <p>{creativesIntroduction}</p>
+            <Link
+              href="/creatives"
+              className="py-2 border rounded-full border-black inline-block text-center"
+            >
+              see more ...
+            </Link>
           </div>
 
           {/*1024px 以上*/}
@@ -215,7 +221,7 @@ export default function CtaCreatives({
               className="mt-5 text-right"
             >
               <Link
-                href="/about/allcreatives"
+                href="/creatives"
                 className="px-6 py-2 border rounded-full border-black"
                 onClick={handleCardViewEvent}
               >

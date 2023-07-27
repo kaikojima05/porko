@@ -1,21 +1,22 @@
 import { useRouter } from 'next/router'
 import Body from "@/ui/base/body";
-import { getWorks } from "@/lib/newt";
+import { getCreatives } from "@/lib/newt";
 import { getFirstView } from '@/lib/getFirstView'
-import type { Works } from "@/ui/base/types/works";
-import AllWorksPage from "@/ui/pages/about/allWorks/section/main/index/index";
+import type { Creatives } from "@/ui/base/types/creatives";
+import CreativesPage from "@/ui/pages/creatives/section/main/index";
 import Pagination from '@/ui/base/pagination/index'
 
 export const getStaticProps = async () => {
-  return await getFirstView({ getData: getWorks, pageSize: 12 })
+  return await getFirstView({ getData: getCreatives, pageSize: 12 })
+
 }
 
-export type AllWorksProps = {
-  currentPage: Works[]
+export type CreativesProps = {
+  currentPage: Creatives[]
   totalPage: number
 }
 
-export default function AllWorks({ currentPage, totalPage }: AllWorksProps) {
+export default function Creatives({ currentPage, totalPage }: CreativesProps) {
   const router = useRouter()
   const pageNumberFromQuery = router.query.number ? Number(router.query.number) : 1
 
@@ -23,12 +24,13 @@ export default function AllWorks({ currentPage, totalPage }: AllWorksProps) {
     <Body
       bodyClassName="z-0"
     >
-      <AllWorksPage works={currentPage} />
+      <CreativesPage creatives={currentPage} />
       <Pagination
-        url='/about/allworks/page'
+        url='/creatives/page'
         totalPage={totalPage}
         currentPageNumber={pageNumberFromQuery}
       />
     </Body>
   );
 }
+

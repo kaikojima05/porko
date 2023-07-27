@@ -24,7 +24,7 @@ export default function Body({
         "before-scroll-once h-[400px]",
       )}>
         <Image
-          alt=""
+          alt="portforio サイト porko のイメージ画像"
           src="/images/hero_1.webp"
           fill
           style={{
@@ -33,11 +33,11 @@ export default function Body({
           }}
         />
       </div>
-      <div className="flex justify-center overflow-hidden">
+      <div className="flex justify-center">
         <main
           className={classNames(
             "w-full mx-0",
-            "pt-[5.625rem] px-[0.9375rem]",
+            "pt-[5.625rem] px-4",
             "lg:min-w-[58.125rem] lg:max-w-[58.125rem]",
             "xl:min-w-[62.5rem] xl:max-w-[62.5rem]",
             `${bodyClassName}`

@@ -5,7 +5,7 @@ import { getPagesPaths } from '@/lib/getPagesPaths'
 import Body from '@/ui/base/body'
 import { getWorks } from '@/lib/newt'
 import type { Works } from '@/ui/base/types/works'
-import AllWorksPage from '@/ui/pages/about/allWorks/section/main/index/index'
+import WorksPage from '@/ui/pages/works/section/main/index/index'
 import Pagination from '@/ui/base/pagination/index'
 
 export const getStaticPaths = async () => {
@@ -29,9 +29,9 @@ export default function WorksPages({ currentPage, totalPage }: WorksPagesProps) 
     <Body
       bodyClassName="z-0"
     >
-      <AllWorksPage works={currentPage} />
+      <WorksPage works={currentPage} />
       <Pagination
-        url='/about/allworks/page'
+        url='/write/allworks/page'
         totalPage={totalPage}
         currentPageNumber={pageNumberFromQuery}
       />

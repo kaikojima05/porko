@@ -1,13 +1,37 @@
 import classNames from 'classnames'
 
 type HeadingProps = {
-  heading: string;
+  children: React.ReactNode;
+  headingClassName?: string
 }
 
-export default function Heading({ heading }: HeadingProps) {
+export const HeadingH2 = ({
+  children,
+  headingClassName
+}: HeadingProps) => {
   return (
-    <div className='text-center'>
-      <h2 className={classNames('border-b border-base-black pb-2 px-4 inline-block', 'lg:px-6')}>{heading}</h2>
-    </div>
+    <h2 className={classNames(
+      'text-[2rem] text-center',
+      'lg:px-6',
+      `${headingClassName}`
+    )}>
+      {children}
+    </h2>
+  );
+}
+
+export const HeadingH3 = ({
+  children,
+  headingClassName
+}: HeadingProps) => {
+  return (
+    <h3
+      className={classNames(
+        "text-[1.125rem]",
+        `${headingClassName}`
+      )}
+    >
+      {children}
+    </h3>
   );
 }

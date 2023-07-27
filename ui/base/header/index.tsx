@@ -1,8 +1,9 @@
 import Link from "next/link";
+import Icon from "@/ui/base/icons";
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import classNames from "classnames";
-import { useIsProfileContext } from "@/ui/hooks/useIsProfile";
+import { useCatchProfileContext } from "@/ui/hooks/useCatchProfile";
 
 export default function Header() {
   const router = useRouter();
@@ -11,11 +12,19 @@ export default function Header() {
   const [fontColor, setFontColor] = useState<string>("text-white");
   const [hamburgerColor, setHamburgerColor] = useState<string>("bg-white");
   const { isHamburgerOpen, setIsHamburgerOpen } =
-    useContext(useIsProfileContext);
+    useContext(useCatchProfileContext);
   const navItems = [
     {
       href: "/about",
       title: "about",
+    },
+    {
+      href: "/works",
+      title: "wokrs"
+    },
+    {
+      href: "/creatives",
+      title: "creatives"
     },
     {
       href: "/news",
@@ -92,7 +101,13 @@ export default function Header() {
           <div onClick={(e) => e.stopPropagation()} className="">
             <h1 className="flex justify-center items-center">
               <Link href="/" className="text-[1.125rem]">
-                porko .
+                <Icon
+                  name="porko"
+                  symbol={true}
+                  symbolViewBox="0 0 52 36"
+                  width="w-[3.25rem]"
+                  height="h-[2.25rem]"
+                />
               </Link>
             </h1>
           </div>

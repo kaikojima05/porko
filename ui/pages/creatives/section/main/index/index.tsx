@@ -3,13 +3,15 @@ import type { Creatives } from "@/ui/base/types/creatives";
 import Article from "@/ui/base/article";
 import Section from "@/ui/base/section";
 import CategoryList from '@/ui/base/categoryList'
-import Heading from '@/ui/base/heading'
+import { HeadingH2 } from '@/ui/base/heading'
 
-export default function AllCreativesPage({ creatives }: { creatives: Creatives[] }) {
+export default function CreativesPage({ creatives }: { creatives: Creatives[] }) {
   return (
     <Article>
       <Section isTopMargin={false}>
-        <Heading heading="all creatives" />
+        <HeadingH2>
+          all creatives
+        </HeadingH2>
         <CategoryList creatives={creatives} />
       </Section>
       <Section isTopMargin={true}>
