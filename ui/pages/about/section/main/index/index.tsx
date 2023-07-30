@@ -1,20 +1,25 @@
-import Icon from "@/ui/base/icons/index";
+import React from 'react'
+import seriesData from './series.js'
+import profile from './profile.js'
+import concepts from './concept.js'
 import Image from "next/image";
 import classNames from "classnames";
 import Section from "@/ui/base/section";
 import Article from "@/ui/base/article";
 import { HeadingH3 } from "@/ui/base/heading";
+import HoverIcons from '@/ui/module/hoverIcon/index'
+import { Supplement } from '@/ui/base/supplement/index'
 import { forwardRef } from "react";
 
 const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
   return (
-    <Article>
+    <Article articleClassName='font-content'>
       <Section isTopMargin={true}>
         <div className="before-scroll-repeat" ref={ref}>
           <div
             className={classNames(
               "flex justify-center items-start gap-6 flex-col",
-              "md:flex-row"
+              "md:flex-row md:items-stretch"
             )}
           >
             <div
@@ -33,33 +38,25 @@ const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
                 className="rounded"
               />
             </div>
-            <div className="overflow-hidden">
-              <HeadingH3 headingClassName={classNames(
-                "inline-block pr-[2rem] pb-2 border-b border-base-black text-[1.125rem]",
+            <div className={classNames(
+              'md:flex md:flex-col md:justify-between'
+            )}>
+              <p className={classNames(
+                "text-[1.25rem] inline-block pr-[2rem] pb-2 border-b border-base-black text-[1.125rem]",
                 "md:pr-[9rem]"
               )} >
                 小嶋 麻莉恵 - Marie Kojima
-              </HeadingH3>
-              <div className={classNames("my-6", "md:my-6")}>
-                <p>
-                  埼玉県寄居町出身の27歳。
-                </p>
-                <br />
-                <p>
-                  現在は東京都八王子市在住。夫（凱）と共に、ひそやかでのんびりとした夫婦ふたり暮らしを愉しんでいます。
-                </p>
-                <br />
-                <p>
-                  会社員を5年ほど経験したのち、2022年にフリーランスライターとして独立しました。 ライフスタイル・おでかけ・キャリア等の多ジャンルに渡るメディア記事・プレスリリース・SEO・インタビュー等、記事執筆や校正業務を幅広く行っています。そのほか、Instagramのキャプション制作や商品付随のブランディングレター制作など、「ことば」にまつわるあらゆるお仕事に柔軟に対応させていただいています。
-                </p>
-                <br />
-                <p>
-                  元々「書く」ことが好きで、7歳前後から物語の創作をするようになりました。高校を卒業する頃からはインターネット上での投稿活動も開始。
-                </p>
-                <br />
-                <p>
-                  不定期ではありますが、今でも創作は続けています。小説のほか、今はエッセイの創作も精力的に行っています。
-                </p>
+              </p>
+              <div className={classNames(
+                'my-6',
+                'md:my-0'
+              )}>
+                {profile.map((prf, index) => (
+                  <React.Fragment key={index}>
+                    <p>{prf.content}</p>
+                    <br className={index + 1 === profile.length ? 'hidden' : ''} />
+                  </React.Fragment>
+                ))}
               </div>
               <div className="flex justify-end">
                 <div
@@ -69,24 +66,20 @@ const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
                   )}
                 >
                   <p className="text-[1.125rem]">Online -</p>
-                  <a
-                    href="https://note.com/kwkm711"
-                    className={classNames(
-                      "bg-white text-accent rounded-full duration-[530ms]",
-                      "hover:text-black hover:bg-transparent"
-                    )}
-                  >
-                    <Icon name="sns-twitter" width="w-6" height="h-6" />
-                  </a>
-                  <a
-                    href="https://twitter.com/koji_mari7"
-                    className={classNames(
-                      "text-accent bg-white rounded-full duration-[530ms]",
-                      "hover:text-black hover:bg-transparent"
-                    )}
-                  >
-                    <Icon name="sns-note" width="w-6" height="h-6" />
-                  </a>
+                  <HoverIcons
+                    iconsName={[
+                      'sns-twitter',
+                      'sns-note'
+                    ]}
+                    hrefs={[
+                      'https://note.com/kwkm711',
+                      'https://twitter.com/koji_mari7'
+                    ]}
+                    iconSize='6'
+                    iconClipColor='text-accent'
+                    iconHoverClipColor='hover:text-base-black'
+                    iconClassName='duration-[530ms]'
+                  />
                 </div>
               </div>
             </div>
@@ -95,8 +88,40 @@ const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
       </Section>
       <Section isTopMargin={false}>
         <HeadingH3 headingClassName="text-center">
+          Concept
+        </HeadingH3>
+        <div className={classNames(
+          'mt-5',
+          'md:mt-6'
+        )}>
+          {concepts.map((concept, index) => (
+            <React.Fragment key={index}>
+              <p dangerouslySetInnerHTML={{ __html: concept.concept }} />
+              <br className={index + 1 === profile.length ? 'hidden' : ''} />
+            </React.Fragment>
+          ))}
+        </div>
+      </Section>
+      <Section isTopMargin={false}>
+        <HeadingH3 headingClassName="text-center">
           Bio
         </HeadingH3>
+        <div className={classNames(
+          'mt-5',
+          'md:mt-6'
+        )}>
+          {seriesData.map((item, index) => (
+            <Supplement
+              headLine={item.headLine}
+              key={index}
+              supplementClassName={
+                `[&_br]:h-0 ${seriesData.length - 1 !== index ? 'mb-4' : 'mb-0'}`
+              }
+            >
+              <p dangerouslySetInnerHTML={{ __html: item.children }} />
+            </Supplement>
+          ))}
+        </div>
       </Section>
     </Article>
   );

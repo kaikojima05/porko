@@ -7,8 +7,8 @@ type HoverIconsProps = {
   iconsName: IconName[]
   iconSize: '6' | '7' | '8'
   iconClipColor: string
-  iconBgColor: string
-  iconHoverBgColor: string
+  iconBgColor?: string
+  iconHoverBgColor?: string
   iconHoverClipColor: string
   iconClassName?: string
 }
@@ -18,8 +18,8 @@ export default function HoverIcons({
   iconsName,
   iconSize = '6',
   iconClipColor,
-  iconBgColor,
-  iconHoverBgColor,
+  iconBgColor = 'bg-transparent',
+  iconHoverBgColor = 'hover:bg-transparent',
   iconHoverClipColor,
   iconClassName = ''
 }: HoverIconsProps) {

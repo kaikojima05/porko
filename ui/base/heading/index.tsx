@@ -11,8 +11,9 @@ export const HeadingH2 = ({
 }: HeadingProps) => {
   return (
     <h2 className={classNames(
-      'text-[2rem] text-center',
-      'lg:px-6',
+      'font-head text-[1.5rem] text-center font-extralight',
+      'md:text-[1.75rem]',
+      'lg:px-6 lg:text-[2rem]',
       `${headingClassName}`
     )}>
       {children}
@@ -27,7 +28,7 @@ export const HeadingH3 = ({
   return (
     <h3
       className={classNames(
-        "text-[1.125rem]",
+        "text-[1.5rem] font-head",
         `${headingClassName}`
       )}
     >

@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef, createRef, RefObject } from "reac
 import { Creatives } from "@/ui/base/types/creatives";
 import classNames from "classnames";
 import Link from 'next/link'
+import { HeadingH2 } from '@/ui/base/heading/index'
 
 type CtaCreativesProps = {
   creatives: Creatives[]
@@ -148,7 +149,7 @@ export default function CtaCreatives({
   return (
     <>
       <div className={classNames(
-        "w-full my-6",
+        "w-full",
       )}>
         <div
           id="creativesCard"
@@ -187,18 +188,18 @@ export default function CtaCreatives({
                   ></div>
                 );
               })}
+
           {/*1024px 未満*/}
           <div className={classNames(
-            'w-full flex flex-col justify-between',
+            'w-full',
             'lg:hidden'
           )}>
-            <p>{creativesIntroduction}</p>
-            <Link
-              href="/creatives"
-              className="py-2 border rounded-full border-black inline-block text-center"
+            <HeadingH2 headingClassName=
+              "pb-2 border-b border-base-black"
             >
-              see more ...
-            </Link>
+              Creatives
+            </HeadingH2>
+            <p className="mt-4">{creativesIntroduction}</p>
           </div>
 
           {/*1024px 以上*/}

@@ -2,6 +2,7 @@ import { useState, useMemo, useEffect, useRef, createRef, RefObject } from "reac
 import { Works } from "@/ui/base/types/works";
 import classNames from "classnames";
 import Link from 'next/link'
+import { HeadingH2 } from '@/ui/base/heading/index'
 
 type CtaWorksProps = {
   works: Works[];
@@ -147,7 +148,7 @@ export default function CtaWorks({
   return (
     <>
       <div className={classNames(
-        "w-full my-6",
+        "w-full",
       )}>
         <div
           id="worksCards"
@@ -188,16 +189,15 @@ export default function CtaWorks({
               })}
           {/*1024px 未満*/}
           <div className={classNames(
-            'w-full flex flex-col justify-between',
+            'w-full',
             'lg:hidden'
           )}>
-            <p>{worksIntroduction}</p>
-            <Link
-              href="/works"
-              className="py-2 border rounded-full border-black inline-block text-center"
+            <HeadingH2 headingClassName=
+              "pb-2 border-b border-base-black"
             >
-              see more ...
-            </Link>
+              Works
+            </HeadingH2>
+            <p className="mt-4">{worksIntroduction}</p>
           </div>
 
           {/*1024px 以上*/}

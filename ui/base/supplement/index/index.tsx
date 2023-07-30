@@ -4,42 +4,28 @@ import classNames from 'classnames'
 type SupplementProps = {
   headLine: string
   children: React.ReactNode
-  supplementClassName: string
+  headLineClassName?: string
+  supplementClassName?: string
 }
 export function Supplement({
   headLine,
   children,
+  headLineClassName,
   supplementClassName
 }: SupplementProps) {
   return (
-    <>
+    <div className={classNames(
+      'flex flex-col',
+      'md:flex-row md:gap-x-[5rem]',
+      supplementClassName
+    )}>
       <h4 className={classNames(
-        'text-[0.75rem]',
-        supplementClassName
+        headLineClassName
       )}>
         {headLine}
-      </h4 >
+      </h4>
       {children}
-    </>
+    </div>
   )
 }
 
-type SupplementLoopProps = {
-  loopItems: SupplementProps[]
-  SupplementComponent: React.ComponentType<SupplementProps>
-}
-
-export function SupplementLoop({
-  loopItems,
-  SupplementComponent
-}: SupplementLoopProps) {
-  return (
-    <>
-      {loopItems.map((item, index) => {
-        <React.Fragment key={index}>
-          <SupplementComponent {...item} />
-        </React.Fragment>
-      })}
-    </>
-  )
-}

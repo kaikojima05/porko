@@ -5,6 +5,7 @@ import { useOnScrollAnimation } from "@/ui/hooks/useOnScrollAnimation";
 import Body from "@/ui/base/body";
 import Footer from "@/ui/base/footer";
 import AboutPage from "@/ui/pages/about/section/main/index";
+import { HeadingH2 } from '@/ui/base/heading/index'
 
 export default function About() {
   const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
@@ -20,7 +21,7 @@ export default function About() {
       <Body
         bodyClassName="z-0"
       >
-        <h2 className={classNames("text-[2rem] text-center")}>about us</h2>
+        <HeadingH2>about me</HeadingH2>
         <div
           className={classNames(
             "hidden gap-4 justify-evenly items-center mt-10 mb-3",

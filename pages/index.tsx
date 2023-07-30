@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { getWorks } from "@/lib/newt";
 import { getCreatives } from "@/lib/newt";
 import { useOnScrollAnimation } from "@/ui/hooks/useOnScrollAnimation";
@@ -10,6 +11,7 @@ import CtaCreatives from "@/ui/base/ctaCreatives/index";
 import Body from "@/ui/base/body";
 import { Works } from "@/ui/base/types/works";
 import { Creatives } from "@/ui/base/types/creatives";
+import classNames from "classnames";
 
 type HomeProps = {
   works: Works[]
@@ -27,7 +29,10 @@ export default function Home({
       <Article >
         <Section isTopMargin={true}>
           <div
-            className="flex justify-center items-start flex-row-reverse gap-8 before-scroll-repeat"
+            className={classNames(
+              "flex flex-col justify-center items-start before-scroll-repeat gap-5",
+              "md:flex-row-reverse md:gap-8"
+            )}
             ref={sectionMessageRef}
           >
             <Image
@@ -40,7 +45,7 @@ export default function Home({
               }}
               className="h-[18.75rem]"
             />
-            <div className="flex flex-row-reverse gap-6">
+            <div className="flex flex-row-reverse gap-2">
               <HeadingH2 headingClassName="writing-vertical !text-[1.25rem]">
                 声を掬い、創って世界へ。
               </HeadingH2>
@@ -71,8 +76,32 @@ export default function Home({
         </Section>
         <Section isTopMargin={false}>
           <CtaWorks works={works} />
-          <div className="my-10" />
+          <div className={classNames(
+            'flex justify-end',
+            'lg:hidden'
+          )}>
+            <Link
+              href="/works"
+              className="py-2 px-6 border rounded-full border-black inline-block text-center"
+            >
+              see more ...
+            </Link>
+          </div>
+          <div className={classNames(
+            "py-10",
+          )} />
           <CtaCreatives creatives={creatives} />
+          <div className={classNames(
+            'flex justify-end',
+            'lg:hidden'
+          )}>
+            <Link
+              href="/creatives"
+              className="py-2 px-6 border rounded-full border-black inline-block text-center"
+            >
+              see more ...
+            </Link>
+          </div>
         </Section>
       </Article>
     </Body>
