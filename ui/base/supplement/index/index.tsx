@@ -15,11 +15,12 @@ export function Supplement({
 }: SupplementProps) {
   return (
     <div className={classNames(
-      'flex flex-col',
-      'md:flex-row md:gap-x-[5rem]',
+      'flex flex-col gap-y-[2px]',
+      'md:flex-row md:gap-x-[5rem] md:gap-y-0',
       supplementClassName
     )}>
       <h4 className={classNames(
+        'border-b border-text-'
         headLineClassName
       )}>
         {headLine}

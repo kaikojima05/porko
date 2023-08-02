@@ -1,8 +1,8 @@
 import { useState, useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Creatives } from "@/ui/base/types/creatives";
 import classNames from "classnames";
-import Link from 'next/link'
 import { HeadingH2 } from '@/ui/base/heading/index'
+import { CtaButton } from '@/ui/base/button/index'
 
 type CtaCreativesProps = {
   creatives: Creatives[]
@@ -221,13 +221,11 @@ export default function CtaCreatives({
             <div
               className="mt-5 text-right"
             >
-              <Link
-                href="/creatives"
-                className="px-6 py-2 border rounded-full border-black"
+              <CtaButton
+                ctaLink="/works"
                 onClick={handleCardViewEvent}
-              >
-                {text}
-              </Link>
+                buttonText={text}
+              />
             </div>
           </div>
         </div>

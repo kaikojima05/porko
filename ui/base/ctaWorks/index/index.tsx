@@ -3,6 +3,7 @@ import { Works } from "@/ui/base/types/works";
 import classNames from "classnames";
 import Link from 'next/link'
 import { HeadingH2 } from '@/ui/base/heading/index'
+import { CtaButton } from '@/ui/base/button/index'
 
 type CtaWorksProps = {
   works: Works[];
@@ -217,13 +218,11 @@ export default function CtaWorks({
               </p>
             </div>
             <div className="text-right mt-5">
-              <Link
-                href="/works"
+              <CtaButton
+                ctaLink="/works"
                 onClick={handleCardViewEvent}
-                className="px-6 py-2 border rounded-full border-black"
-              >
-                {text}
-              </Link>
+                buttonText={text}
+              />
             </div>
           </div>
         </div>

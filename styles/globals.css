@@ -14,6 +14,8 @@ body {
   background-color: #FFF;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.67);
+  background-image: url("/images/texture.webp");
+  background-repeat: repeat;
 }
 
 h2 {
@@ -24,16 +26,6 @@ h2 {
 
 a, a:focus {
   outline: none;
-}
-
-body::before {
-  content: "";
-  position: absolute;
-  background-image: url("/images/texture.webp");
-  background-repeat: repeat;
-  mix-blend-mode: multiply;
-  width: 100vw;
-  height: 100%;
 }
 
 br {
