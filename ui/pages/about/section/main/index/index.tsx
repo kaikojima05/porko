@@ -114,11 +114,24 @@ const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
             <Supplement
               headLine={item.headLine}
               key={index}
-              supplementClassName={
-                `[&_br]:h-0 ${seriesData.length - 1 !== index ? 'mb-4' : 'mb-0'}`
-              }
+              supplementClassName={classNames(
+                `[&_br]:h-0 ${index !== 0
+                  ? 'mt-5'
+                  : 'mt-0'
+                }`,
+              )}
+              headLineClassName={classNames(
+                'border-b border-base-black inline-block pr-5',
+                'md:border-none md:pr-0'
+              )}
             >
-              <p dangerouslySetInnerHTML={{ __html: item.children }} />
+              <p
+                dangerouslySetInnerHTML={{ __html: item.children }}
+                className={classNames(
+                  'mt-2',
+                  'md:mt-0'
+                )}
+              />
             </Supplement>
           ))}
         </div>
