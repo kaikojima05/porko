@@ -12,7 +12,7 @@ type BodyProps = {
 
 export default function Body({
   children,
-  bodyClassName,
+  bodyClassName = '',
 }: BodyProps) {
   const router = useRouter();
   const backgroundRef = useOnScrollAnimation();
@@ -33,12 +33,12 @@ export default function Body({
           }}
         />
       </div>
-      <div className="flex justify-center">
+      <div className="flex justify-center overflow-hidden">
         <main
           className={classNames(
             "w-full mx-0",
-            "pt-[5.625rem] px-4",
-            "lg:min-w-[58.125rem] lg:max-w-[58.125rem]",
+            "mt-[5.625rem] mb-[5.625rem] px-4",
+            "lg:min-w-[58.125rem] lg:max-w-[58.125rem] lg:px-0",
             "xl:min-w-[62.5rem] xl:max-w-[62.5rem]",
             `${bodyClassName}`
           )}

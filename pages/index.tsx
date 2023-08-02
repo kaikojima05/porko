@@ -88,7 +88,7 @@ export default function Home({
             </Link>
           </div>
           <div className={classNames(
-            "py-10",
+            "py-[4.375rem]",
           )} />
           <CtaCreatives creatives={creatives} />
           <div className={classNames(

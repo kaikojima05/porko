@@ -22,13 +22,6 @@ export default function About() {
         bodyClassName="z-0"
       >
         <HeadingH2>about me</HeadingH2>
-        <div
-          className={classNames(
-            "hidden gap-4 justify-evenly items-center mt-10 mb-3",
-            "md:justify-center md:gap-10 md:flex"
-          )}
-        >
-        </div>
         <AboutPage
           ref={Ref}
         />
