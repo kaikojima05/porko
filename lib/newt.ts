@@ -1,6 +1,7 @@
 import { createClient } from "newt-client-js";
 import type { Works } from "@/ui/base/types/works";
 import type { Creatives } from "@/ui/base/types/creatives";
+import type { News } from '@/ui/base/types/news'
 
 const client = createClient({
   spaceUid: process.env.NEWT_SPACE_UID + "",
@@ -43,3 +44,19 @@ export const getCreatives = async () => {
   });
   return items;
 };
+
+export const getNews = async () => {
+  const { items } = await client.getContents<News>({
+    appUid: "news",
+    modelUid: "news",
+    query: {
+      select: [
+        "_id",
+        "createdAt",
+        "newsTitle",
+        "newscontent"
+      ]
+    }
+  })
+  return items
+}
