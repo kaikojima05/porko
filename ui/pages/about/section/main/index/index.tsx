@@ -1,7 +1,6 @@
 import React from 'react'
 import seriesData from './series.js'
 import profile from './profile.js'
-import concepts from './concept.js'
 import Image from "next/image";
 import classNames from "classnames";
 import Section from "@/ui/base/section";
@@ -72,8 +71,8 @@ const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
                       'sns-note'
                     ]}
                     hrefs={[
+                      'https://twitter.com/koji_mari7',
                       'https://note.com/kwkm711',
-                      'https://twitter.com/koji_mari7'
                     ]}
                     iconSize='6'
                     iconClipColor='text-accent'
@@ -84,22 +83,6 @@ const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
               </div>
             </div>
           </div>
-        </div>
-      </Section>
-      <Section isTopMargin={false}>
-        <HeadingH3 headingClassName="text-center">
-          Concept
-        </HeadingH3>
-        <div className={classNames(
-          'mt-5',
-          'md:mt-6'
-        )}>
-          {concepts.map((concept, index) => (
-            <React.Fragment key={index}>
-              <p dangerouslySetInnerHTML={{ __html: concept.concept }} />
-              <br className={index + 1 === profile.length ? 'hidden' : ''} />
-            </React.Fragment>
-          ))}
         </div>
       </Section>
       <Section isTopMargin={false}>
