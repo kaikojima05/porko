@@ -1,9 +1,10 @@
 import { createClient } from "newt-client-js";
+import { GetStaticPropsContext } from 'next';
 import type { Works } from "@/ui/base/types/works";
 import type { Creatives } from "@/ui/base/types/creatives";
 import type { News } from '@/ui/base/types/news'
 
-const client = createClient({
+export const client = createClient({
   spaceUid: process.env.NEWT_SPACE_UID + "",
   token: process.env.NEWT_CDN_API_TOKEN + "",
   apiType: "cdn",

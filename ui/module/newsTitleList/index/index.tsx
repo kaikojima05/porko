@@ -14,10 +14,23 @@ export default function NewsTitleList({ newsList }: NewsTitleListProps) {
         <div
           key={index}
           className={classNames(
-            'border-b border-base-black text-[14px] pb-2'
+            `${index !== 0 ? 'mt-[1.875rem]' : 'mt-0'}`
           )}
         >
-          {ReactHtmlParser(head.newsTitle)}
+          <h3
+            className={classNames(
+              'text-[1.125rem]'
+            )}
+          >
+            <Link
+              href={`/news/${head._id}`}
+              className={classNames(
+                'w-full inline-block border-b border-base-black text-[14px] pb-3 pt-1'
+              )}
+            >
+              {ReactHtmlParser(head.newsTitle)}
+            </Link>
+          </h3>
         </div>
       ))}
     </>
