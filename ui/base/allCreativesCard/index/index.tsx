@@ -1,5 +1,6 @@
 import { useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Creatives } from "@/ui/base/types/creatives";
+import { CardStyle } from '@/ui/module/cardStyle/index'
 import classNames from "classnames";
 
 type AllCreativesCardProps = {
@@ -51,12 +52,7 @@ export default function AllCreativesCard({
           );
           elements?.forEach((element) => {
             const newStyle = document.createElement("style");
-            newStyle.textContent = `
-.e {padding-bottom:  75% !important; border-radius: 4px;}
-.body {box-shadow: none !important;}
-.__wc {border: none; background-color: transparent;}
-.wc {border-bottom-right-radius: 20%;}
-`;
+            newStyle.textContent = CardStyle()
             element.shadowRoot?.appendChild(newStyle);
           });
         });

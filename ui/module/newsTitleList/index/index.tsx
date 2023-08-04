@@ -31,6 +31,9 @@ export default function NewsTitleList({ newsList }: NewsTitleListProps) {
               {ReactHtmlParser(head.newsTitle)}
             </Link>
           </h3>
+          <div>
+
+          </div>
         </div>
       ))}
     </>

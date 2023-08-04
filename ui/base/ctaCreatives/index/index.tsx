@@ -3,6 +3,7 @@ import { Creatives } from "@/ui/base/types/creatives";
 import classNames from "classnames";
 import { HeadingH2 } from '@/ui/base/heading/index'
 import { CtaButton } from '@/ui/base/button/index'
+import { CardStyle } from '@/ui/module/cardStyle/index'
 
 type CtaCreativesProps = {
   creatives: Creatives[]
@@ -66,12 +67,7 @@ export default function CtaCreatives({
           );
           elements?.forEach((element) => {
             const newStyle = document.createElement("style");
-            newStyle.textContent = `
-.e {padding-bottom:  75% !important; border-radius: 4px;}
-.body {box-shadow: none !important;}
-.__wc {border: none; background-color: transparent;}
-.wc {border-bottom-right-radius: 20%;}
-`;
+            newStyle.textContent = CardStyle();
             element.shadowRoot?.appendChild(newStyle);
           });
         });
@@ -121,12 +117,12 @@ export default function CtaCreatives({
           setTimeout(() => {
             timerId = setInterval(() => {
               setText(text.slice(0, -1));
-            }, 120);
+            }, 100);
           }, 1600);
         } else {
           timerId = setInterval(() => {
             setText(text.slice(0, -1));
-          }, 120);
+          }, 100);
         }
       } else {
         setIsWriting(true);
@@ -136,7 +132,7 @@ export default function CtaCreatives({
         timerId = setInterval(() => {
           setText((t) => t + finalText[currentIndex]);
           setCurrentIndex((i) => i + 1);
-        }, 120);
+        }, 100);
       } else {
         setIsAnimating(false);
       }
