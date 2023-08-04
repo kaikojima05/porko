@@ -1,6 +1,7 @@
 import classNames from "classnames";
 import SnsNote from "./SnsNote";
 import SnsTwitter from "./SnsTwitter";
+import SnsX from "./SnsX";
 import PushPin from "./PushPin";
 import GitHub from "./GitHub";
 import Porko from './Porko'
@@ -9,6 +10,7 @@ const Icons = {
   "porko": Porko,
   "sns-note": SnsNote,
   "sns-twitter": SnsTwitter,
+  "sns-x": SnsX,
   github: GitHub,
   "push-pin": PushPin,
 };

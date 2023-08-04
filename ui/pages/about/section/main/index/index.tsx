@@ -67,7 +67,7 @@ const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
                   <p className="text-[1.125rem]">Online -</p>
                   <HoverIcons
                     iconsName={[
-                      'sns-twitter',
+                      'sns-x',
                       'sns-note'
                     ]}
                     hrefs={[
