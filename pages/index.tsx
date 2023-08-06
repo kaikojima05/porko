@@ -35,16 +35,18 @@ export default function Home({
             )}
             ref={sectionMessageRef}
           >
-            <Image
-              src="/images/LINE_ALBUM_230609.jpg"
-              width={300}
-              height={400}
-              alt="top の message image"
-              style={{
-                objectFit: "cover"
-              }}
-              className="h-[18.75rem]"
-            />
+            <div className="w-full md:w-auto">
+              <Image
+                src="/images/LINE_ALBUM_230609.jpg"
+                width={300}
+                height={400}
+                alt="top の message image"
+                style={{
+                  objectFit: "cover"
+                }}
+                className="h-[18.75rem]"
+              />
+            </div>
             <div className="flex flex-row-reverse gap-2">
               <HeadingH2 headingClassName="writing-vertical !text-[1.25rem]">
                 声を掬い、創って世界へ。
