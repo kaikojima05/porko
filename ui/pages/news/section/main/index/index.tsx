@@ -12,7 +12,7 @@ type NewsPageProps = {
 export default function NewsPage({ news }: NewsPageProps) {
   return (
     <Article>
-      <Section isTopMargin={false}>
+      <Section isTopMargin={true}>
         <NewsTitleList newsList={news} />
       </Section>
     </Article>
