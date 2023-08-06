@@ -8,13 +8,13 @@ import { HeadingH2 } from '@/ui/base/heading'
 export default function WorksPage({ works }: { works: Works[] }) {
   return (
     <Article>
-      <Section isTopMargin={false}>
+      <Section isTopMargin={true}>
         <HeadingH2>
           all works
         </HeadingH2>
-        <CategoryList works={works} />
       </Section>
-      <Section isTopMargin={true}>
+      <Section isTopMargin={false}>
+        <CategoryList works={works} />
         <AllWorksCard works={works} />
       </Section>
     </Article>
