@@ -5,7 +5,7 @@ type OptionClassProps = {
   optionClassName?: string;
 }
 
-type ButtonStyleProps = {
+type ButtonProps = {
   size: 'xs' | 's' | 'm' | 'l' | 'xl' | 'custom'
   style: 'rounded' | 'underBar' | 'circle' | 'square' | 'none'
   children: React.ReactNode
@@ -17,12 +17,12 @@ type CtaButtonProps = {
   ctaLink: string;
 } & OptionClassProps
 
-export const ButtonStyle = ({
+export const Button = ({
   size = 'custom',
   style = 'none',
   optionClassName = '',
   children,
-}: ButtonStyleProps) => {
+}: ButtonProps) => {
   const rootSize = classNames(
     size === 'xs' && 'w-[6.25rem]',
     size === 's' && 'w-[9.375rem] h-[2.5rem]',
@@ -47,6 +47,8 @@ export const ButtonStyle = ({
 
   return (
     <div className={classNames(
+      // defaultStyle
+      '[&>*]:w-full [&>*]:h-full',
       // selectStyle
       `${rootStyle}`,
       `${optionClassName}`,
@@ -63,7 +65,7 @@ export const CtaButton = ({
   optionClassName = '',
 }: CtaButtonProps) => {
   return (
-    <ButtonStyle
+    <Button
       size='s'
       style='rounded'
       optionClassName='border-base-black ml-auto'
@@ -78,6 +80,6 @@ export const CtaButton = ({
       >
         {buttonText}
       </Link>
-    </ButtonStyle>
+    </Button>
   );
 } 
