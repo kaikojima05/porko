@@ -8,13 +8,13 @@ import { HeadingH2 } from '@/ui/base/heading'
 export default function CreativesPage({ creatives }: { creatives: Creatives[] }) {
   return (
     <Article>
-      <Section isTopMargin={false}>
+      <Section isTopMargin={true}>
         <HeadingH2>
           all creatives
         </HeadingH2>
-        <CategoryList creatives={creatives} />
       </Section>
-      <Section isTopMargin={true}>
+      <Section isTopMargin={false}>
+        <CategoryList creatives={creatives} />
         <AllCreativesCard creatives={creatives} />
       </Section>
     </Article>
