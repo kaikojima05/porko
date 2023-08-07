@@ -100,14 +100,8 @@ export default function Header() {
         >
           <div onClick={(e) => e.stopPropagation()} className="">
             <h1 className="flex justify-center items-center">
-              <Link href="/" className="text-[1.125rem]">
-                <Icon
-                  name="porko"
-                  symbol={true}
-                  symbolViewBox="0 0 52 36"
-                  width="w-[3.25rem]"
-                  height="h-[2.25rem]"
-                />
+              <Link href="/" className="text-base">
+                porko
               </Link>
             </h1>
           </div>
