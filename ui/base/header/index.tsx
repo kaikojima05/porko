@@ -91,55 +91,76 @@ export default function Header() {
       >
         <header
           className={classNames(
-            "flex justify-between items-center px-4 py-4 elevator",
+            "px-4 py-4",
             "lg:px-16 lg:py-6",
             "xl:px-24",
             `${fontColor}`,
-            `${open ? "going-down" : ""}`
           )}
         >
-          <div onClick={(e) => e.stopPropagation()} className="">
-            <h1 className="flex justify-center items-center">
-              <Link href="/" className="text-base">
-                porko
-              </Link>
-            </h1>
-          </div>
-          <div className={classNames("hidden", "lg:block")}>
-            <ul className={classNames(
-              "flex items-center",
-              "lg:gap-0",
-              "xl:gap-8"
-            )}>
-              {navItems.map((item, index) => {
-                return (
-                  <li key={index} className="flex items-center">
-                    <Link
-                      href={item.href}
-                      className={classNames(
-                        router.pathname === item.href
-                          ? `current ${loading ? "animate-current" : ""}`
-                          : "induction"
-                      )}
-                    >
-                      {item.title}
-                    </Link>
-                  </li>
-                );
-              })}
-            </ul>
+          <div className="flex justify-between items-center">
+            <div onClick={(e) => e.stopPropagation()} className="">
+              <h1 className="flex justify-center items-center">
+                <Link href="/" className="text-base">
+                  porko
+                </Link>
+              </h1>
+            </div>
+            <div className={classNames("hidden", "lg:block")}>
+              <ul className={classNames(
+                "flex items-center",
+                "lg:gap-0",
+                "xl:gap-8"
+              )}>
+                {navItems.map((item, index) => {
+                  return (
+                    <li key={index} className="flex items-center">
+                      <Link
+                        href={item.href}
+                        className={classNames(
+                          router.pathname === item.href
+                            ? `current ${loading ? "animate-current" : ""}`
+                            : "induction"
+                        )}
+                      >
+                        {item.title}
+                      </Link>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <div
+              className={classNames("hamburger-menu", "lg:hidden")}
+              onClick={toggleHamburgerButton}
+            >
+              <span
+                className={classNames(
+                  "hamburger-menu-bar-top",
+                  `${hamburgerColor}`,
+                  `${open && "top-open"}`
+                )}
+              ></span>
+              <span
+                className={classNames(
+                  "hamburger-menu-bar-bottom",
+                  `${hamburgerColor}`,
+                  `${open && "bottom-open"}`
+                )}
+              ></span>
+            </div>
           </div>
           <div
             className={classNames(
-              "hidden",
-              `${open && "!flex items-center justify-center delay-display"}`
+              "lg:hidden duration-[520ms] h-0",
+              `${open && "!flex items-center justify-center h-[70vh]"}`
             )}
             onClick={toggleHamburgerMenu}
           >
             <ul
               className={classNames(
-                " flex flex-col gap-y-6",
-                "[&>]:block [&>li]:text-[1.125rem] [&>li]:text-center "
+                "block duration-700",
+                "[&>li]:text-[1.125rem] [&>li]:text-center [&>li]:mt-4",
+                `${open ? 'block delay-display' : 'hidden opacity-0'}`
               )}
             >
               {navItems.map((item, index) => {
@@ -160,25 +181,6 @@ export default function Header() {
                 );
               })}
             </ul>
-          </div>
-          <div
-            className={classNames("hamburger-menu", "lg:hidden")}
-            onClick={toggleHamburgerButton}
-          >
-            <span
-              className={classNames(
-                "hamburger-menu-bar-top",
-                `${hamburgerColor}`,
-                `${open && "top-open"}`
-              )}
-            ></span>
-            <span
-              className={classNames(
-                "hamburger-menu-bar-bottom",
-                `${hamburgerColor}`,
-                `${open && "bottom-open"}`
-              )}
-            ></span>
           </div>
         </header>
       </nav>
