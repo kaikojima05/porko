@@ -18,12 +18,6 @@ body {
   background-repeat: repeat;
 }
 
-h2 {
-  font-size: 2rem;
-  font-weight: 200;
-  letter-spacing: 2px;
-}
-
 a, a:focus {
   outline: none;
 }
@@ -92,7 +86,7 @@ br {
 }
 
 .elevator {
-  height: 3.875rem;
+  height: 0px;
   transition: all 0.5s ease;
 }
 
@@ -135,6 +129,12 @@ br {
 @media screen and (max-width: 1023px) {
   .induction {
     padding: 0.125rem 1.5rem;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .writing-normal {
+    writing-mode: horizontal-tb
   }
 }
 
@@ -300,9 +300,6 @@ br {
   opacity: 0;
   animation: softy-display 0.35s forwards 0.5s;
 }
-
-
-
 
 /*クリックイベントの防御*/
 .disabled-overlay {
