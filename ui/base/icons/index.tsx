@@ -5,6 +5,7 @@ import SnsX from "./SnsX";
 import PushPin from "./PushPin";
 import GitHub from "./GitHub";
 import Porko from './Porko'
+import Curve from "./Curve";
 
 const Icons = {
   "porko": Porko,
@@ -13,6 +14,7 @@ const Icons = {
   "sns-x": SnsX,
   github: GitHub,
   "push-pin": PushPin,
+  "curve": Curve,
 };
 
 const keys = Object.keys(Icons) as (keyof typeof Icons)[];
