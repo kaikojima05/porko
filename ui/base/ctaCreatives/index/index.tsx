@@ -1,12 +1,14 @@
+import Link from "next/link";
 import { useState, useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Creatives } from "@/ui/base/types/creatives";
 import classNames from "classnames";
 import { HeadingH2 } from '@/ui/base/heading/index'
+import { Button } from '@/ui/base/button/index'
 import { CtaButton } from '@/ui/base/button/index'
-import { CardStyle } from '@/ui/module/cardStyle/index'
+import { CardStyle } from "@/ui/module/cardStyle/index";
 
 type CtaCreativesProps = {
-  creatives: Creatives[]
+  creatives: Creatives[];
 };
 
 export default function CtaCreatives({
@@ -141,14 +143,13 @@ export default function CtaCreatives({
     return () => clearInterval(timerId);
   }, [text, isAnimating, isWriting, currentIndex, finalText]);
 
-
   return (
     <>
       <div className={classNames(
         "w-full",
       )}>
         <div
-          id="creativesCard"
+          id="creativesCards"
           className={classNames(
             "grid gap-x-4 grid-cols-2 relative w-full h-full",
             "lg:grid-cols-4",
@@ -184,18 +185,35 @@ export default function CtaCreatives({
                   ></div>
                 );
               })}
-
           {/*1024px 未満*/}
           <div className={classNames(
             'w-full',
             'lg:hidden'
           )}>
-            <HeadingH2 headingClassName=
-              "pb-2 border-b border-base-black"
-            >
-              Creatives
-            </HeadingH2>
-            <p className="mt-4">{creativesIntroduction}</p>
+            <div>
+              <HeadingH2 headingClassName=
+                "pb-2 border-b border-base-black"
+              >
+                Creatives
+              </HeadingH2>
+            </div>
+            <div>
+              <p className="mt-4">{creativesIntroduction}</p>
+            </div>
+            <div className='mt-4'>
+              <Button
+                size="x-full"
+                style="square"
+                optionClassName="border-base-black rounded-md py-2"
+              >
+                <Link
+                  href="creatives/"
+                  className='text-center'
+                >
+                  {finalText}
+                </Link>
+              </Button>
+            </div>
           </div>
 
           {/*1024px 以上*/}
@@ -214,11 +232,9 @@ export default function CtaCreatives({
                 {creativesIntroduction}
               </p>
             </div>
-            <div
-              className="mt-5 text-right"
-            >
+            <div className="text-right mt-5">
               <CtaButton
-                ctaLink="/works"
+                ctaLink="/creatives"
                 onClick={handleCardViewEvent}
                 buttonText={text}
               />

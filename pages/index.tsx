@@ -9,6 +9,8 @@ import { HeadingH2 } from '@/ui/base/heading'
 import CtaWorks from "@/ui/base/ctaWorks/index";
 import CtaCreatives from "@/ui/base/ctaCreatives/index";
 import Body from "@/ui/base/body";
+import Cta from '@/ui/base/cta/index'
+import Icon from '@/ui/base/icons'
 import { Works } from "@/ui/base/types/works";
 import { Creatives } from "@/ui/base/types/creatives";
 import classNames from "classnames";
@@ -79,34 +81,25 @@ export default function Home({
         <Section isTopMargin={false}>
           <CtaWorks works={works} />
           <div className={classNames(
-            'flex justify-end',
-            'lg:hidden'
-          )}>
-            <Link
-              href="/works"
-              className="py-2 px-6 border rounded-full border-black inline-block text-center"
-            >
-              see more ...
-            </Link>
-          </div>
-          <div className={classNames(
             "py-[4.375rem]",
           )} />
           <CtaCreatives creatives={creatives} />
-          <div className={classNames(
-            'flex justify-end',
-            'lg:hidden'
-          )}>
-            <Link
-              href="/creatives"
-              className="py-2 px-6 border rounded-full border-black inline-block text-center"
-            >
-              see more ...
-            </Link>
-          </div>
         </Section>
       </Article>
-    </Body>
+      <Section isTopMargin={false}>
+        <div className=''>
+          <div className='relative w-full'>
+            <Cta
+              cta="お気軽にお問い合わせください"
+              ctaStyle="rounded-md border border-base-black py-14 px-20"
+              buttonStyle="flex flex-col items-center justify-center rounded-md border-base-black"
+            >
+              mail form
+            </Cta>
+          </div>
+        </div>
+      </Section>
+    </Body >
   );
 }
 

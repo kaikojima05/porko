@@ -1,7 +1,9 @@
+import Link from 'next/link'
 import { useState, useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Works } from "@/ui/base/types/works";
 import classNames from "classnames";
 import { HeadingH2 } from '@/ui/base/heading/index'
+import { Button } from '@/ui/base/button/index'
 import { CtaButton } from '@/ui/base/button/index'
 import { CardStyle } from "@/ui/module/cardStyle/index";
 
@@ -183,17 +185,36 @@ export default function CtaWorks({
                   ></div>
                 );
               })}
+
           {/*1024px 未満*/}
           <div className={classNames(
             'w-full',
             'lg:hidden'
           )}>
-            <HeadingH2 headingClassName=
-              "pb-2 border-b border-base-black"
-            >
-              Works
-            </HeadingH2>
-            <p className="mt-4">{worksIntroduction}</p>
+            <div>
+              <HeadingH2 headingClassName=
+                "pb-2 border-b border-base-black"
+              >
+                Works
+              </HeadingH2>
+            </div>
+            <div>
+              <p className="mt-4">{worksIntroduction}</p>
+            </div>
+            <div className='mt-4'>
+              <Button
+                size="x-full"
+                style="square"
+                optionClassName="border-base-black rounded-md py-2"
+              >
+                <Link
+                  href="works/"
+                  className='text-center'
+                >
+                  {finalText}
+                </Link>
+              </Button>
+            </div>
           </div>
 
           {/*1024px 以上*/}
