@@ -6,7 +6,7 @@ type OptionClassProps = {
 }
 
 type ButtonProps = {
-  size: 'xs' | 's' | 'm' | 'l' | 'xl' | 'custom'
+  size: 'xs' | 's' | 'm' | 'l' | 'xl' | 'x-full' | 'y-full' | 'all-full' | 'custom'
   style: 'rounded' | 'underBar' | 'circle' | 'square' | 'none'
   children: React.ReactNode
 } & OptionClassProps
@@ -28,7 +28,10 @@ export const Button = ({
     size === 's' && 'w-[9.375rem] h-[2.5rem]',
     size === 'm' && 'w-[12.5rem] h-[3.125rem]',
     size === 'l' && 'w-[15.625rem] h-[3.75rem]',
-    size === 'xl' && 'w-[18.75rem] h-full',
+    size === 'xl' && 'w-[18.75rem] h-[4rem]',
+    size === 'x-full' && 'w-full',
+    size === 'y-full' && 'h-full',
+    size === 'all-full' && 'x-full h-full',
     size === 'custom' && '',
   )
 
@@ -48,7 +51,7 @@ export const Button = ({
   return (
     <div className={classNames(
       // defaultStyle
-      '[&>*]:w-full [&>*]:h-full',
+      '[&>*]:block [&>*]:w-full [&>*]:h-full',
       // selectStyle
       `${rootStyle}`,
       `${optionClassName}`,
