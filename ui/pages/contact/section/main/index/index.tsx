@@ -28,6 +28,13 @@ export default function ContactPage() {
               placeholder="your name"
             />
             <FormInput
+              labelName="company"
+              register={register("company", { required: false })}
+              forName="company"
+              type="text"
+              placeholder="your company"
+            />
+            <FormInput
               labelName="email"
               register={register("email", { required: true })}
               forName="email"
@@ -39,7 +46,7 @@ export default function ContactPage() {
               register={register("message", { required: true })}
               forName="message"
               type="textarea"
-              placeholder="contact message ..."
+              placeholder="please free message ..."
             />
           </div>
           <div className="mt-8">
