@@ -51,7 +51,7 @@ export const Button = ({
   return (
     <div className={classNames(
       // defaultStyle
-      '[&>*]:block [&>*]:w-full [&>*]:h-full',
+      '[&>*]:w-full [&>*]:h-full',
       // selectStyle
       `${rootStyle}`,
       `${optionClassName}`,
