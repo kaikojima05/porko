@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@emailjs/browser": "^3.11.0",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
     "@fortawesome/fontawesome-svg-core": "^6.4.0",
@@ -24,6 +25,7 @@
     "classnames": "^2.3.2",
     "date-fns": "^2.30.0",
     "dompurify": "^3.0.3",
+    "emailjs-com": "^3.2.0",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
     "jsdom": "^22.1.0",
