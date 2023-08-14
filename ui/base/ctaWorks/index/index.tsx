@@ -205,11 +205,11 @@ export default function CtaWorks({
               <Button
                 size="x-full"
                 style="square"
-                optionClassName="border-base-black rounded-md py-2"
+                optionClassName="border-base-black rounded-md"
               >
                 <Link
                   href="works/"
-                  className='text-center'
+                  className='flex justify-center items-center py-2'
                 >
                   {finalText}
                 </Link>
