@@ -1,52 +1,89 @@
+import { useState, useRef } from 'react'
+import { useForm } from 'react-hook-form'
+import emailjs from 'emailjs-com'
 import classNames from "classnames";
 import Article from "@/ui/base/article";
 import Section from "@/ui/base/section";
-import FormInput from '@/ui/snippet/formInput'
 import { Button } from '@/ui/base/button'
-import { useForm } from 'react-hook-form'
+import FormInput from '@/ui/snippet/formInput'
+
+type FormData = {
+  name: string;
+  company?: string;
+  email: string;
+  message: string;
+};
 
 export default function ContactPage() {
+  const [name, setName] = useState("")
+  const [company, setCompany] = useState("")
+  const [email, setEmail] = useState("")
+  const [message, setMessage] = useState("")
+
   const {
     register,
-    handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm<FormData>();
 
+  const onSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID!;
+    const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID!;
+    const publicId = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_ID!;
+
+    const templateParams = {
+      name: name,
+      company: company,
+      email: email,
+      message: message,
+    }
+
+    try {
+      await emailjs.send(serviceId, templateId, templateParams, publicId);
+    } catch (error) {
+      console.error("エラーが出ました" + error)
+    }
+  }
   return (
     <Article>
       <Section isTopMargin={true}>
-        <form onSubmit={handleSubmit((data) => console.log(data))}>
+        <form onSubmit={onSubmit}>
           <div className={classNames(
             "[&>*]:mt-4",
             "first:[&>*]:mt-0",
           )}>
             <FormInput
-              labelName="name"
-              register={register("name", { required: true })}
-              forName="name"
-              type="text"
-              placeholder="your name"
+              forName='name'
+              type='text'
+              placeholder='your name'
+              register={register('name', { required: true })}
+              onChange={(event) => setName(event.target.value)}
+              value={name}
             />
             <FormInput
-              labelName="company"
-              register={register("company", { required: false })}
-              forName="company"
-              type="text"
-              placeholder="your company"
+              forName='company'
+              type='text'
+              placeholder='your company'
+              register={register('company', { required: false })}
+              onChange={(event) => setCompany(event.target.value)}
+              value={company}
             />
             <FormInput
-              labelName="email"
-              register={register("email", { required: true })}
-              forName="email"
-              type="email"
-              placeholder="porko@example.com"
+              forName='email'
+              type='text'
+              placeholder='your email address'
+              register={register('email', { required: true })}
+              onChange={(event) => setEmail(event.target.value)}
+              value={email}
             />
             <FormInput
-              labelName="message"
-              register={register("message", { required: true })}
-              forName="message"
-              type="textarea"
-              placeholder="please free message ..."
+              forName='message'
+              type='textarea'
+              placeholder='please free message'
+              register={register('message', { required: true })}
+              onChange={(event) => setMessage(event.target.value)}
+              value={message}
             />
           </div>
           <div className="mt-8">
@@ -58,7 +95,7 @@ export default function ContactPage() {
                 "hover:bg-base-black hover:text-white"
               )}
             >
-              <button type="submit">
+              <button type='submit'>
                 send message
               </button>
             </Button>
