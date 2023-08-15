@@ -1,8 +1,10 @@
+import Link from 'next/link'
 import classNames from 'classnames'
 import type { Works } from '@/ui/base/types/works'
 import type { Creatives } from '@/ui/base/types/creatives'
 import Article from '@/ui/base/article'
 import Section from '@/ui/base/section'
+import { Button } from '@/ui/base/button'
 
 type CategoryListProps = {
   works?: Works[]
@@ -25,13 +27,25 @@ export default function CategoryList({ works, creatives }: CategoryListProps) {
 
   return (
     <Article>
-      <Section>
+      <Section isTopMargin={false}>
         <div className={classNames('lg:flex lg:justify-center lg:items-center lg:gap-4')}>
           {filterCategoryList &&
             filterCategoryList.map((category, index) => (
-              <div key={index} className={classNames('lg:rounded-full lg:border lg:border-base-black lg:py-1.5 lg:px-8')}>
-                <p>{category}</p>
-              </div>
+              <Button
+                key={index}
+                size="s"
+                style="square"
+                optionClassName='border-base-black rounded'
+              >
+                <Link
+                  className='flex justify-center items-center w-full h-full'
+                  href={
+                    `${works ? 'works' : 'creatives'}/${category}/`
+                  }
+                >
+                  {category}
+                </Link>
+              </Button>
             ))
           }
         </div>
