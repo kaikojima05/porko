@@ -25,7 +25,7 @@ export default function AllWorks({ currentPage, totalPage }: AllWorksProps) {
     >
       <WorksPage works={currentPage} />
       <Pagination
-        url='/write/allworks/page'
+        url='works/page/'
         totalPage={totalPage}
         currentPageNumber={pageNumberFromQuery}
       />
