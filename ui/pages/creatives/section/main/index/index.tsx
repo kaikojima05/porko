@@ -1,22 +1,33 @@
+import { useRouter } from "next/router";
 import AllCreativesCard from "@/ui/base/allCreativesCard/index";
 import type { Creatives } from "@/ui/base/types/creatives";
-import Article from "@/ui/base/article";
 import Section from "@/ui/base/section";
 import CategoryList from '@/ui/base/categoryList'
-import { HeadingH2 } from '@/ui/base/heading'
+import Pagination from "@/ui/base/pagination/index";
 
-export default function CreativesPage({ creatives }: { creatives: Creatives[] }) {
+type CreativesPageProps = {
+  creatives: Creatives[];
+  totalPage: number;
+}
+
+export default function CreativesPage({
+  creatives,
+  totalPage
+}: CreativesPageProps) {
+  const router = useRouter()
+  const pageNumberFromQuery = router.query.number ? Number(router.query.number) : 1
+
   return (
-    <Article>
-      <Section isTopMargin={true}>
-        <HeadingH2>
-          all creatives
-        </HeadingH2>
-      </Section>
+    <>
       <Section isTopMargin={false}>
         <CategoryList creatives={creatives} />
         <AllCreativesCard creatives={creatives} />
+        <Pagination
+          url="creatives/page/"
+          totalPage={totalPage}
+          currentPageNumber={pageNumberFromQuery}
+        />
       </Section>
-    </Article>
+    </>
   );
 }

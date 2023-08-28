@@ -26,30 +26,26 @@ export default function CategoryList({ works, creatives }: CategoryListProps) {
   const filterCategoryList = Array.from(new Set(allCategory.flat()))
 
   return (
-    <Article>
-      <Section isTopMargin={false}>
-        <div className={classNames('lg:flex lg:justify-center lg:items-center lg:gap-4')}>
-          {filterCategoryList &&
-            filterCategoryList.map((category, index) => (
-              <Button
-                key={index}
-                size="s"
-                style="square"
-                optionClassName='border-base-black rounded'
-              >
-                <Link
-                  className='flex justify-center items-center w-full h-full'
-                  href={
-                    `${works ? 'works' : 'creatives'}/${category}/`
-                  }
-                >
-                  {category}
-                </Link>
-              </Button>
-            ))
-          }
-        </div>
-      </Section>
-    </Article >
+    <div className={classNames('lg:flex lg:justify-center lg:items-center lg:gap-4')}>
+      {filterCategoryList &&
+        filterCategoryList.map((category, index) => (
+          <Button
+            key={index}
+            size="s"
+            style="square"
+            optionClassName='border-base-black rounded'
+          >
+            <Link
+              className='flex justify-center items-center w-full h-full'
+              href={
+                `${works ? 'works' : 'creatives'}/${category}/`
+              }
+            >
+              {category}
+            </Link>
+          </Button>
+        ))
+      }
+    </div>
   );
 }

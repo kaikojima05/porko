@@ -224,10 +224,9 @@ export default function CtaCreatives({
             <div id="creativesContents" className={classNames(
               "md:overflow-hidden md:h-[40%]"
             )}>
-              <h2 className="border-b border-black pb-3 text-right">
+              <HeadingH2 headingClassName='border-b border-base-black pb-3 text-right'>
                 Creatives
-              </h2>
-              <br />
+              </HeadingH2>
               <p className="mt-3 text-right">
                 {creativesIntroduction}
               </p>

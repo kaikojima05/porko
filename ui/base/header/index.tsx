@@ -27,6 +27,10 @@ export default function Header() {
       title: "creatives"
     },
     {
+      href: "/plan",
+      title: "plan",
+    },
+    {
       href: "/news",
       title: "news",
     },
@@ -117,9 +121,10 @@ export default function Header() {
                       <Link
                         href={item.href}
                         className={classNames(
-                          router.pathname === item.href
-                            ? `current ${loading ? "animate-current" : ""}`
-                            : "induction"
+                          'px-5 py-1 rounded rounded-br-2xl',
+                          `${router.pathname === item.href
+                            ? 'bg-primary text-white'
+                            : ""}`
                         )}
                       >
                         {item.title}

@@ -1,9 +1,9 @@
-import { HeadingH2 } from '@/ui/base/heading/index'
+import classNames from 'classnames';
 import { Button } from '@/ui/base/button';
 import Link from 'next/link';
 
 type CtaProps = {
-  cta: string
+  cta: React.ReactNode
   ctaStyle: string
   buttonStyle: string
   children: React.ReactNode
@@ -16,14 +16,12 @@ export default function Cta({
   children,
 }: CtaProps) {
   return (
-    <div className={ctaStyle}>
-      <div>
-        <HeadingH2
-          headingClassName='!text-[1.5rem]'
-        >
-          {cta}
-        </HeadingH2>
-        <p></p>
+    <div className={classNames(
+      'w-full',
+      `${ctaStyle}`
+    )}>
+      <div className='text-center'>
+        {cta}
       </div>
       <div className='mt-4 flex items-center justify-center'>
         <Button
@@ -31,7 +29,7 @@ export default function Cta({
           style="square"
           optionClassName={buttonStyle}
         >
-          <Link href="contact/" className='flex justify-center items-center'>
+          <Link href="contact/" className='text-[1rem] flex justify-center items-center'>
             {children}
           </Link>
         </Button>

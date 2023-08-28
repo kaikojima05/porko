@@ -3,7 +3,7 @@ import Body from '@/ui/base/body'
 import { GetStaticPropsContext } from 'next'
 import type { News } from '@/ui/base/types/news'
 import { client } from '@/lib/newt'
-import ReactHtmlParser from 'react-html-parser'
+import NewsDetailPage from '@/ui/pages/news/detail/section/main/index'
 
 export const getStaticPaths = async () => {
   const { items } = await client.getContents<News>({
@@ -63,11 +63,10 @@ type NewsDetailProps = {
 
 export default function NewsDetail({ news }: NewsDetailProps) {
   return (
-    <Body>
-      <div>
-        {ReactHtmlParser(news[0].newsTitle)}
-        {ReactHtmlParser(news[0].newscontent)}
-      </div>
+    <Body
+      src='/images/hero_news.webp'
+    >
+      <NewsDetailPage news={news[0]} />
     </Body>
   )
 }

@@ -14,15 +14,16 @@ export default function Pagination({
   currentPageNumber
 }: PaginationProps) {
   const router = useRouter()
+  console.log(totalPage)
 
   return (
     <ReactPaginate
-      previousLabel={'previous'}
-      nextLabel={'next'}
+      previousLabel={'前へ'}
+      nextLabel={'次へ'}
       breakLabel={'...'}
       pageCount={totalPage}
-      marginPagesDisplayed={2}
-      pageRangeDisplayed={2}
+      marginPagesDisplayed={1}
+      pageRangeDisplayed={1}
       forcePage={currentPageNumber - 1}
       onPageChange={({ selected }) => {
         const nextPage = selected + 1;
@@ -32,7 +33,16 @@ export default function Pagination({
         'flex justify-center items-center gap-6',
         'lg:mt-[7.5rem]'
       )}
-      activeClassName={''}
+      pageClassName={classNames(
+        'border border-base-black rounded-[100%] duration-300 overflow-hidden',
+        'hover:scale-90'
+      )}
+      pageLinkClassName={classNames(
+        'w-6 h-6 inline-block flex justify-center items-center',
+        'md:w-14 md:h-14',
+      )}
+      activeLinkClassName='bg-primary'
+      activeClassName='border-primary'
     />
   );
 }

@@ -1,10 +1,8 @@
-import { useRouter } from 'next/router'
 import Body from "@/ui/base/body";
 import { getWorks } from "@/lib/newt";
 import { getFirstView } from '@/lib/getFirstView'
 import type { Works } from "@/ui/base/types/works";
 import WorksPage from "@/ui/pages/works/section/main/index/index";
-import Pagination from '@/ui/base/pagination/index'
 
 export const getStaticProps = async () => {
   return await getFirstView({ getData: getWorks, pageSize: 12 })
@@ -16,19 +14,13 @@ export type AllWorksProps = {
 }
 
 export default function AllWorks({ currentPage, totalPage }: AllWorksProps) {
-  const router = useRouter()
-  const pageNumberFromQuery = router.query.number ? Number(router.query.number) : 1
-
   return (
     <Body
-      bodyClassName="z-0"
+      heading="works"
+      src="/images/hero_works.webp"
+      whats="制作実績"
     >
-      <WorksPage works={currentPage} />
-      <Pagination
-        url='works/page/'
-        totalPage={totalPage}
-        currentPageNumber={pageNumberFromQuery}
-      />
+      <WorksPage works={currentPage} totalPage={totalPage} />
     </Body>
   );
 }

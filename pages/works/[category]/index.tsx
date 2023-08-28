@@ -3,8 +3,7 @@ import { GetStaticPropsContext } from 'next'
 import type { Works } from '@/ui/base/types/works'
 import { client } from '@/lib/newt'
 import Body from '@/ui/base/body'
-import AllWorksCard from '@/ui/pages/works/section/main/index'
-import Pagination from '@/ui/base/pagination/index'
+import WorksPage from '@/ui/pages/works/section/main/index'
 
 export const getStaticPaths = async () => {
   const { items } = await client.getContents<Works>({
@@ -76,19 +75,13 @@ export default function WorksCategory({
   category,
   totalPage
 }: WorksCategoryProps) {
-  const router = useRouter()
-  const pageNumberFromQuery = router.query.number ? Number(router.query.number) : 1
-
   return (
-    <Body>
-      <div>
-        <AllWorksCard works={currentPage} />
-      </div>
-      <Pagination
-        url={`works/${category}/`}
-        totalPage={totalPage}
-        currentPageNumber={pageNumberFromQuery}
-      />
+    <Body
+      heading="works"
+      src="/images/hero_works.webp"
+      whats="制作実績"
+    >
+      <WorksPage works={currentPage} totalPage={totalPage} />
     </Body>
   )
 }

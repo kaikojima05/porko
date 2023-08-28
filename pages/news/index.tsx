@@ -3,8 +3,6 @@ import { useState } from 'react'
 import { useRouter } from 'next/router'
 import { useCatchProfileContext } from '@/ui/hooks/useCatchProfile'
 import Body from "@/ui/base/body";
-import Footer from '@/ui/base/footer'
-import { HeadingH2 } from '@/ui/base/heading/index'
 import { getFirstView } from '@/lib/getFirstView'
 import { getNews } from '@/lib/newt'
 import type { News } from '@/ui/base/types/news'
@@ -36,17 +34,17 @@ export default function News({
       }}
     >
       <Body
-        bodyClassName="z-0"
+        heading='news'
+        src='/images/hero_news.webp'
+        whats='お知らせ'
       >
-        <HeadingH2>news</HeadingH2>
         <NewsPage news={currentPage} />
+        <Pagination
+          url='/news/page'
+          totalPage={totalPage}
+          currentPageNumber={pageNumberFromQuery}
+        />
       </Body>
-      <Pagination
-        url='/news/page'
-        totalPage={totalPage}
-        currentPageNumber={pageNumberFromQuery}
-      />
-      <Footer />
     </useCatchProfileContext.Provider>
   );
 }

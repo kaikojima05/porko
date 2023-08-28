@@ -10,10 +10,10 @@ import HoverIcons from '@/ui/module/hoverIcon/index'
 import { Supplement } from '@/ui/base/supplement/index'
 import { forwardRef } from "react";
 
-const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
+const AboutPage = forwardRef<HTMLDivElement>((_props, ref) => {
   return (
-    <Article articleClassName='font-content'>
-      <Section isTopMargin={true}>
+    <>
+      <Section isTopMargin={false}>
         <div className="before-scroll-repeat" ref={ref}>
           <div
             className={classNames(
@@ -29,9 +29,10 @@ const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
             >
               <Image
                 alt=""
-                src="/images/LINE_ALBUM_230610.jpg"
+                src="/images/hero_about.webp"
                 fill
                 style={{
+                  objectPosition: "top",
                   objectFit: "cover",
                 }}
                 className="rounded"
@@ -40,12 +41,14 @@ const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
             <div className={classNames(
               'md:flex md:flex-col md:justify-between'
             )}>
-              <p className={classNames(
-                "text-[1.25rem] inline-block pr-[2rem] pb-2 border-b border-base-black text-[1.125rem]",
-                "md:pr-[9rem]"
-              )} >
-                小嶋 麻莉恵 - Marie Kojima
-              </p>
+              <div className='border-b border-base-black pb-2'>
+                <p className={classNames(
+                  "text-[1.125rem]",
+                  "md:text-[1.25rem]"
+                )} >
+                  小嶋 麻莉恵 - Marie Kojima
+                </p>
+              </div>
               <div className={classNames(
                 'my-6',
                 'md:my-0'
@@ -119,7 +122,7 @@ const AboutPage = forwardRef<HTMLDivElement>((props, ref) => {
           ))}
         </div>
       </Section>
-    </Article>
+    </>
   );
 }
 );

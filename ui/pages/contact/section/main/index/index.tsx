@@ -46,8 +46,8 @@ export default function ContactPage() {
     }
   }
   return (
-    <Article>
-      <Section isTopMargin={true}>
+    <>
+      <Section isTopMargin={false}>
         <form onSubmit={onSubmit}>
           <div className={classNames(
             "[&>*]:mt-4",
@@ -102,6 +102,6 @@ export default function ContactPage() {
           </div>
         </form>
       </Section>
-    </Article>
+    </>
   )
 }

@@ -3,7 +3,6 @@ import { GetStaticPropsContext } from 'next';
 import { getAllData } from '@/lib/getAllData';
 import { getPagesPaths } from '@/lib/getPagesPaths'
 import Body from '@/ui/base/body'
-import { HeadingH2 } from '@/ui/base/heading/index'
 import NewsPage from '@/ui/pages/news/section/main/index'
 import { getNews } from '@/lib/newt'
 import type { News } from '@/ui/base/types/news'
@@ -28,9 +27,9 @@ export default function WorksPages({ currentPage, totalPage }: WorksPagesProps) 
 
   return (
     <Body
-      bodyClassName="z-0"
+      heading="news"
+      src="/images/hero_news.webp"
     >
-      <HeadingH2>news</HeadingH2>
       <NewsPage news={currentPage} />
       <Pagination
         url='/news/page'
