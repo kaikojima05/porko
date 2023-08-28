@@ -64,6 +64,7 @@ type NewsDetailProps = {
 export default function NewsDetail({ news }: NewsDetailProps) {
   return (
     <Body
+      whats="お知らせ"
       src='/images/hero_news.webp'
     >
       <NewsDetailPage news={news[0]} />

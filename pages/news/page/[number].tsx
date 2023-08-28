@@ -28,6 +28,7 @@ export default function WorksPages({ currentPage, totalPage }: WorksPagesProps) 
   return (
     <Body
       heading="news"
+      whats='お知らせ'
       src="/images/hero_news.webp"
     >
       <NewsPage news={currentPage} />

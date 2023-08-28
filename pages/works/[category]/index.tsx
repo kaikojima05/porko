@@ -1,4 +1,3 @@
-import { useRouter } from 'next/router'
 import { GetStaticPropsContext } from 'next'
 import type { Works } from '@/ui/base/types/works'
 import { client } from '@/lib/newt'

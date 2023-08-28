@@ -14,7 +14,6 @@ export default function Pagination({
   currentPageNumber
 }: PaginationProps) {
   const router = useRouter()
-  console.log(totalPage)
 
   return (
     <ReactPaginate
