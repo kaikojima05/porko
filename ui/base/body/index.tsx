@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import classNames from "classnames";
 import Article from "@/ui/base/article";
@@ -10,7 +11,7 @@ import { HeadingH1, HeadingH2, HeadingH3 } from '@/ui/base/heading/index'
 import { useOnScrollAnimation } from '@/ui/hooks/useOnScrollAnimation'
 
 type BodyProps = {
-  whats: string
+  whats: React.ReactNode;
   src: string
   heading?: string
   children?: React.ReactNode;
@@ -24,9 +25,29 @@ export default function Body({
   children,
   bodyClassName = '',
 }: BodyProps) {
+  const pageTitleRef = useRef<HTMLHeadingElement | null>(null)
   const router = useRouter()
   const backgroundRef = useOnScrollAnimation()
-  const titleRef = useOnScrollAnimation()
+
+  useEffect(() => {
+    if (!pageTitleRef.current) return;
+
+    let currentIndex = 0;
+
+    const spans = pageTitleRef.current.querySelectorAll('span')
+
+    const animationInterval = setInterval(() => {
+      if (currentIndex < spans.length) {
+        spans[currentIndex].classList.remove('opacity-0')
+        currentIndex += 1
+      } else {
+        clearInterval(animationInterval)
+      }
+    }, 250)
+
+    return () => clearInterval(animationInterval)
+
+  }, []);
 
   return (
     <>
@@ -58,12 +79,11 @@ export default function Body({
           )}
         >
           <div className={classNames(
-            'hidden before-scroll-once',
+            'hidden',
             'lg:inline lg:fixed lg:bottom-4 lg:left-4',
           )}
-            ref={titleRef}
           >
-            <HeadingH1 headingClassName='writing-vertical'>
+            <HeadingH1 headingClassName='writing-vertical' ref={pageTitleRef}>
               {whats}
             </HeadingH1>
           </div>
