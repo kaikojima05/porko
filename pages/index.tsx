@@ -122,8 +122,8 @@ export default function Home({
                   ref={sectionMessageRef}
                 >
                   <div className={classNames(
-                    "flex flex-row-reverse gap-2 w-full",
-                    "[&>div]:flex-1 [&>div]:flex [&>div]:justify-center",
+                    "flex flex-row-reverse gap-2 w-full justify-center",
+                    "[&>div]:flex [&>div]:justify-center [&>div]:inline",
                     "md:w-auto"
                   )}>
                     <HeadingH2 headingClassName="writing-vertical">
