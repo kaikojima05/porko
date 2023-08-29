@@ -42,7 +42,7 @@ const seriesData = [
   },
   {
     "headLine": "2023.08",
-    "children": "当サイト「porko」公開。（designed by <a class='pb-1 border-b border-base-black' href='https://twitter.com/kaikojima0724'>@kaikojima0724</a>）"
+    "children": "当サイト「porko」公開。<br class='md:hidden' />（designed by <a class='pb-1 border-b border-base-black' href='https://twitter.com/kaikojima0724'>@kaikojima0724</a>）"
   },
 ]
 
