@@ -59,6 +59,7 @@ export default function Home({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
     >
       <Header />
       <div className={classNames(
@@ -114,24 +115,29 @@ export default function Home({
               <Section isTopMargin={true}>
                 <div
                   className={classNames(
-                    "flex flex-col justify-center items-start before-scroll-repeat gap-5",
-                    "md:flex-row-reverse md:gap-8"
+                    "flex flex-row justify-center items-center before-scroll-once gap-5",
+                    "md:flex-row-reverse md:gap-8",
+                    "lg:items-start"
                   )}
                   ref={sectionMessageRef}
                 >
-                  <div className="flex flex-row-reverse gap-2">
+                  <div className={classNames(
+                    "flex flex-row-reverse gap-2 w-full",
+                    "[&>div]:flex-1 [&>div]:flex [&>div]:justify-center",
+                    "md:w-auto"
+                  )}>
                     <HeadingH2 headingClassName="writing-vertical">
                       言の葉の雨を降らせよう
                     </HeadingH2>
                     <div>
-                      <p className="leading-8 writing-vertical text-base">
+                      <p className="leading-8 writing-vertical text-base text-left">
                         話すことととは違い、書くことは
                         <br />
                         ひとつの形としていつまでも残り続けるもの。
                       </p>
                     </div>
                     <div>
-                      <p className="leading-8 writing-vertical text-base">
+                      <p className="leading-8 writing-vertical text-base text-left">
                         だからこそ丁寧に、真摯に。
                         <br />
                         どんなにちいさな〈ことば〉だとしても、
@@ -143,7 +149,7 @@ export default function Home({
                       "hidden",
                       "md:inline-block"
                     )}>
-                      <p className="leading-8 writing-vertical text-base">
+                      <p className="leading-8 writing-vertical text-base text-left">
                         〈ことば〉で情報を正しく伝え、
                         <br />
                         〈ことば〉で想いを届ける担い手になるために。

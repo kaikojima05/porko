@@ -55,14 +55,16 @@ export default function Body({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      transition={{ duration: 1 }}
     >
       <Header />
       <div className={classNames(
-        'pt-[3.3125rem] w-full',
+        'pt-[3.5625rem] w-full',
         'lg:pt-[4.875rem]'
       )}>
         <div ref={backgroundRef} className={classNames(
-          "before-scroll-once h-[25rem] w-full",
+          "before-scroll-once h-[18rem] w-full",
+          "lg:h-[25rem]"
         )}>
           <Image
             alt="portforio サイト porko のイメージ画像"

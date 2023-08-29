@@ -51,12 +51,7 @@ br {
 /*要素の浮上表示*/
 .before-scroll-once {
   opacity: 0;
-  transform: translateY(9%);
-}
-
-.before-scroll-repeat {
-  opacity: 0;
-  transform: translateY(7%);
+  transform: translateY(10%);
 }
 
 .on-scroll {

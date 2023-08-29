@@ -31,7 +31,7 @@ export const HeadingH2 = ({
 }: HeadingProps) => {
   return (
     <div className={classNames(
-      'text-center',
+      'text-center flex justify-center items-center',
       'lg:px-6'
     )}>
       <h2 className={classNames(
