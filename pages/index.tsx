@@ -1,3 +1,4 @@
+import { useRef, useEffect } from 'react'
 import Image from "next/image";
 import { getWorks } from "@/lib/newt";
 import { getCreatives } from "@/lib/newt";
@@ -28,9 +29,29 @@ export default function Home({
   creatives,
   news,
 }: HomeProps) {
+  const pageTitleRef = useRef<HTMLHeadingElement | null>(null)
   const sectionMessageRef = useOnScrollAnimation();
   const backgroundRef = useOnScrollAnimation()
-  const titleRef = useOnScrollAnimation()
+
+  useEffect(() => {
+    if (!pageTitleRef.current) return;
+
+    let currentIndex = 0;
+
+    const spans = pageTitleRef.current.querySelectorAll('span')
+
+    const animationInterval = setInterval(() => {
+      if (currentIndex < spans.length) {
+        spans[currentIndex].classList.remove('opacity-0')
+        currentIndex += 1
+      } else {
+        clearInterval(animationInterval)
+      }
+    }, 200)
+
+    return () => clearInterval(animationInterval)
+
+  }, []);
 
   return (
     <>
@@ -62,13 +83,21 @@ export default function Home({
           )}
         >
           <div className={classNames(
-            'hidden before-scroll-once',
+            'hidden',
             'lg:inline lg:fixed lg:bottom-4 lg:left-4',
           )}
-            ref={titleRef}
           >
-            <HeadingH1 headingClassName='writing-vertical'>
-              声を掬い、創って世界へ。
+            <HeadingH1 headingClassName='writing-vertical' ref={pageTitleRef}>
+              <span className="opacity-0">こ</span>
+              <span className="opacity-0">と</span>
+              <span className="opacity-0">ば</span>
+              <span className="opacity-0">で</span>
+              <span className="opacity-0">つ</span>
+              <span className="opacity-0">な</span>
+              <span className="opacity-0">ぐ</span>
+              <span className="opacity-0">こ</span>
+              <span className="opacity-0">と</span>
+              <span className="opacity-0">ば</span>
             </HeadingH1>
           </div>
           <div className={classNames(

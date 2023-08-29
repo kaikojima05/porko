@@ -17,8 +17,16 @@ export default function About() {
     >
       <Body
         heading="about"
-        src="/images/hero_1.webp"
-        whats="私について"
+        src="/images/hero_about.webp"
+        whats={
+          <>
+            <span className="opacity-0">私</span>
+            <span className="opacity-0">に</span>
+            <span className="opacity-0">つ</span>
+            <span className="opacity-0">い</span>
+            <span className="opacity-0">て</span>
+          </>
+        }
       >
         <AboutPage
           ref={Ref}

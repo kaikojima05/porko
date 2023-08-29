@@ -11,7 +11,13 @@ export default function Plan() {
     <Body
       heading="plan"
       src="/images/hero_plan.webp"
-      whats="プラン"
+      whats={
+        <>
+          <span className="opacity-0">プ</span>
+          <span className="opacity-0">ラ</span>
+          <span className="opacity-0">ン</span>
+        </>
+      }
     >
       <PlanPage />
     </Body>

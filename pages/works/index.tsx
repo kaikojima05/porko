@@ -18,7 +18,14 @@ export default function AllWorks({ currentPage, totalPage }: AllWorksProps) {
     <Body
       heading="works"
       src="/images/hero_works.webp"
-      whats="制作実績"
+      whats={
+        <>
+          <span className="opacity-0">制</span>
+          <span className="opacity-0">作</span>
+          <span className="opacity-0">実</span>
+          <span className="opacity-0">績</span>
+        </>
+      }
     >
       <WorksPage works={currentPage} totalPage={totalPage} />
     </Body>

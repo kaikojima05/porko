@@ -36,7 +36,14 @@ export default function News({
       <Body
         heading='news'
         src='/images/hero_news.webp'
-        whats='お知らせ'
+        whats={
+          <>
+            <span className='opacity-0'>お</span>
+            <span className='opacity-0'>知</span>
+            <span className='opacity-0'>ら</span>
+            <span className='opacity-0'>せ</span>
+          </>
+        }
       >
         <NewsPage news={currentPage} />
         <Pagination

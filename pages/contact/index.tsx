@@ -7,7 +7,16 @@ export default function Contact() {
       <Body
         heading="contact"
         src="/images/hero_contact.webp"
-        whats="お問い合わせ"
+        whats={
+          <>
+            <span className="opacity-0">お</span>
+            <span className="opacity-0">問</span>
+            <span className="opacity-0">い</span>
+            <span className="opacity-0">合</span>
+            <span className="opacity-0">わ</span>
+            <span className="opacity-0">せ</span>
+          </>
+        }
       >
         <ContactPage />
       </Body>

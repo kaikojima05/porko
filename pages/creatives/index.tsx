@@ -19,7 +19,18 @@ export default function Creatives({ currentPage, totalPage }: CreativesProps) {
     <Body
       heading="creatives"
       src="/images/hero_creatives.webp"
-      whats="クリエイティブ"
+      whats={
+        <>
+          <span className="opacity-0">ク</span>
+          <span className="opacity-0">リ</span>
+          <span className="opacity-0">エ</span>
+          <span className="opacity-0">イ</span>
+          <span className="opacity-0">テ</span>
+          <span className="opacity-0">ィ</span>
+          <span className="opacity-0">ブ</span>
+          <span className="opacity-0">ス</span>
+        </>
+      }
     >
       <CreativesPage creatives={currentPage} totalPage={totalPage} />
     </Body>
