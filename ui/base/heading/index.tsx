@@ -1,25 +1,29 @@
 import classNames from 'classnames'
+import React from 'react';
 
 type HeadingProps = {
   children: React.ReactNode;
   headingClassName?: string
 }
 
-export const HeadingH1 = ({
-  children,
-  headingClassName
-}: HeadingProps) => {
-  return (
-    <h1 className={classNames(
-      'font-head text-[1.5rem] font-extralight',
-      'md:text-[1.8rem]',
-      'lg:px-6 lg:text-[2.25rem]',
-      `${headingClassName}`
-    )}>
-      {children}
-    </h1>
-  );
-}
+export const HeadingH1 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
+  ({ children, headingClassName }, ref) => {
+    return (
+      <h1 className={classNames(
+        'font-head text-[1.5rem] font-extralight',
+        'md:text-[1.8rem]',
+        'lg:px-6 lg:text-[2.25rem]',
+        `${headingClassName}`
+      )}
+        ref={ref}
+      >
+        {children}
+      </h1>
+    );
+  }
+)
+
+HeadingH1.displayName = 'HeadingH1'
 
 export const HeadingH2 = ({
   children,
