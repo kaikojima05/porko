@@ -104,7 +104,7 @@ export default function Header() {
           <div className="flex justify-between items-center">
             <div onClick={(e) => e.stopPropagation()} className="">
               <h1 className="flex justify-center items-center">
-                <Link href="/" className="text-base">
+                <Link href="/" className="text-base" scroll={false}>
                   porko
                 </Link>
               </h1>
@@ -126,6 +126,7 @@ export default function Header() {
                             ? 'bg-primary text-white'
                             : ""}`
                         )}
+                        scroll={false}
                       >
                         {item.title}
                       </Link>
@@ -179,6 +180,7 @@ export default function Header() {
                           : "induction"
                         }`
                       )}
+                      scroll={false}
                     >
                       {item.title}
                     </Link>

@@ -40,6 +40,7 @@ export default function CategoryList({ works, creatives }: CategoryListProps) {
               href={
                 `${works ? 'works' : 'creatives'}/${category}/`
               }
+              scroll={false}
             >
               {category}
             </Link>

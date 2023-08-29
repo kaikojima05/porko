@@ -1,3 +1,4 @@
+import { motion } from 'framer-motion'
 import { useRef, useEffect } from 'react'
 import { useRouter } from 'next/router'
 import classNames from "classnames";
@@ -43,14 +44,18 @@ export default function Body({
       } else {
         clearInterval(animationInterval)
       }
-    }, 250)
+    }, 200)
 
     return () => clearInterval(animationInterval)
 
   }, []);
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Header />
       <div className={classNames(
         'pt-[3.3125rem] w-full',
@@ -134,6 +139,6 @@ export default function Body({
         </main>
       </div>
       <Footer />
-    </>
+    </motion.div>
   );
 }

@@ -209,6 +209,7 @@ export default function CtaCreatives({
                 <Link
                   href="creatives/"
                   className="flex justify-center items-center py-2"
+                  scroll={false}
                 >
                   {finalText}
                 </Link>

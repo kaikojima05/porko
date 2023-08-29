@@ -21,6 +21,7 @@ export default function NewsTitleList({ newsList }: NewsTitleListProps) {
             'w-full pb-2 flex justify-between items-center border-b border-base-black group',
             `${index !== 0 ? 'mt-8' : 'mt-0'}`
           )}
+          scroll={false}
         >
           <div>
             <HeadingH3 headingClassName={classNames(

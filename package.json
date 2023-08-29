@@ -28,6 +28,7 @@
     "emailjs-com": "^3.2.0",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
+    "framer-motion": "^10.16.1",
     "jsdom": "^22.1.0",
     "newt-client-js": "^3.2.4",
     "next": "13.4.4",

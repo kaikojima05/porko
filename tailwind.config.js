@@ -10,7 +10,7 @@ module.exports = {
     extend: {
       colors: {
         "base-black": "rgba(0, 0, 0, 0.67)",
-        primary: "rgba(245, 177, 153, 0.53)",
+        primary: "rgba(161, 109, 93, 0.65)",
         accent: "rgba(128, 171, 169, 0.59)",
       },
       fontFamily: {

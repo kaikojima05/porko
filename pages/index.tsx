@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import { useRef, useEffect } from 'react'
 import Image from "next/image";
 import { getWorks } from "@/lib/newt";
@@ -54,7 +55,11 @@ export default function Home({
   }, []);
 
   return (
-    <>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
       <Header />
       <div className={classNames(
         'pt-[3.3125rem] w-full',
@@ -234,7 +239,7 @@ export default function Home({
         </main >
       </div >
       <Footer />
-    </>
+    </motion.div>
   );
 }
 
