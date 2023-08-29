@@ -4,7 +4,6 @@ import profile from './profile.js'
 import Image from "next/image";
 import classNames from "classnames";
 import Section from "@/ui/base/section";
-import Article from "@/ui/base/article";
 import { HeadingH3 } from "@/ui/base/heading";
 import HoverIcons from '@/ui/module/hoverIcon/index'
 import { Supplement } from '@/ui/base/supplement/index'
@@ -29,7 +28,7 @@ const AboutPage = forwardRef<HTMLDivElement>((_props, ref) => {
             >
               <Image
                 alt=""
-                src="/images/hero_about.webp"
+                src="/images/profile.webp"
                 fill
                 style={{
                   objectPosition: "top",
