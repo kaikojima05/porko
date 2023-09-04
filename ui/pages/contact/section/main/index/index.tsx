@@ -2,7 +2,6 @@ import { useState, useRef } from 'react'
 import { useForm } from 'react-hook-form'
 import emailjs from 'emailjs-com'
 import classNames from "classnames";
-import Article from "@/ui/base/article";
 import Section from "@/ui/base/section";
 import { Button } from '@/ui/base/button'
 import FormInput from '@/ui/snippet/formInput'
@@ -92,7 +91,7 @@ export default function ContactPage() {
               style="square"
               optionClassName={classNames(
                 "ml-auto border-base-black rounded duration-300",
-                "hover:bg-base-black hover:text-white"
+                "lg:hover:bg-base-black lg:hover:text-white"
               )}
             >
               <button type='submit'>
