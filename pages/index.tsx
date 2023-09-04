@@ -1,3 +1,4 @@
+import Link from 'next/link'
 import { motion } from "framer-motion";
 import { useRef, useEffect } from 'react'
 import Image from "next/image";
@@ -14,6 +15,7 @@ import { HeadingH1, HeadingH2, HeadingH3 } from '@/ui/base/heading'
 import Cta from '@/ui/base/cta/index'
 import CtaWorks from "@/ui/base/ctaWorks/index";
 import CtaCreatives from "@/ui/base/ctaCreatives/index";
+import { Button } from '@/ui/base/button/index'
 import { Works } from "@/ui/base/types/works";
 import { Creatives } from "@/ui/base/types/creatives";
 import { News } from "@/ui/base/types/news";
@@ -48,7 +50,7 @@ export default function Home({
       } else {
         clearInterval(animationInterval)
       }
-    }, 200)
+    }, 170)
 
     return () => clearInterval(animationInterval)
 
@@ -67,7 +69,9 @@ export default function Home({
         'lg:pt-[4.875rem]'
       )}>
         <div ref={backgroundRef} className={classNames(
-          "before-scroll-once h-[25rem] w-full",
+          "before-scroll-once h-[18rem] w-full",
+          "md:h-[21rem]",
+          "lg:h-[25rem]"
         )}>
           <Image
             alt="portforio サイト porko のイメージ画像"
@@ -90,20 +94,24 @@ export default function Home({
         >
           <div className={classNames(
             'hidden',
-            'lg:inline lg:fixed lg:bottom-4 lg:left-4',
+            'xl:inline xl:fixed xl:bottom-8 xl:left-4 xl:z-10',
           )}
           >
-            <HeadingH1 headingClassName='writing-vertical' ref={pageTitleRef}>
-              <span className="opacity-0">こ</span>
-              <span className="opacity-0">と</span>
-              <span className="opacity-0">ば</span>
+            <HeadingH1 headingClassName='writing-vertical !text-[1.8125rem]' ref={pageTitleRef}>
+              <span className="opacity-0">何</span>
+              <span className="opacity-0">度</span>
               <span className="opacity-0">で</span>
-              <span className="opacity-0">つ</span>
-              <span className="opacity-0">な</span>
-              <span className="opacity-0">ぐ</span>
-              <span className="opacity-0">こ</span>
-              <span className="opacity-0">と</span>
-              <span className="opacity-0">ば</span>
+              <span className="opacity-0">も</span>
+              <span className="opacity-0">茂</span>
+              <span className="opacity-0">り</span>
+              <span className="opacity-0">、</span>
+              <span className="opacity-0">ま</span>
+              <span className="opacity-0">た</span>
+              <span className="opacity-0">葉</span>
+              <span className="opacity-0">は</span>
+              <span className="opacity-0">色</span>
+              <span className="opacity-0">づ</span>
+              <span className="opacity-0">く</span>
             </HeadingH1>
           </div>
           <div className={classNames(
@@ -200,8 +208,23 @@ export default function Home({
           )}>
             <Article>
               <Section isTopMargin={false}>
+                <div className="flex items-center justify-center border-b border-base-black">
+                  <div>
+                    <Link className="flex items-center justify-center text-[1.75rem]" href="/plan" scroll={false}>Plan</Link>
+                  </div>
+                  <div className={classNames(
+                    'mx-2'
+                  )}>
+                    <p className="text-[2rem]">/</p>
+                  </div>
+                  <div>
+                    <p className="text-[1.25rem]">お仕事のご依頼・ご相談の参考としてご覧ください</p>
+                  </div>
+                </div>
+              </Section>
+              <Section isTopMargin={false}>
                 <div>
-                  <HeadingH2>News</HeadingH2>
+                  <HeadingH2>news</HeadingH2>
                 </div>
                 <div className={classNames(
                   'mt-8',
@@ -218,10 +241,8 @@ export default function Home({
                   <Cta
                     cta={
                       <>
-                        <HeadingH2
-                          headingClassName=''
-                        >
-                          Contact
+                        <HeadingH2>
+                          contact
                         </HeadingH2>
                         <HeadingH3
                           headingClassName='mt-4'
@@ -245,7 +266,7 @@ export default function Home({
         </main >
       </div >
       <Footer />
-    </motion.div>
+    </motion.div >
   );
 }
 
