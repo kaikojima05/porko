@@ -7,10 +7,10 @@ import { useCatchProfileContext } from "@/ui/hooks/useCatchProfile";
 
 export default function Header() {
   const router = useRouter();
+  const path = router.asPath
+  const currentPath = decodeURIComponent(path)
   const [open, setOpen] = useState<boolean>(false);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [fontColor, setFontColor] = useState<string>("text-white");
-  const [hamburgerColor, setHamburgerColor] = useState<string>("bg-white");
+  const [fontColor, setFontColor] = useState<string>("text-bas-black");
   const { isHamburgerOpen, setIsHamburgerOpen } =
     useContext(useCatchProfileContext);
   const navItems = [
@@ -41,18 +41,14 @@ export default function Header() {
   ];
 
   useEffect(() => {
-    setLoading(true);
-  }, []);
-
-  useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
-      if (currentScrollY > 180) {
+      if (currentScrollY < 60) {
         setFontColor("text-base-black");
-        setHamburgerColor("bg-base-black");
-      } else {
+      } else if (currentScrollY > 60 && currentScrollY < 300) {
         setFontColor("text-white");
-        setHamburgerColor("bg-white");
+      } else if (currentScrollY > 300) {
+        setFontColor("text-base-black");
       }
     };
 
@@ -89,13 +85,12 @@ export default function Header() {
       <nav
         className={classNames(
           "z-50 w-full fixed header-border backdrop-blur",
-          `${loading ? "border-animation blur-animation" : ""}`
         )}
         onClick={toggleHamburgerMenu}
       >
         <header
           className={classNames(
-            "px-4 py-4",
+            "px-4 py-4 duration-500",
             "lg:px-16 lg:py-6",
             "xl:px-24",
             `${fontColor}`,
@@ -122,7 +117,7 @@ export default function Header() {
                         href={item.href}
                         className={classNames(
                           'px-5 py-1 rounded rounded-br-2xl',
-                          `${router.pathname === item.href
+                          `${currentPath.includes(item.href)
                             ? 'bg-primary text-white'
                             : ""}`
                         )}
@@ -141,15 +136,13 @@ export default function Header() {
             >
               <span
                 className={classNames(
-                  "hamburger-menu-bar-top",
-                  `${hamburgerColor}`,
+                  "hamburger-menu-bar-top bg-base-black",
                   `${open && "top-open"}`
                 )}
               ></span>
               <span
                 className={classNames(
-                  "hamburger-menu-bar-bottom",
-                  `${hamburgerColor}`,
+                  "hamburger-menu-bar-bottom bg-base-black",
                   `${open && "bottom-open"}`
                 )}
               ></span>
