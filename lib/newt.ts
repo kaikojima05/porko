@@ -1,5 +1,4 @@
 import { createClient } from "newt-client-js";
-import { GetStaticPropsContext } from 'next';
 import type { Works } from "@/ui/base/types/works";
 import type { Creatives } from "@/ui/base/types/creatives";
 import type { News } from '@/ui/base/types/news'
