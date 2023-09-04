@@ -224,35 +224,6 @@ br {
   border-radius: 9999px;
 }
 
-.toggleProfile.kai::before {
-  animation: move-right 1s forwards;
-}
-
-.toggleProfile.marie::before {
-  animation: move-left 1s forwards;
-}
-
-@keyframes move-right {
-  0% {
-    background-color: rgba(245, 177, 153, 0.63);
-    right: 52.5%;
-}
-  100% {
-    background-color: rgba(128, 171, 169, 0.70);
-    right: 2.5%;
-}
-}
-
-@keyframes move-left {
-  0% {
-    background-color: rgba(128, 171, 169, 0.70);
-    right: 2.5%;
-}
-  100% {
-    background-color: rgba(245, 177, 153, 0.63);
-    right: 52.5%;
-}
-}
 
 /* ハンバーガーメニュー */
 .hamburger-menu {
@@ -393,10 +364,10 @@ opacity: 1;
   transform: translateY(0%);
 }
 85% {
-  transform: translateY(100%);
+  transform: translateY(50%);
 }
 100% {
-  transform: translateY(100%);
+  transform: translateY(50%);
 }
 }
 
