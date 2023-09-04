@@ -10,29 +10,36 @@ export const getStaticProps = async () => {
 }
 
 export type CreativesProps = {
+  data: Creatives[]
   currentPage: Creatives[]
   totalPage: number
 }
 
-export default function Creatives({ currentPage, totalPage }: CreativesProps) {
+export default function Creatives({ data, currentPage, totalPage }: CreativesProps) {
   return (
     <Body
       heading="creatives"
       src="/images/hero_creatives.webp"
       whats={
         <>
-          <span className="opacity-0">ク</span>
-          <span className="opacity-0">リ</span>
-          <span className="opacity-0">エ</span>
-          <span className="opacity-0">イ</span>
-          <span className="opacity-0">テ</span>
-          <span className="opacity-0">ィ</span>
-          <span className="opacity-0">ブ</span>
-          <span className="opacity-0">ス</span>
+          <span className="opacity-0">想</span>
+          <span className="opacity-0">い</span>
+          <span className="opacity-0">の</span>
+          <span className="opacity-0">丈</span>
+          <span className="opacity-0">を</span>
+          <span className="opacity-0 writing-vertical">〈</span>
+          <span className="opacity-0">こ</span>
+          <span className="opacity-0">と</span>
+          <span className="opacity-0">ば</span>
+          <span className="opacity-0 writing-vertical">〉</span>
+          <span className="opacity-0 writing-vertical">に</span>
+          <span className="opacity-0 writing-vertical">乗</span>
+          <span className="opacity-0 writing-vertical">せ</span>
+          <span className="opacity-0 writing-vertical">て</span>
         </>
       }
     >
-      <CreativesPage creatives={currentPage} totalPage={totalPage} />
+      <CreativesPage data={data} creatives={currentPage} totalPage={totalPage} />
     </Body>
   );
 }
