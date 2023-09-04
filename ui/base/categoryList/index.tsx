@@ -1,44 +1,41 @@
+import { useRouter } from 'next/router'
 import Link from 'next/link'
 import classNames from 'classnames'
 import type { Works } from '@/ui/base/types/works'
 import type { Creatives } from '@/ui/base/types/creatives'
-import Article from '@/ui/base/article'
-import Section from '@/ui/base/section'
 import { Button } from '@/ui/base/button'
 
 type CategoryListProps = {
-  works?: Works[]
-  creatives?: Creatives[]
+  baseUrl: 'works' | 'creatives'
+  data: Works[] | Creatives[] | undefined
 }
 
-export default function CategoryList({ works, creatives }: CategoryListProps) {
-  let categoryList: Works[] | Creatives[] | undefined
-
-  if (works) {
-    categoryList = works
-  } else if (creatives) {
-    categoryList = creatives
-  } else {
-    return null
-  }
-
-  const allCategory = categoryList.map((item) => item.category)
-  const filterCategoryList = Array.from(new Set(allCategory.flat()))
+export default function CategoryList({ baseUrl, data }: CategoryListProps) {
+  const router = useRouter()
+  const path = router.asPath
+  const currentPath = decodeURIComponent(path)
+  const categoryData = data?.map((item) => item.category)
+  const categories = Array.from(new Set(categoryData?.flat()))
 
   return (
     <div className={classNames('lg:flex lg:justify-center lg:items-center lg:gap-4')}>
-      {filterCategoryList &&
-        filterCategoryList.map((category, index) => (
+      {categories &&
+        categories.map((category, index) => (
           <Button
             key={index}
             size="s"
             style="square"
-            optionClassName='border-base-black rounded'
+            optionClassName={classNames(
+              'rounded',
+              `${currentPath.includes(category) ? 'bg-primary text-white' : 'border-base-black'}`
+            )}
           >
             <Link
-              className='flex justify-center items-center w-full h-full'
+              className={classNames(
+                'flex justify-center items-center w-full h-full',
+              )}
               href={
-                `${works ? 'works' : 'creatives'}/${category}/`
+                `/${baseUrl}/${category}/`
               }
               scroll={false}
             >
