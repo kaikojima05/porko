@@ -1,10 +1,9 @@
 import Link from 'next/link'
-import { useState, useMemo, useEffect, useRef, createRef, RefObject } from "react";
+import { useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Works } from "@/ui/base/types/works";
 import classNames from "classnames";
 import { HeadingH2 } from '@/ui/base/heading/index'
 import { Button } from '@/ui/base/button/index'
-import { CtaButton } from '@/ui/base/button/index'
 import { CardStyle } from "@/ui/module/cardStyle/index";
 
 type CtaWorksProps = {
@@ -15,17 +14,6 @@ export default function CtaWorks({
   works,
 }: CtaWorksProps) {
   const worksRefs = useRef<RefObject<HTMLDivElement>[]>([]);
-
-  const initialText = "latest 4 ...";
-  const finalText = "see more ...";
-
-  const [clickEvent, setClickEvent] = useState<boolean>(false)
-  const [text, setText] = useState<string>(initialText);
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const [isWriting, setIsWriting] = useState<boolean>(false);
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-
-  const hasStartedRef = useRef(false);
   const worksIntroduction = "執筆実績（企画・取材・撮影から携わったものもあります）"
 
   works.map((_, index) => {
@@ -86,79 +74,16 @@ export default function CtaWorks({
     });
   }, [sortWorks]);
 
-  const handleCardViewEvent = (event: React.MouseEvent<HTMLElement>) => {
-    if (!clickEvent) {
-      event.preventDefault()
-      setClickEvent(true)
-    }
-    const worksCardList = document.querySelectorAll('.worksCard')
-    const worksBox = document.getElementById('worksBox')
-    const worksContents = document.getElementById('worksContents')
-
-    worksCardList.forEach((item, index) => {
-      if (index !== 0) {
-        item.classList.add('open')
-      } else {
-        item.classList.add('noMove')
-      }
-    })
-
-    if (worksBox) worksBox.classList.add('move')
-    if (worksContents) worksContents.classList.add('delete')
-
-    setIsAnimating(true);
-  }
-
-  useEffect(() => {
-    let timerId: NodeJS.Timeout;
-
-    if (isAnimating && !isWriting) {
-      if (text.length > 0) {
-        if (!hasStartedRef.current) {
-          hasStartedRef.current = true;
-          setTimeout(() => {
-            timerId = setInterval(() => {
-              setText(text.slice(0, -1));
-            }, 100);
-          }, 1600);
-        } else {
-          timerId = setInterval(() => {
-            setText(text.slice(0, -1));
-          }, 100);
-        }
-      } else {
-        setIsWriting(true);
-      }
-    } else if (isAnimating && isWriting) {
-      if (currentIndex < finalText.length) {
-        timerId = setInterval(() => {
-          setText((t) => t + finalText[currentIndex]);
-          setCurrentIndex((i) => i + 1);
-        }, 100);
-      } else {
-        setIsAnimating(false);
-      }
-    }
-
-    return () => clearInterval(timerId);
-  }, [text, isAnimating, isWriting, currentIndex, finalText]);
-
   return (
     <>
       <div className={classNames(
         "w-full",
       )}>
-        <div
-          id="worksCards"
-          className={classNames(
-            "grid gap-x-4 grid-cols-2 relative w-full h-full",
-            "lg:grid-cols-4",
-            "lg:h-[19.375rem] lg:max-h-[19.375rem]",
-            "xl:h-[20rem] xl:max-h-[20rem]",
-          )}
-        >
-          {
-            sortWorks
+        <div className="flex gap-6 w-full">
+          <div className={classNames(
+            'lg:max-w-[30%]'
+          )}>
+            {sortWorks
               .sort((a, b) => {
                 if (a.appeal && !b.appeal) {
                   return -1;
@@ -167,82 +92,67 @@ export default function CtaWorks({
                 }
                 return 0;
               })
-              .slice(0, 5)
-              .map((work, index) => {
-                return (
-                  <div
-                    id={`${index}`}
-                    ref={worksRefs.current[index]}
-                    key={work._id}
-                    className={classNames(
-                      `${index !== 0 ? "absolute w-0" : "static"}`,
-                      "top-0 block worksCard"
-                    )}
-                    style={{
-                      zIndex: `${10 - index}`,
-                      opacity: index !== 0 ? '0' : '1'
-                    }}
-                  ></div>
-                );
-              })}
-
-          {/*1024px 未満*/}
+              .slice(0, 1)
+              .map((work, index) => (
+                <div
+                  id={`${index}`}
+                  ref={worksRefs.current[index]}
+                  key={work._id}
+                  className="block"
+                ></div>
+              ))}
+          </div>
           <div className={classNames(
-            'w-full',
-            'lg:hidden'
+            "w-full",
+            "lg:hidden"
           )}>
-            <div>
-              <HeadingH2 headingClassName=
-                "pb-2 border-b border-base-black"
-              >
-                Works
+            <div className='flex items-center'>
+              <HeadingH2 headingClassName="pb-2 border-b border-base-black">
+                works
               </HeadingH2>
             </div>
             <div>
               <p className="mt-4">{worksIntroduction}</p>
             </div>
-            <div className='mt-4'>
-              <Button
-                size="x-full"
-                style="square"
-                optionClassName="border-base-black rounded-md"
-              >
-                <Link
-                  href="works/"
-                  className='flex justify-center items-center py-2'
-                  scroll={false}
-                >
-                  {finalText}
+            <div className="mt-4">
+              <Button size="x-full" style="square" optionClassName="border-base-black rounded-md">
+                <Link href="/works/" className="flex justify-center items-center py-2" scroll={false}>
+                  see more ...
                 </Link>
               </Button>
             </div>
           </div>
 
-          {/*1024px 以上*/}
-          <div id="worksBox" className={classNames(
-            "text-center absolute right-0 top-0 w-2/3 h-full hidden",
-            "lg:block"
+          <div className={classNames(
+            "hidden",
+            "lg:block lg:w-full lg:shrink"
           )}>
-            <div id="worksContents" className={classNames(
-              "md:overflow-hidden md:h-[40%]"
-            )}>
-              <HeadingH2 headingClassName='border-b border-base-black pb-3 text-right'>
-                Works
-              </HeadingH2>
-              <p className="mt-3 text-right">
-                {worksIntroduction}
-              </p>
-            </div>
-            <div className="text-right mt-5">
-              <CtaButton
-                ctaLink="/works"
-                onClick={handleCardViewEvent}
-                buttonText={text}
-              />
+            <div className="[&>*]:mt-10 first:[&>*]:mt-0">
+              <div className="flex items-center">
+                <div className='w-full h-[1px] bg-base-black'></div>
+                <HeadingH2>
+                  works
+                </HeadingH2>
+                <div className='w-full h-[1px] bg-base-black'></div>
+              </div>
+              <div className={classNames(
+                'mt-4',
+                '[&>*]:mt-3 [&>*]:text-center first:[&>*]:mt-0'
+              )}>
+                <p>インタビュー記事・イベントレポート・プレスリリース等、</p>
+                <p>お仕事で執筆させていただいたコンテンツの一覧です。</p>
+                <p>また、記事制作のほか、企画・取材・写真撮影を併せて</p>
+                <p>担当したものも一部ございます。</p>
+              </div>
+              <div>
+                <Button size="m" style="square" optionClassName='rounded border-base-black ml-auto mr-auto'>
+                  <Link href="/works/" className="flex justify-center items-center py-2" scroll={false}>see more ...</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 }

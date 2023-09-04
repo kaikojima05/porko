@@ -1,10 +1,9 @@
-import Link from "next/link";
-import { useState, useMemo, useEffect, useRef, createRef, RefObject } from "react";
+import Link from 'next/link'
+import { useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Creatives } from "@/ui/base/types/creatives";
 import classNames from "classnames";
 import { HeadingH2 } from '@/ui/base/heading/index'
 import { Button } from '@/ui/base/button/index'
-import { CtaButton } from '@/ui/base/button/index'
 import { CardStyle } from "@/ui/module/cardStyle/index";
 
 type CtaCreativesProps = {
@@ -15,18 +14,7 @@ export default function CtaCreatives({
   creatives,
 }: CtaCreativesProps) {
   const creativesRefs = useRef<RefObject<HTMLDivElement>[]>([]);
-
-  const initialText = "latest 4 ...";
-  const finalText = "see more ...";
-
-  const [clickEvent, setClickEvent] = useState<boolean>(false)
-  const [text, setText] = useState<string>(initialText);
-  const [isAnimating, setIsAnimating] = useState<boolean>(false);
-  const [isWriting, setIsWriting] = useState<boolean>(false);
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
-
-  const hasStartedRef = useRef(false);
-  const creativesIntroduction = "私的な想いを綴ったエッセイ等、お仕事外の自主制作コンテンツ"
+  const creativesIntroduction = "執筆実績（企画・取材・撮影から携わったものもあります）"
 
   creatives.map((_, index) => {
     creativesRefs.current[index] = createRef<HTMLDivElement>();
@@ -46,10 +34,10 @@ export default function CtaCreatives({
       return;
     }
 
-    sortCreatives.forEach((creative, index) => {
+    sortCreatives.forEach((work, index) => {
       const fragment = document
         .createRange()
-        .createContextualFragment(creative.RefLink.html);
+        .createContextualFragment(work.RefLink.html);
 
       const currentElement = creativesRefs.current[index]?.current;
       if (!currentElement) {
@@ -86,79 +74,16 @@ export default function CtaCreatives({
     });
   }, [sortCreatives]);
 
-  const handleCardViewEvent = (event: React.MouseEvent<HTMLElement>) => {
-    if (!clickEvent) {
-      event.preventDefault()
-      setClickEvent(true)
-    }
-    const creativesCardList = document.querySelectorAll('.creativesCard')
-    const creativesBox = document.getElementById('creativesBox')
-    const creativesContents = document.getElementById('creativesContents')
-
-    creativesCardList.forEach((item, index) => {
-      if (index !== 0) {
-        item.classList.add('open')
-      } else {
-        item.classList.add('noMove')
-      }
-    })
-
-    if (creativesBox) creativesBox.classList.add('move')
-    if (creativesContents) creativesContents.classList.add('delete')
-
-    setIsAnimating(true);
-  }
-
-  useEffect(() => {
-    let timerId: NodeJS.Timeout;
-
-    if (isAnimating && !isWriting) {
-      if (text.length > 0) {
-        if (!hasStartedRef.current) {
-          hasStartedRef.current = true;
-          setTimeout(() => {
-            timerId = setInterval(() => {
-              setText(text.slice(0, -1));
-            }, 100);
-          }, 1600);
-        } else {
-          timerId = setInterval(() => {
-            setText(text.slice(0, -1));
-          }, 100);
-        }
-      } else {
-        setIsWriting(true);
-      }
-    } else if (isAnimating && isWriting) {
-      if (currentIndex < finalText.length) {
-        timerId = setInterval(() => {
-          setText((t) => t + finalText[currentIndex]);
-          setCurrentIndex((i) => i + 1);
-        }, 100);
-      } else {
-        setIsAnimating(false);
-      }
-    }
-
-    return () => clearInterval(timerId);
-  }, [text, isAnimating, isWriting, currentIndex, finalText]);
-
   return (
     <>
       <div className={classNames(
         "w-full",
       )}>
-        <div
-          id="creativesCards"
-          className={classNames(
-            "grid gap-x-4 grid-cols-2 relative w-full h-full",
-            "lg:grid-cols-4",
-            "lg:h-[19.375rem] lg:max-h-[19.375rem]",
-            "xl:h-[20rem] xl:max-h-[20rem]",
-          )}
-        >
-          {
-            sortCreatives
+        <div className="flex gap-6 w-full">
+          <div className={classNames(
+            'lg:max-w-[30%]'
+          )}>
+            {sortCreatives
               .sort((a, b) => {
                 if (a.appeal && !b.appeal) {
                   return -1;
@@ -167,81 +92,67 @@ export default function CtaCreatives({
                 }
                 return 0;
               })
-              .slice(0, 5)
-              .map((creative, index) => {
-                return (
-                  <div
-                    id={`${index}`}
-                    ref={creativesRefs.current[index]}
-                    key={creative._id}
-                    className={classNames(
-                      `${index !== 0 ? "absolute w-0" : "static"}`,
-                      "top-0 block creativesCard"
-                    )}
-                    style={{
-                      zIndex: `${10 - index}`,
-                      opacity: index !== 0 ? '0' : '1'
-                    }}
-                  ></div>
-                );
-              })}
-          {/*1024px 未満*/}
+              .slice(0, 1)
+              .map((work, index) => (
+                <div
+                  id={`${index}`}
+                  ref={creativesRefs.current[index]}
+                  key={work._id}
+                  className="block"
+                ></div>
+              ))}
+          </div>
           <div className={classNames(
-            'w-full',
-            'lg:hidden'
+            "w-full",
+            "lg:hidden"
           )}>
-            <div>
-              <HeadingH2 headingClassName=
-                "pb-2 border-b border-base-black"
-              >
-                Creatives
+            <div className='flex items-center'>
+              <HeadingH2 headingClassName="pb-2 border-b border-base-black">
+                creatives
               </HeadingH2>
             </div>
             <div>
               <p className="mt-4">{creativesIntroduction}</p>
             </div>
-            <div className='mt-4'>
-              <Button
-                size="x-full"
-                style="square"
-                optionClassName="border-base-black rounded-md"
-              >
-                <Link
-                  href="creatives/"
-                  className="flex justify-center items-center py-2"
-                  scroll={false}
-                >
-                  {finalText}
+            <div className="mt-4">
+              <Button size="x-full" style="square" optionClassName="border-base-black rounded-md">
+                <Link href="/creatives/" className="flex justify-center items-center py-2" scroll={false}>
+                  see more ...
                 </Link>
               </Button>
             </div>
           </div>
 
-          {/*1024px 以上*/}
-          <div id="creativesBox" className={classNames(
-            "text-center absolute right-0 top-0 w-2/3 h-full hidden",
-            "lg:block"
+          <div className={classNames(
+            "hidden",
+            "lg:block lg:w-full lg:shrink"
           )}>
-            <div id="creativesContents" className={classNames(
-              "md:overflow-hidden md:h-[40%]"
-            )}>
-              <HeadingH2 headingClassName='border-b border-base-black pb-3 text-right'>
-                Creatives
-              </HeadingH2>
-              <p className="mt-3 text-right">
-                {creativesIntroduction}
-              </p>
-            </div>
-            <div className="text-right mt-5">
-              <CtaButton
-                ctaLink="/creatives"
-                onClick={handleCardViewEvent}
-                buttonText={text}
-              />
+            <div className="[&>*]:mt-10 first:[&>*]:mt-0">
+              <div className="flex items-center">
+                <div className='w-full h-[1px] bg-base-black'></div>
+                <HeadingH2 headingClassName="">
+                  creatives
+                </HeadingH2>
+                <div className='w-full h-[1px] bg-base-black'></div>
+              </div>
+              <div className={classNames(
+                'mt-4',
+                '[&>*]:mt-3 [&>*]:text-center first:[&>*]:mt-0'
+              )}>
+                <p>自由に綴ったエッセイ等、お仕事からは離れた自主制作コンテンツの一覧です。</p>
+                <p>エッセイでは、日頃考えていることや、</p>
+                <p>日常の中のささやかな出来事などを、</p>
+                <p>できるだけ丁寧に掬い取って書き連ねています。</p>
+              </div>
+              <div>
+                <Button size="m" style="square" optionClassName='rounded border-base-black ml-auto mr-auto'>
+                  <Link href="/creatives/" className="flex justify-center items-center py-2" scroll={false}>see more ...</Link>
+                </Button>
+              </div>
             </div>
           </div>
         </div>
-      </div >
+      </div>
     </>
   );
 }
