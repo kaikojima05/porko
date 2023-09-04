@@ -44,7 +44,7 @@ export default function Body({
       } else {
         clearInterval(animationInterval)
       }
-    }, 200)
+    }, 170)
 
     return () => clearInterval(animationInterval)
 
@@ -64,6 +64,7 @@ export default function Body({
       )}>
         <div ref={backgroundRef} className={classNames(
           "before-scroll-once h-[18rem] w-full",
+          "md:h-[21rem]",
           "lg:h-[25rem]"
         )}>
           <Image
@@ -87,10 +88,10 @@ export default function Body({
         >
           <div className={classNames(
             'hidden',
-            'lg:inline lg:fixed lg:bottom-4 lg:left-4',
+            'xl:inline xl:fixed xl:bottom-8 xl:left-4 xl:z-10',
           )}
           >
-            <HeadingH1 headingClassName='writing-vertical' ref={pageTitleRef}>
+            <HeadingH1 headingClassName='writing-vertical !text-[1.8125rem]' ref={pageTitleRef}>
               {whats}
             </HeadingH1>
           </div>
@@ -102,9 +103,13 @@ export default function Body({
             <Article articleClassName='font-content'>
               {heading &&
                 <Section isTopMargin={true}>
-                  <HeadingH2>
-                    {heading}
-                  </HeadingH2>
+                  <div className="flex items-center">
+                    <div className='w-full h-[1px] bg-base-black' />
+                    <HeadingH2>
+                      {heading}
+                    </HeadingH2>
+                    <div className='w-full h-[1px] bg-base-black' />
+                  </div>
                 </Section>
               }
               {children}
@@ -119,7 +124,7 @@ export default function Body({
                           <HeadingH2
                             headingClassName=''
                           >
-                            Contact
+                            contact
                           </HeadingH2>
                           <HeadingH3
                             headingClassName='mt-4'
