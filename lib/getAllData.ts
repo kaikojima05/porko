@@ -18,6 +18,7 @@ export async function getAllData({
 
   return {
     props: {
+      data,
       currentPage,
       totalPage,
     },

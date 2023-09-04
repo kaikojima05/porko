@@ -13,6 +13,7 @@ export async function getFirstView({
 
   return {
     props: {
+      data,
       currentPage,
       totalPage,
     }
