@@ -29,7 +29,7 @@ export default function Cta({
           style="square"
           optionClassName={buttonStyle}
         >
-          <Link href="contact/" className='text-[1rem] flex justify-center items-center' scroll={false}>
+          <Link href="/contact/" className='text-[1rem] flex justify-center items-center' scroll={false}>
             {children}
           </Link>
         </Button>
