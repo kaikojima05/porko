@@ -6,11 +6,13 @@ import CategoryList from '@/ui/base/categoryList'
 import Pagination from "@/ui/base/pagination/index";
 
 type CreativesPageProps = {
+  data: Creatives[]
   creatives: Creatives[];
   totalPage: number;
 }
 
 export default function CreativesPage({
+  data,
   creatives,
   totalPage
 }: CreativesPageProps) {
@@ -20,10 +22,10 @@ export default function CreativesPage({
   return (
     <>
       <Section isTopMargin={false}>
-        <CategoryList creatives={creatives} />
+        <CategoryList baseUrl="creatives" data={data} />
         <AllCreativesCard creatives={creatives} />
         <Pagination
-          url="creatives/page/"
+          url="creatives"
           totalPage={totalPage}
           currentPageNumber={pageNumberFromQuery}
         />
