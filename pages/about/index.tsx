@@ -20,7 +20,9 @@ export default function About() {
         src="/images/hero_about.webp"
         whats={
           <>
-            <span className="opacity-0">私</span>
+            <span className="opacity-0">わ</span>
+            <span className="opacity-0">た</span>
+            <span className="opacity-0">し</span>
             <span className="opacity-0">に</span>
             <span className="opacity-0">つ</span>
             <span className="opacity-0">い</span>
