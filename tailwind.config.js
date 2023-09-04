@@ -10,8 +10,8 @@ module.exports = {
     extend: {
       colors: {
         "base-black": "rgba(0, 0, 0, 0.67)",
-        primary: "rgba(161, 109, 93, 0.65)",
-        accent: "rgba(128, 171, 169, 0.59)",
+        primary: "rgba(234, 85, 80, 0.75)",
+        accent: "rgba(162, 215, 221, 0.78)",
       },
       fontFamily: {
         'head': ['Helvetica Neue', 'Helvetica', '游ゴシック', 'Yu Gothic', 'YuGothic', 'HiraKakuProN-W3i', 'メイリオ', 'Meiryo', 'sans-serif'],
