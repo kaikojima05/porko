@@ -26,7 +26,7 @@ export default function Pagination({
       forcePage={currentPageNumber - 1}
       onPageChange={({ selected }) => {
         const nextPage = selected + 1;
-        router.push(`${url}/${nextPage}`)
+        router.push(`/${url}/page/${nextPage}/`).then(() => window.scrollTo(0, 0))
       }}
       containerClassName={classNames(
         'flex justify-center items-center gap-6',
@@ -34,14 +34,14 @@ export default function Pagination({
       )}
       pageClassName={classNames(
         'border border-base-black rounded-[100%] duration-300 overflow-hidden',
-        'hover:scale-90'
+        'hover:scale-90 hover:bg-accent hover:border-accent'
       )}
       pageLinkClassName={classNames(
         'w-6 h-6 inline-block flex justify-center items-center',
         'md:w-14 md:h-14',
       )}
-      activeLinkClassName='bg-primary'
-      activeClassName='border-primary'
+      activeLinkClassName='bg-accent'
+      activeClassName='border-none'
     />
   );
 }
