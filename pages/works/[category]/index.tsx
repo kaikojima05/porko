@@ -51,12 +51,27 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     }
   })
 
+  const { items: allData } = await client.getContents<Works>({
+    appUid: 'works',
+    modelUid: 'portfolio',
+    query: {
+      select: [
+        '_id',
+        'fullName',
+        'RefLink',
+        'postDate',
+        'appeal',
+        'category'
+      ],
+    }
+  })
+
   const currentPage = items.slice(0, 12)
   const totalPage = Math.ceil(items.length / 12)
 
   return {
     props: {
-      category,
+      allData,
       totalPage,
       currentPage,
     }
@@ -64,23 +79,40 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 }
 
 type WorksCategoryProps = {
+  allData: Works[]
   currentPage: Works[]
-  category: string
   totalPage: number
 }
 
 export default function WorksCategory({
+  allData,
   currentPage,
-  category,
   totalPage
 }: WorksCategoryProps) {
   return (
     <Body
       heading="works"
       src="/images/hero_works.webp"
-      whats="制作実績"
+      whats={
+        <>
+          <span className="opacity-0">ひ</span>
+          <span className="opacity-0">と</span>
+          <span className="opacity-0">・</span>
+          <span className="opacity-0">も</span>
+          <span className="opacity-0">の</span>
+          <span className="opacity-0">・</span>
+          <span className="opacity-0">こ</span>
+          <span className="opacity-0">と</span>
+          <span className="opacity-0">の</span>
+          <span className="opacity-0">魅</span>
+          <span className="opacity-0">力</span>
+          <span className="opacity-0">を</span>
+          <span className="opacity-0">記</span>
+          <span className="opacity-0">す</span>
+        </>
+      }
     >
-      <WorksPage works={currentPage} totalPage={totalPage} />
+      <WorksPage data={allData} works={currentPage} totalPage={totalPage} />
     </Body>
   )
 }
