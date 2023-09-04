@@ -25,14 +25,20 @@ export const HeadingH1 = React.forwardRef<HTMLHeadingElement, HeadingProps>(
 
 HeadingH1.displayName = 'HeadingH1'
 
+type HeadingH2Props = {
+  outsideClassName?: string;
+} & HeadingProps
+
 export const HeadingH2 = ({
   children,
-  headingClassName
-}: HeadingProps) => {
+  headingClassName,
+  outsideClassName
+}: HeadingH2Props) => {
   return (
     <div className={classNames(
-      'text-center flex justify-center items-center',
-      'lg:px-6'
+      'flex justify-center items-center',
+      'lg:px-6',
+      `${outsideClassName}`
     )}>
       <h2 className={classNames(
         'font-head text-[1.5rem] font-extralight',
