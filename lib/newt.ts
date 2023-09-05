@@ -52,7 +52,7 @@ export const getNews = async () => {
     query: {
       select: [
         "_id",
-        "createdAt",
+        "date",
         "newsTitle",
         "newscontent"
       ]
