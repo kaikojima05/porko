@@ -32,7 +32,7 @@ export default function WorksPage({
         <CategoryList baseUrl="works" data={data} />
         <AllWorksCard works={works} />
         <Pagination
-          url={currentPage ? `/works/${categoryPage[0]}/` : "/works/"}
+          url={currentPage ? `works/${categoryPage[0]}` : "works"}
           totalPage={totalPage}
           currentPageNumber={pageNumberFromQuery}
         />

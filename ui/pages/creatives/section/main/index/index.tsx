@@ -32,7 +32,7 @@ export default function CreativesPage({
         <CategoryList baseUrl="creatives" data={data} />
         <AllCreativesCard creatives={creatives} />
         <Pagination
-          url={currentPage ? `/creatives/${categoryPage[0]}/` : "/creatives/"}
+          url={currentPage ? `creatives/${categoryPage[0]}` : "creatives"}
           totalPage={totalPage}
           currentPageNumber={pageNumberFromQuery}
         />
