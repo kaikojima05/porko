@@ -79,12 +79,15 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     }
   })
 
+  const number = context.params?.number;
+
   const offset = (parseInt(context.params?.number as string) - 1) * 12;
   const currentPage = items.slice(offset, offset + 12)
   const totalPage = Math.ceil(items.length / 12)
 
   return {
     props: {
+      number,
       category,
       allData,
       totalPage,
@@ -94,6 +97,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 }
 
 type WorksCategoryProps = {
+  number: string
   category: string
   allData: Works[]
   currentPage: Works[]
@@ -101,11 +105,13 @@ type WorksCategoryProps = {
 }
 
 export default function WorksCategory({
+  number,
   category,
   allData,
   currentPage,
   totalPage
 }: WorksCategoryProps) {
+  console.log(number)
   console.log(category)
   console.log(allData)
   console.log(currentPage)
