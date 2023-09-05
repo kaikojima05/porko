@@ -47,7 +47,7 @@ export default function News({
       >
         <NewsPage news={currentPage} />
         <Pagination
-          url='/news/page'
+          url='/news/'
           totalPage={totalPage}
           currentPageNumber={pageNumberFromQuery}
         />
