@@ -83,6 +83,7 @@ export default function Body({
             "w-full mx-0 z-0 relative",
             "pt-[5.625rem] pb-[5.625rem] px-4",
             "lg:flex lg:flex-col lg:justify-center lg:items-center lg:px-0",
+            "xl:pt-[7.5rem]",
             `${bodyClassName}`
           )}
         >
