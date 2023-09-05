@@ -40,10 +40,12 @@ const AboutPage = forwardRef<HTMLDivElement>((_props, ref) => {
             <div className={classNames(
               'md:flex md:flex-col md:justify-between'
             )}>
-              <div className='border-b border-base-black pb-2'>
+              <div>
                 <p className={classNames(
-                  "text-[1.125rem]",
-                  "md:text-[1.25rem]"
+                  "text-[1.125rem] block border-b border-base-black pb-2",
+                  "md:text-[1.25rem] md:inline-block md:pr-[5rem]",
+                  "lg:pr-[6rem]",
+                  "xl:pr-[7rem]"
                 )} >
                   小嶋 麻莉恵 - Marie Kojima
                 </p>
