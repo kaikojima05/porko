@@ -79,7 +79,8 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     }
   })
 
-  const currentPage = items.slice(0, 12)
+  const offset = (parseInt(context.params?.number as string) - 1) * 12;
+  const currentPage = items.slice(offset, offset + 12)
   const totalPage = Math.ceil(items.length / 12)
 
   return {
@@ -125,7 +126,12 @@ export default function CreativesCategory({
         </>
       }
     >
-      <CreativesPage data={allData} creatives={currentPage} totalPage={totalPage} />
+      <CreativesPage
+        data={allData}
+        creatives={currentPage}
+        totalPage={totalPage}
+        currentPage={currentPage}
+      />
     </Body>
   )
 }
