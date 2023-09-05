@@ -107,6 +107,9 @@ export default function WorksCategory({
   totalPage
 }: WorksCategoryProps) {
   console.log(category)
+  console.log(allData)
+  console.log(currentPage)
+  console.log(totalPage)
   return (
     <Body
       heading="works"
