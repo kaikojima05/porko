@@ -85,6 +85,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 
   return {
     props: {
+      category,
       allData,
       totalPage,
       currentPage,
@@ -93,16 +94,19 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 }
 
 type WorksCategoryProps = {
+  category: string
   allData: Works[]
   currentPage: Works[]
   totalPage: number
 }
 
 export default function WorksCategory({
+  category,
   allData,
   currentPage,
   totalPage
 }: WorksCategoryProps) {
+  console.log(category)
   return (
     <Body
       heading="works"
