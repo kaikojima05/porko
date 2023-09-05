@@ -33,7 +33,9 @@ export default function FormInput({
   return (
     <div className={classNames(
       `${type !== 'textarea' ? 'flex' : ''}`,
-      'border border-base-black px-10 py-6 rounded',
+      'border border-base-black px-3 py-2 rounded',
+      'md:px-7 md:py-4',
+      'lg:px-10 lg:py-6'
     )}
       onClick={handleClickInputArea}
     >
@@ -41,7 +43,9 @@ export default function FormInput({
         <label
           htmlFor={forName}
           className={classNames(
-            "text-base border-b border-base-black pb-1 px-2",
+            "text-base border-b border-base-black pb-1 px-1 mr-3",
+            "md:mr-0",
+            "lg:px-2"
           )}
         >
           {forName}
@@ -66,7 +70,8 @@ export default function FormInput({
           <textarea
             id={forName}
             className={classNames(
-              "py-2 mt-3 resize-none",
+              "py-2 px-1 mt-0 resize-none",
+              "lg:mt-3 lg:p-2"
             )}
             {...register}
             placeholder={placeholder}
