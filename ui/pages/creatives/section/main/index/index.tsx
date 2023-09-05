@@ -6,18 +6,25 @@ import CategoryList from '@/ui/base/categoryList'
 import Pagination from "@/ui/base/pagination/index";
 
 type CreativesPageProps = {
+  currentPage?: Creatives[]
   data: Creatives[]
   creatives: Creatives[];
   totalPage: number;
 }
 
 export default function CreativesPage({
+  currentPage,
   data,
   creatives,
   totalPage
 }: CreativesPageProps) {
   const router = useRouter()
   const pageNumberFromQuery = router.query.number ? Number(router.query.number) : 1
+  let categoryPage: string[] = []
+
+  if (currentPage) {
+    categoryPage = currentPage.map((item) => item.category)
+  }
 
   return (
     <>
@@ -25,7 +32,7 @@ export default function CreativesPage({
         <CategoryList baseUrl="creatives" data={data} />
         <AllCreativesCard creatives={creatives} />
         <Pagination
-          url="creatives"
+          url={currentPage ? `/creatives/${categoryPage[0]}/` : "/creatives/"}
           totalPage={totalPage}
           currentPageNumber={pageNumberFromQuery}
         />
