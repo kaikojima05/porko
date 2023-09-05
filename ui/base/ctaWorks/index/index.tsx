@@ -79,7 +79,10 @@ export default function CtaWorks({
       <div className={classNames(
         "w-full",
       )}>
-        <div className="flex gap-6 w-full">
+        <div className={classNames(
+          "grid grid-cols-2 gap-6 w-full",
+          "lg:flex"
+        )}>
           <div className={classNames(
             'lg:max-w-[30%]'
           )}>
