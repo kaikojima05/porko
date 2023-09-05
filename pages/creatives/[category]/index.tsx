@@ -112,7 +112,12 @@ export default function CreativesCategory({
         </>
       }
     >
-      <CreativesPage data={allData} creatives={currentPage} totalPage={totalPage} />
+      <CreativesPage
+        data={allData}
+        creatives={currentPage}
+        totalPage={totalPage}
+        currentPage={currentPage}
+      />
     </Body>
   )
 }

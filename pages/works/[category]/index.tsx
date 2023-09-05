@@ -112,7 +112,12 @@ export default function WorksCategory({
         </>
       }
     >
-      <WorksPage data={allData} works={currentPage} totalPage={totalPage} />
+      <WorksPage
+        data={allData}
+        works={currentPage}
+        totalPage={totalPage}
+        currentPage={currentPage}
+      />
     </Body>
   )
 }
