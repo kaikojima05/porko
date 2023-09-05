@@ -86,10 +86,9 @@ export default function Home({
         <main
           className={classNames(
             "w-full mx-0 z-0 relative",
-            "pt-[5.625rem]",
+            "pt-[5.625rem] pb-[5.625rem] px-4",
             "lg:flex lg:flex-col lg:justify-center lg:items-center lg:px-0",
-            "[&_section]:px-4",
-            "[&_section]:lg:px-0"
+            "xl:pt-[7.5rem]",
           )}
         >
           <div className={classNames(
@@ -122,47 +121,61 @@ export default function Home({
             <Article articleClassName='font-content'>
               <Section isTopMargin={true}>
                 <div
-                  className={classNames(
-                    "flex flex-row justify-center items-center before-scroll-once gap-5",
-                    "md:flex-row-reverse md:gap-8",
-                    "lg:items-start"
-                  )}
+                  className='before-scroll-once'
                   ref={sectionMessageRef}
                 >
-                  <div className={classNames(
-                    "flex flex-row-reverse gap-2 w-full justify-center",
-                    "[&>div]:flex [&>div]:justify-center [&>div]:inline",
-                    "md:w-auto"
-                  )}>
-                    <HeadingH2 headingClassName="writing-vertical">
-                      言の葉の雨を降らせよう
-                    </HeadingH2>
-                    <div>
-                      <p className="leading-8 writing-vertical text-base text-left">
-                        話すことととは違い、書くことは
-                        <br />
-                        ひとつの形としていつまでも残り続けるもの。
-                      </p>
-                    </div>
-                    <div>
-                      <p className="leading-8 writing-vertical text-base text-left">
-                        だからこそ丁寧に、真摯に。
-                        <br />
-                        どんなにちいさな〈ことば〉だとしても、
-                        <br />
-                        大切に向き合っています。
-                      </p>
-                    </div>
+                  <div
+                    className={classNames(
+                      "flex flex-row justify-center items-center gap-5",
+                      "md:flex-row-reverse md:gap-8",
+                      "lg:items-start"
+                    )}
+                  >
                     <div className={classNames(
-                      "hidden",
-                      "md:inline-block"
+                      "flex flex-row-reverse gap-2 w-full justify-center",
+                      "[&>div]:flex [&>div]:justify-center [&>div]:inline",
+                      "md:w-auto"
                     )}>
-                      <p className="leading-8 writing-vertical text-base text-left">
-                        〈ことば〉で情報を正しく伝え、
-                        <br />
-                        〈ことば〉で想いを届ける担い手になるために。
-                      </p>
+                      <HeadingH2 headingClassName="writing-vertical">
+                        言の葉の雨を降らせよう
+                      </HeadingH2>
+                      <div>
+                        <p className="leading-8 writing-vertical text-base text-left">
+                          話すことととは違い、書くことは
+                          <br />
+                          ひとつの形としていつまでも残り続けるもの。
+                        </p>
+                      </div>
+                      <div>
+                        <p className="leading-8 writing-vertical text-base text-left">
+                          だからこそ丁寧に、真摯に。
+                          <br />
+                          どんなにちいさな〈ことば〉だとしても、
+                          <br />
+                          大切に向き合っています。
+                        </p>
+                      </div>
+                      <div className={classNames(
+                        "hidden",
+                        "md:inline-block"
+                      )}>
+                        <p className="leading-8 writing-vertical text-base text-left">
+                          〈ことば〉で情報を正しく伝え、
+                          <br />
+                          〈ことば〉で想いを届ける担い手になるために。
+                        </p>
+                      </div>
                     </div>
+                  </div>
+                  <div className="w-full">
+                    <Button size="m" style='square' optionClassName='ml-auto rounded border-base-black'>
+                      <Link
+                        className="flex justify-center items-center"
+                        href='/about/'
+                      >
+                        about me ...
+                      </Link>
+                    </Button>
                   </div>
                 </div>
               </Section>
