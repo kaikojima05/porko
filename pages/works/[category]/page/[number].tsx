@@ -20,20 +20,20 @@ export const getStaticPaths = async () => {
     }
   })
 
-  const categories = Array.from(new Set(items.map(item => item.category)));
+  const categoryCounts = items.reduce<Record<string, number>>((acc, item) => {
+    if (!acc[item.category]) {
+      acc[item.category] = 0;
+    }
+    acc[item.category]++;
+    return acc;
+  }, {});
+
   const paths = [];
 
-  for (const category of categories) {
-    const itemsForCategory = items.filter(item => item.category === category);
-    const totalPagesForCategory = Math.ceil(itemsForCategory.length / 12);
-
-    for (let pageNumber = 1; pageNumber <= totalPagesForCategory; pageNumber++) {
-      paths.push({
-        params: {
-          category: category.toString(),
-          number: pageNumber.toString()
-        }
-      });
+  for (const [category, count] of Object.entries(categoryCounts)) {
+    const pageCount = Math.ceil(count / 12);
+    for (let i = 1; i <= pageCount; i++) {
+      paths.push({ params: { category, number: String(i) } });
     }
   }
 
@@ -79,16 +79,12 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     }
   })
 
-  const number = context.params?.number;
-
   const offset = (parseInt(context.params?.number as string) - 1) * 12;
   const currentPage = items.slice(offset, offset + 12)
   const totalPage = Math.ceil(items.length / 12)
 
   return {
     props: {
-      number,
-      category,
       allData,
       totalPage,
       currentPage,
@@ -97,25 +93,16 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 }
 
 type WorksCategoryProps = {
-  number: string
-  category: string
   allData: Works[]
   currentPage: Works[]
   totalPage: number
 }
 
 export default function WorksCategory({
-  number,
-  category,
   allData,
   currentPage,
   totalPage
 }: WorksCategoryProps) {
-  console.log(number)
-  console.log(category)
-  console.log(allData)
-  console.log(currentPage)
-  console.log(totalPage)
   return (
     <Body
       heading="works"

@@ -20,20 +20,20 @@ export const getStaticPaths = async () => {
     }
   })
 
-  const categories = Array.from(new Set(items.map(item => item.category)));
+  const categoryCounts = items.reduce<Record<string, number>>((acc, item) => {
+    if (!acc[item.category]) {
+      acc[item.category] = 0;
+    }
+    acc[item.category]++;
+    return acc;
+  }, {});
+
   const paths = [];
 
-  for (const category of categories) {
-    const itemsForCategory = items.filter(item => item.category === category);
-    const totalPagesForCategory = Math.ceil(itemsForCategory.length / 12);
-
-    for (let pageNumber = 1; pageNumber <= totalPagesForCategory; pageNumber++) {
-      paths.push({
-        params: {
-          category: category.toString(),
-          number: pageNumber.toString()
-        }
-      });
+  for (const [category, count] of Object.entries(categoryCounts)) {
+    const pageCount = Math.ceil(count / 12);
+    for (let i = 1; i <= pageCount; i++) {
+      paths.push({ params: { category, number: String(i) } });
     }
   }
 
