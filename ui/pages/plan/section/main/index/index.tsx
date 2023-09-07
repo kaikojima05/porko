@@ -2,6 +2,7 @@ import classNames from 'classnames'
 import Section from '@/ui/base/section'
 import PlanBlock from '@/ui/snippet/PlanBlock'
 import Disclosure from '@/ui/base/Disclosure'
+import Icon from '@/ui/base/icons'
 
 type PlanPagesProps = {
 

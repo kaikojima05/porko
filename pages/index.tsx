@@ -1,54 +1,53 @@
-import Link from "next/link";
 import { motion } from "framer-motion";
-import { useRef, useEffect } from "react";
+import { useRef, useEffect } from 'react'
 import Image from "next/image";
 import { getWorks } from "@/lib/newt";
 import { getCreatives } from "@/lib/newt";
-import { getNews } from "@/lib/newt";
 import { useOnScrollAnimation } from "@/ui/hooks/useOnScrollAnimation";
 import Article from "@/ui/base/article";
-import Section from "@/ui/base/section";
+import Section from '@/ui/base/section'
 import Header from "@/ui/base/header";
 import Footer from "@/ui/base/footer";
-import NewsTitleList from "@/ui/module/newsTitleList/index";
-import { HeadingH1, HeadingH2, HeadingH3 } from "@/ui/base/heading";
-import Cta from "@/ui/base/cta/index";
+import { HeadingH1, HeadingH2, HeadingH3 } from '@/ui/base/heading'
+import Cta from '@/ui/base/cta/index'
 import CtaWorks from "@/ui/base/ctaWorks/index";
 import CtaCreatives from "@/ui/base/ctaCreatives/index";
-import { Button } from "@/ui/base/button/index";
 import { Works } from "@/ui/base/types/works";
 import { Creatives } from "@/ui/base/types/creatives";
-import { News } from "@/ui/base/types/news";
+import ClickButton from "@/ui/snippet/ClickButton";
 import classNames from "classnames";
 
 type HomeProps = {
-  works: Works[];
-  creatives: Creatives[];
-  news: News[];
-};
+  works: Works[]
+  creatives: Creatives[]
+}
 
-export default function Home({ works, creatives, news }: HomeProps) {
-  const pageTitleRef = useRef<HTMLHeadingElement | null>(null);
+export default function Home({
+  works,
+  creatives,
+}: HomeProps) {
+  const pageTitleRef = useRef<HTMLHeadingElement | null>(null)
   const sectionMessageRef = useOnScrollAnimation();
-  const backgroundRef = useOnScrollAnimation();
+  const backgroundRef = useOnScrollAnimation()
 
   useEffect(() => {
     if (!pageTitleRef.current) return;
 
     let currentIndex = 0;
 
-    const spans = pageTitleRef.current.querySelectorAll("span");
+    const spans = pageTitleRef.current.querySelectorAll('span')
 
     const animationInterval = setInterval(() => {
       if (currentIndex < spans.length) {
-        spans[currentIndex].classList.remove("opacity-0");
-        currentIndex += 1;
+        spans[currentIndex].classList.remove('opacity-0')
+        currentIndex += 1
       } else {
-        clearInterval(animationInterval);
+        clearInterval(animationInterval)
       }
-    }, 170);
+    }, 170)
 
-    return () => clearInterval(animationInterval);
+    return () => clearInterval(animationInterval)
+
   }, []);
 
   return (
@@ -59,71 +58,66 @@ export default function Home({ works, creatives, news }: HomeProps) {
       transition={{ duration: 1 }}
     >
       <Header />
-      <div className={classNames("pt-[3.3125rem] w-full", "lg:pt-[4.875rem]")}>
-        <div
-          ref={backgroundRef}
-          className={classNames(
-            "before-scroll-once h-[18rem] w-full",
-            "md:h-[21rem]",
-            "lg:h-[25rem]"
-          )}
-        >
+      <div className={classNames(
+        'pt-[3.3125rem] w-full',
+        'lg:pt-[5.1875rem]'
+      )}>
+        <div ref={backgroundRef} className={classNames(
+          "before-scroll-once h-[18rem] w-full",
+          "md:h-[21rem]",
+          "lg:h-[25rem]"
+        )}>
           <Image
             alt="portforio サイト porko のイメージ画像"
             src="/images/hero_top.webp"
             fill
             style={{
-              objectFit: "cover",
-              objectPosition: "center",
+              objectFit: 'cover',
+              objectPosition: 'center',
             }}
           />
         </div>
         <main
           className={classNames(
             "w-full mx-0 z-0 relative",
-            "pt-[5.625rem] pb-[5.625rem]",
+            "pt-[5.625rem]",
             "lg:flex lg:flex-col lg:justify-center lg:items-center",
             "xl:pt-[7.5rem]",
             "[&_section]:px-4",
-            "[&_section]:lg:px-0"
+            "[&_section]:lg:px-0",
           )}
         >
-          <div
-            className={classNames(
-              "hidden",
-              "xl:inline xl:fixed xl:bottom-8 xl:left-4 xl:z-10"
-            )}
+          <div className={classNames(
+            'hidden',
+            'xl:inline xl:fixed xl:bottom-8 xl:left-4 xl:z-10',
+          )}
           >
-            <HeadingH1
-              headingClassName="writing-vertical !text-[1.8125rem]"
-              ref={pageTitleRef}
-            >
-              <span className="opacity-0">何</span>
-              <span className="opacity-0">度</span>
-              <span className="opacity-0">で</span>
-              <span className="opacity-0">も</span>
-              <span className="opacity-0">茂</span>
+            <HeadingH1 headingClassName='writing-vertical !text-[1.8125rem]' ref={pageTitleRef}>
+              <span className="opacity-0">繁</span>
               <span className="opacity-0">り</span>
-              <span className="opacity-0">、</span>
-              <span className="opacity-0">ま</span>
-              <span className="opacity-0">た</span>
-              <span className="opacity-0">葉</span>
-              <span className="opacity-0">は</span>
-              <span className="opacity-0">色</span>
-              <span className="opacity-0">づ</span>
+              <span className="opacity-0">ゆ</span>
               <span className="opacity-0">く</span>
+              <span className="opacity-0">葉</span>
+              <span className="opacity-0">に</span>
+              <span className="opacity-0">光</span>
+              <span className="opacity-0">を</span>
+              <span className="opacity-0">か</span>
+              <span className="opacity-0">ざ</span>
+              <span className="opacity-0">し</span>
+              <span className="opacity-0">て</span>
             </HeadingH1>
           </div>
-          <div
-            className={classNames(
-              "w-full",
-              "lg:min-w-[58.125rem] lg:max-w-[58.125rem]",
-              "xl:min-w-[62.5rem] xl:max-w-[62.5rem]"
-            )}
-          >
-            <Article articleClassName="font-content">
+          <div className={classNames(
+            'w-full',
+            'lg:min-w-[58.125rem] lg:max-w-[58.125rem]',
+            'xl:min-w-[62.5rem] xl:max-w-[62.5rem]'
+          )}>
+            <Article articleClassName='font-content'>
               <Section isTopMargin={true}>
-                <div className="before-scroll-once" ref={sectionMessageRef}>
+                <div
+                  className='before-scroll-once'
+                  ref={sectionMessageRef}
+                >
                   <div
                     className={classNames(
                       "flex flex-row justify-center items-center gap-5",
@@ -131,25 +125,38 @@ export default function Home({ works, creatives, news }: HomeProps) {
                       "lg:items-start"
                     )}
                   >
-                    <div
-                      className={classNames(
-                        "flex flex-row-reverse gap-2 w-full justify-center",
-                        "[&>div]:flex [&>div]:justify-center [&>div]:inline",
-                        "md:w-auto"
-                      )}
-                    >
-                      <HeadingH2 headingClassName="writing-vertical">
+                    <div className={classNames(
+                      "flex flex-row-reverse w-full justify-evenly px-4",
+                      "[&>div]:flex [&>div]:justify-center",
+                      "sm:justify-center sm:gap-8",
+                      "md:w-auto md:gap-10",
+                      "lg:gap-12"
+                    )}>
+                      <HeadingH2
+                        headingClassName={classNames(
+                          "writing-vertical !text-[1.125rem]",
+                          "lg:!text-[1.5rem]"
+                        )}
+                      >
                         言の葉の雨を降らせよう
                       </HeadingH2>
                       <div>
-                        <p className="leading-8 writing-vertical text-base text-left">
+                        <p className={classNames(
+                          "leading-6 writing-vertical text-[0.75rem] text-left",
+                          "md:text-[0.875rem]",
+                          "lg:text-base lg:leading-8"
+                        )}>
                           話すことととは違い、書くことは
                           <br />
                           ひとつの形としていつまでも残り続けるもの。
                         </p>
                       </div>
                       <div>
-                        <p className="leading-8 writing-vertical text-base text-left">
+                        <p className={classNames(
+                          "leading-6 writing-vertical text-[0.75rem] text-left",
+                          "md:text-[0.875rem]",
+                          "lg:text-base lg:leading-8"
+                        )}>
                           だからこそ丁寧に、真摯に。
                           <br />
                           どんなにちいさな〈ことば〉だとしても、
@@ -157,8 +164,15 @@ export default function Home({ works, creatives, news }: HomeProps) {
                           大切に向き合っています。
                         </p>
                       </div>
-                      <div className={classNames("hidden", "md:inline-block")}>
-                        <p className="leading-8 writing-vertical text-base text-left">
+                      <div className={classNames(
+                        "hidden",
+                        "md:inline-block"
+                      )}>
+                        <p className={classNames(
+                          "leading-6 writing-vertical text-[0.75rem] text-left",
+                          "md:text-[0.875rem]",
+                          "lg:text-base lg:leading-8"
+                        )}>
                           〈ことば〉で情報を正しく伝え、
                           <br />
                           〈ことば〉で想いを届ける担い手になるために。
@@ -166,31 +180,21 @@ export default function Home({ works, creatives, news }: HomeProps) {
                       </div>
                     </div>
                   </div>
-                  <div className="w-full">
-                    <Button
-                      size="m"
-                      style="square"
-                      optionClassName="ml-auto rounded border-base-black"
-                    >
-                      <Link
-                        className="flex justify-center items-center"
-                        href="/about/"
-                      >
-                        about me ...
-                      </Link>
-                    </Button>
+                  <div className={classNames(
+                    "flex justify-center",
+                    "sm:mr-24 sm:justify-end"
+                  )}>
+                    <ClickButton href="/about/" button="about me" />
                   </div>
                 </div>
               </Section>
               <Section isTopMargin={false}>
                 <CtaWorks works={works} />
-                <div
-                  className={classNames(
-                    "py-[2.5rem]",
-                    "md:py-[3.125rem]",
-                    "lg:py-[3.75rem]"
-                  )}
-                />
+                <div className={classNames(
+                  "py-[2.5rem]",
+                  "md:py-[3.125rem]",
+                  "lg:py-[3.75rem]",
+                )} />
                 <CtaCreatives creatives={creatives} />
               </Section>
             </Article>
@@ -202,104 +206,191 @@ export default function Home({ works, creatives, news }: HomeProps) {
               "lg:mt-[7.5rem]"
             )}
           >
-            <div
-              className={classNames(
-                "w-screen relative h-[10.625rem]",
-                "md:h-[15.625]",
-                "lg:h-[18.75rem]",
-                "xl:h-[21.875rem]"
-              )}
-            >
+            <div className={classNames(
+              'w-screen relative h-[8.75rem]',
+              "md:h-[12.5rem]",
+              "lg:h-[15.625rem]",
+              "xl:h-[20rem]"
+            )}>
               <Image
-                alt=""
+                alt="バナー画像"
                 src="/images/banner.webp"
                 fill
                 style={{
-                  objectPosition: "top",
-                  objectFit: "cover",
+                  objectPosition: 'top',
+                  objectFit: 'cover',
                 }}
               />
             </div>
           </div>
-          <div
-            className={classNames(
-              "w-full",
-              "lg:min-w-[58.125rem] lg:max-w-[58.125rem]",
-              "xl:min-w-[62.5rem] xl:max-w-[62.5rem]"
-            )}
-          >
+          <div className={classNames(
+            'w-full',
+            'lg:min-w-[58.125rem] lg:max-w-[58.125rem]',
+            'xl:min-w-[62.5rem] xl:max-w-[62.5rem]'
+          )}>
             <Article>
               <Section isTopMargin={false}>
-                <div className="flex items-center justify-center border-b border-base-black">
-                  <div>
-                    <Link
-                      className="flex items-center justify-center text-[1.75rem]"
-                      href="/plan"
-                      scroll={false}
+                <div className="">
+                  <HeadingH2>
+                    <span className={classNames(
+                      'font-head text-[1.25rem] font-extralight',
+                      'md:text-[1.375rem]',
+                      'lg:text-[1.625rem]',
+                      'xl:text-[1.875rem]',
+                    )}>
+                      plan
+                    </span>
+                    <span className={classNames(
+                      'font-head text-[1.25rem] font-extralight',
+                      'md:text-[1.375rem]',
+                      'lg:text-[1.625rem]',
+                      'xl:text-[1.875rem]',
+                    )}> / </span>
+                    <span className={classNames(
+                      "text-base font-head",
+                      "md:text-[1.125rem]",
+                      "lg:text-[1.375rem]",
+                      "xl:text-[1.5rem]",
+                    )}>
+                      お仕事依頼について
+                    </span>
+                  </HeadingH2>
+                </div>
+                <div className={classNames(
+                  "mt-4 text-center",
+                  "md:mt-6",
+                  "lg:mt-8",
+                )}>
+                  <p className="text-center inline-block">
+                    伝えたいことを、確かな形に。
+                    <br />
+                    本当に届けたい人のもとへ、純度高く。
+                    <br />
+                    〈ことば〉にまつわるあらゆるご相談に柔軟にご対応できるよう、さまざまなプランをご用意しています。
+                  </p>
+                </div>
+                <div className={classNames(
+                  "mt-4 text-center",
+                  "md:mt-6",
+                  "lg:mt-8",
+                )}>
+                  <ClickButton href="/plan/" button="see more" />
+                </div>
+              </Section>
+              <Section>
+                <div className={classNames(
+                  "flex gap-12 justify-center",
+                  "md:gap-24",
+                  "lg:gap-32",
+                  "xl:gap-40"
+                )}>
+                  <div className="flex items-start">
+                    <HeadingH2
+                      outsideClassName="!items-start"
+                      headingClassName="leading-none"
                     >
-                      Plan
-                    </Link>
+                      sns
+                    </HeadingH2>
                   </div>
-                  <div className={classNames("mx-2")}>
-                    <p className="text-[2rem]">/</p>
+                  <div className="flex flex-col items-end">
+                    <div className={classNames(
+                      "flex justify-center",
+                    )}>
+                      <div className={classNames(
+                        'flex gap-2 text-[0.875rem]',
+                        'md:gap-3',
+                        'lg:text-[1.25rem] lg:gap-4'
+                      )}
+                      >
+                        <span>X（Twitter）:</span>
+                        <a
+                          href="https://twitter.com/koji_mari7"
+                          className={classNames(
+                            'border-b border-base-black border-dashed pb-1',
+                            'md:pb-1'
+                          )}
+                        >
+                          @koji_mari7
+                        </a>
+                      </div>
+                    </div>
+                    <div className={classNames(
+                      "mt-2 flex justify-center",
+                      "md:mt-3",
+                      "lg:mt-4",
+                    )}>
+                      <div className={classNames(
+                        'flex gap-2 text-[0.875rem]',
+                        'md:gap-3',
+                        'lg:text-[1.25rem] lg:gap-4'
+                      )}
+                      >
+                        <span>note :</span>
+                        <a
+                          href="https://note.com/kwkm711"
+                          className={classNames(
+                            'border-b border-base-black border-dashed pb-1',
+                            'md:pb-1'
+                          )}
+                        >
+                          kwkm711
+                        </a>
+                      </div>
+                    </div>
                   </div>
-                  <div>
-                    <p className="text-[1.25rem]">
-                      お仕事のご依頼・ご相談の参考としてご覧ください
-                    </p>
-                  </div>
-                </div>
-              </Section>
-              <Section isTopMargin={false}>
-                <div>
-                  <HeadingH2>news</HeadingH2>
-                </div>
-                <div className={classNames("mt-8", "md:mt-12", "lg:mt-16")}>
-                  <NewsTitleList newsList={news.slice(0, 5)} />
-                </div>
-              </Section>
-            </Article>
-            <Article>
-              <Section isTopMargin={false}>
-                <div className="relative w-full">
-                  <Cta
-                    cta={
-                      <>
-                        <HeadingH2>contact</HeadingH2>
-                        <HeadingH3 headingClassName="mt-4">
-                          お問い合わせはこちらから
-                        </HeadingH3>
-                      </>
-                    }
-                    ctaStyle={classNames(
-                      "rounded-md border border-base-black py-8",
-                      "lg:py-14"
-                    )}
-                    buttonStyle="flex flex-col items-center justify-center rounded-md border-base-black"
-                  >
-                    mail form
-                  </Cta>
                 </div>
               </Section>
             </Article>
           </div>
-        </main>
-      </div>
+          <div className={classNames(
+            'w-screen relative h-[14rem] mt-[3.125rem] bg-secondary',
+            "md:h-[17rem] mt-[4.275rem]",
+            "lg:h-[22rem] lg:mt-[5.625rem]",
+            "xl:h-[25rem]"
+          )}>
+            <div className='absolute w-full top-[50%] translate-y-[-50%]'>
+              <Cta
+                cta={
+                  <>
+                    <HeadingH2
+                      headingClassName={classNames(
+                        '!text-[1.25rem] text-base-black',
+                        'md:!text-[1.5rem]',
+                        'lg:!text-[1.75rem]',
+                      )}
+                    >
+                      contact
+                    </HeadingH2>
+                    <HeadingH3
+                      headingClassName={classNames(
+                        'mt-[1.875rem] text-base-black',
+                      )}
+                    >
+                      お問い合わせはこちらから
+                    </HeadingH3>
+                  </>
+                }
+                ctaStyle=""
+              >
+                mail form
+              </Cta>
+            </div>
+          </div>
+        </main >
+      </div >
       <Footer />
-    </motion.div>
+    </motion.div >
   );
 }
 
 export const getStaticProps = async () => {
   const works = await getWorks();
   const creatives = await getCreatives();
-  const news = await getNews();
 
   return {
     props: {
       works,
       creatives,
-      news,
     },
 
     revalidate: 5,

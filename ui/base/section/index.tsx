@@ -16,7 +16,7 @@ export default function sectionProps({
       className={classNames(
         `${isTopMargin
           ? ""
-          : "mt-[3rem] md:mt-[6.25rem] lg:mt-[7.5rem]"}`,
+          : "mt-[3.75rem] md:mt-[5rem] lg:mt-[6.25rem]"}`,
         `${sectionClassName} `
       )}
     >

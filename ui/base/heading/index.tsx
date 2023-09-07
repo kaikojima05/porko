@@ -37,13 +37,13 @@ export const HeadingH2 = ({
   return (
     <div className={classNames(
       'flex justify-center items-center',
-      'lg:px-6',
       `${outsideClassName}`
     )}>
       <h2 className={classNames(
-        'font-head text-[1.5rem] font-extralight',
-        'md:text-[1.75rem]',
-        'lg:text-[2rem]',
+        'font-head text-[1.25rem] font-extralight',
+        'md:text-[1.375rem]',
+        'lg:text-[1.5rem]',
+        'xl:text-[1.75rem]',
         `${headingClassName}`
       )}>
         {children}
@@ -59,7 +59,10 @@ export const HeadingH3 = ({
   return (
     <h3
       className={classNames(
-        "text-[1.5rem] font-head",
+        "text-base font-head",
+        "md:text-[1.125rem]",
+        "lg:text-[1.375rem]",
+        "xl:text-[1.5rem]",
         `${headingClassName}`
       )}
     >

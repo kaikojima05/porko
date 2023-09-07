@@ -1,18 +1,15 @@
 import classNames from 'classnames';
-import { Button } from '@/ui/base/button';
 import Link from 'next/link';
 
 type CtaProps = {
   cta: React.ReactNode
-  ctaStyle: string
-  buttonStyle: string
+  ctaStyle?: string
   children: React.ReactNode
 }
 
 export default function Cta({
   cta,
   ctaStyle,
-  buttonStyle,
   children,
 }: CtaProps) {
   return (
@@ -23,16 +20,19 @@ export default function Cta({
       <div className='text-center'>
         {cta}
       </div>
-      <div className='mt-4 flex items-center justify-center'>
-        <Button
-          size="l"
-          style="square"
-          optionClassName={buttonStyle}
-        >
-          <Link href="/contact/" className='text-[1rem] flex justify-center items-center' scroll={false}>
-            {children}
-          </Link>
-        </Button>
+      <div className={classNames(
+        'mt-4 flex items-center justify-center',
+        'md:mt-[1.25rem]',
+        'lg:mt-[1.875rem]'
+      )}>
+        <Link href="/contact/" className={classNames(
+          'text-[1.125rem] flex justify-center items-center px-3 border-b border-primary-light border-b-[0.75rem] leading-[0.6rem] text-base-black',
+          'md:text-[1.375rem]',
+          'lg:text-[1.75rem]',
+        )}
+          scroll={false}>
+          {children}
+        </Link>
       </div>
     </div>
   );

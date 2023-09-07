@@ -1,5 +1,4 @@
 import Link from "next/link";
-import Icon from "@/ui/base/icons";
 import { useState, useEffect, useContext } from "react";
 import { useRouter } from "next/router";
 import classNames from "classnames";
@@ -29,10 +28,6 @@ export default function Header() {
     {
       href: "/plan",
       title: "plan",
-    },
-    {
-      href: "/news",
-      title: "news",
     },
     {
       href: "/contact",
@@ -168,10 +163,10 @@ export default function Header() {
                     <Link
                       href={item.href}
                       className={classNames(
-                        `${router.pathname === item.href
-                          ? `current ${open && "animate-current"}`
-                          : "induction"
-                        }`
+                        'px-2 py-[2px] rounded rounded-br-2xl',
+                        `${currentPath.includes(item.href)
+                          ? 'bg-primary text-white'
+                          : ""}`
                       )}
                       scroll={false}
                     >

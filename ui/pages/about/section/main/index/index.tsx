@@ -22,8 +22,10 @@ const AboutPage = forwardRef<HTMLDivElement>((_props, ref) => {
           >
             <div
               className={classNames(
-                "relative w-full h-[28.125rem]",
-                "md:min-w-[40%] md:max-w-[40%]"
+                "relative w-full h-[23.75rem]",
+                "sm:h-[32.5rem]",
+                "md:min-w-[40%] md:max-w-[40%] md:h-[26.25rem]",
+                "lg:h-[28.75rem]"
               )}
             >
               <Image
@@ -31,7 +33,7 @@ const AboutPage = forwardRef<HTMLDivElement>((_props, ref) => {
                 src="/images/profile.webp"
                 fill
                 style={{
-                  objectPosition: "top",
+                  objectPosition: "center",
                   objectFit: "cover",
                 }}
                 className="rounded"
@@ -42,12 +44,12 @@ const AboutPage = forwardRef<HTMLDivElement>((_props, ref) => {
             )}>
               <div>
                 <p className={classNames(
-                  "text-[1.125rem] block border-b border-base-black pb-2",
-                  "md:text-[1.25rem] md:inline-block md:pr-[5rem]",
+                  "text-base block border-b border-base-black pb-2",
+                  "md:text-[1.125rem] md:inline-block md:pr-[5rem]",
                   "lg:pr-[6rem]",
                   "xl:pr-[7rem]"
                 )} >
-                  小嶋 麻莉恵 - Marie Kojima
+                  小嶋 麻莉恵 - marie kojima
                 </p>
               </div>
               <div className={classNames(
@@ -68,7 +70,12 @@ const AboutPage = forwardRef<HTMLDivElement>((_props, ref) => {
                     "md:pr-4 md:pl-[12rem]"
                   )}
                 >
-                  <p className="text-[1.125rem]">Online -</p>
+                  <p className={classNames(
+                    "text-base",
+                    "md:text-[1.125rem]"
+                  )}>
+                    online -
+                  </p>
                   <HoverIcons
                     iconsName={[
                       'sns-x',
@@ -91,7 +98,7 @@ const AboutPage = forwardRef<HTMLDivElement>((_props, ref) => {
       </Section>
       <Section isTopMargin={false}>
         <HeadingH3 headingClassName="text-center">
-          Bio
+          bio
         </HeadingH3>
         <div className={classNames(
           'mt-5',

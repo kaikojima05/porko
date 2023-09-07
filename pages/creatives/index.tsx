@@ -22,20 +22,18 @@ export default function Creatives({ data, currentPage, totalPage }: CreativesPro
       src="/images/hero_creatives.webp"
       whats={
         <>
-          <span className="opacity-0">想</span>
-          <span className="opacity-0">い</span>
-          <span className="opacity-0">の</span>
-          <span className="opacity-0">丈</span>
-          <span className="opacity-0">を</span>
           <span className="opacity-0 writing-vertical">〈</span>
           <span className="opacity-0">こ</span>
           <span className="opacity-0">と</span>
           <span className="opacity-0">ば</span>
           <span className="opacity-0 writing-vertical">〉</span>
-          <span className="opacity-0 writing-vertical">に</span>
-          <span className="opacity-0 writing-vertical">乗</span>
-          <span className="opacity-0 writing-vertical">せ</span>
-          <span className="opacity-0 writing-vertical">て</span>
+          <span className="opacity-0 writing-vertical">で</span>
+          <span className="opacity-0 writing-vertical">想</span>
+          <span className="opacity-0 writing-vertical">い</span>
+          <span className="opacity-0 writing-vertical">の</span>
+          <span className="opacity-0 writing-vertical">深</span>
+          <span className="opacity-0 writing-vertical">み</span>
+          <span className="opacity-0 writing-vertical">へ</span>
         </>
       }
     >

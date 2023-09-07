@@ -1,10 +1,9 @@
-import Link from 'next/link'
 import { useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Works } from "@/ui/base/types/works";
 import classNames from "classnames";
 import { HeadingH2 } from '@/ui/base/heading/index'
-import { Button } from '@/ui/base/button/index'
 import { CardStyle } from "@/ui/module/cardStyle/index";
+import ClickButton from '@/ui/snippet/ClickButton';
 
 type CtaWorksProps = {
   works: Works[];
@@ -110,7 +109,10 @@ export default function CtaWorks({
             "lg:hidden"
           )}>
             <div className='flex items-center'>
-              <HeadingH2 headingClassName="pb-2 border-b border-base-black">
+              <HeadingH2
+                outsideClassName='w-full'
+                headingClassName="text-center pb-2 w-full border-b border-base-black"
+              >
                 works
               </HeadingH2>
             </div>
@@ -118,11 +120,7 @@ export default function CtaWorks({
               <p className="mt-4">{worksIntroduction}</p>
             </div>
             <div className="mt-4">
-              <Button size="x-full" style="square" optionClassName="border-base-black rounded-md">
-                <Link href="/works/" className="flex justify-center items-center py-2" scroll={false}>
-                  see more ...
-                </Link>
-              </Button>
+              <ClickButton href="/works/" button="see more" />
             </div>
           </div>
 
@@ -133,7 +131,11 @@ export default function CtaWorks({
             <div className="[&>*]:mt-10 first:[&>*]:mt-0">
               <div className="flex items-center">
                 <div className='w-full h-[1px] bg-base-black'></div>
-                <HeadingH2>
+                <HeadingH2 outsideClassName={classNames(
+                  'px-4',
+                  'md:px-6',
+                  'lg:px-8'
+                )}>
                   works
                 </HeadingH2>
                 <div className='w-full h-[1px] bg-base-black'></div>
@@ -144,13 +146,10 @@ export default function CtaWorks({
               )}>
                 <p>インタビュー記事・イベントレポート・プレスリリース等、</p>
                 <p>お仕事で執筆させていただいたコンテンツの一覧です。</p>
-                <p>また、記事制作のほか、企画・取材・写真撮影を併せて</p>
-                <p>担当したものも一部ございます。</p>
+                <p>また、記事制作のほか、企画・取材・写真撮影を併せて担当したものも一部ございます。</p>
               </div>
               <div>
-                <Button size="m" style="square" optionClassName='rounded border-base-black ml-auto mr-auto'>
-                  <Link href="/works/" className="flex justify-center items-center py-2" scroll={false}>see more ...</Link>
-                </Button>
+                <ClickButton href="/works/" button="see more" />
               </div>
             </div>
           </div>

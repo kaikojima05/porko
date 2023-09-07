@@ -41,7 +41,7 @@ const seriesData = [
     "children": "フリーランスライターとして正式に開業する。<br />仕事の幅を少しずつ広げていく。エッセイの創作も開始。"
   },
   {
-    "headLine": "2023.08",
+    "headLine": "2023.09",
     "children": "当サイト「porko」公開。<br class='md:hidden' />（designed by <a class='pb-1 border-b border-base-black' href='https://twitter.com/kaikojima0724'>@kaikojima0724</a>）"
   },
 ]

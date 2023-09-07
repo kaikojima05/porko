@@ -6,16 +6,21 @@
 :root {
 }
 
+br {
+  height: 0!important;
+}
+
 body {
   font-family: "Helvetica Neue", Helvetica , '游ゴシック', 'Yu Gothic', YuGothic, HiraKakuProN-W3, 'メイリオ', Meiryo, sans-serif;
   font-weight: 200;
   letter-spacing: 1px;
   position: relative;
   background-color: #FFF;
-  font-size: 14px;
+  font-size: 0.875rem;
   color: rgba(0, 0, 0, 0.67);
   background-image: url("/images/texture.webp");
   background-repeat: repeat;
+  line-height: 1.75;
 }
 
 a, a:focus {
@@ -30,7 +35,7 @@ br {
 
 @media screen and (max-width: 768px) {
   body {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
 

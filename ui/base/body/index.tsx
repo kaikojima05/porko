@@ -60,7 +60,7 @@ export default function Body({
       <Header />
       <div className={classNames(
         'pt-[3.5625rem] w-full',
-        'lg:pt-[4.875rem]'
+        'lg:pt-[5.1875rem]',
       )}>
         <div ref={backgroundRef} className={classNames(
           "before-scroll-once h-[18rem] w-full",
@@ -81,9 +81,11 @@ export default function Body({
         <main
           className={classNames(
             "w-full mx-0 z-0 relative",
-            "pt-[5.625rem] pb-[5.625rem] px-4",
-            "lg:flex lg:flex-col lg:justify-center lg:items-center lg:px-0",
+            "pt-[4.375rem]",
+            "lg:pt-[5.625rem] lg:flex lg:flex-col lg:justify-center lg:items-center",
             "xl:pt-[7.5rem]",
+            "[&_section]:px-4",
+            "[&_section]:lg:px-0",
             `${bodyClassName}`
           )}
         >
@@ -106,7 +108,11 @@ export default function Body({
                 <Section isTopMargin={true}>
                   <div className="flex items-center">
                     <div className='w-full h-[1px] bg-base-black' />
-                    <HeadingH2>
+                    <HeadingH2 outsideClassName={classNames(
+                      'px-4',
+                      'md:px-6',
+                      'lg:px-8'
+                    )}>
                       {heading}
                     </HeadingH2>
                     <div className='w-full h-[1px] bg-base-black' />
@@ -115,35 +121,45 @@ export default function Body({
               }
               {children}
             </Article>
-            {router.pathname !== '/contact' &&
-              <Article>
-                <Section isTopMargin={false}>
-                  <div className='relative w-full'>
-                    <Cta
-                      cta={
-                        <>
-                          <HeadingH2
-                            headingClassName=''
-                          >
-                            contact
-                          </HeadingH2>
-                          <HeadingH3
-                            headingClassName='mt-4'
-                          >
-                            お問い合わせはこちらから
-                          </HeadingH3>
-                        </>
-                      }
-                      ctaStyle="rounded-md border border-base-black py-14 px-20"
-                      buttonStyle="flex flex-col items-center justify-center rounded-md border-base-black"
-                    >
-                      mail form
-                    </Cta>
-                  </div>
-                </Section>
-              </Article>
-            }
           </div>
+          {router.pathname !== '/contact' &&
+            <div className={classNames(
+              'w-screen relative h-[12.5rem] mt-[3.125rem] bg-secondary',
+              "md:h-[16.875rem] mt-[4.275rem]",
+              "lg:h-[20.625rem] lg:mt-[5.625rem]",
+              "xl:h-[23.125rem]"
+            )}>
+              <div className='absolute w-full top-[50%] translate-y-[-50%]'>
+                <Cta
+                  cta={
+                    <>
+                      <HeadingH2
+                        headingClassName={classNames(
+                          '!text-[1.25rem] text-base-black',
+                          'md:!text-[1.5rem]',
+                          'lg:!text-[1.75rem]',
+                        )}
+                      >
+                        contact
+                      </HeadingH2>
+                      <HeadingH3
+                        headingClassName={classNames(
+                          'mt-4 text-base-black',
+                          'md:mt-[1.25rem]',
+                          'lg:mt-[1.875rem]'
+                        )}
+                      >
+                        お問い合わせはこちらから
+                      </HeadingH3>
+                    </>
+                  }
+                  ctaStyle=""
+                >
+                  mail form
+                </Cta>
+              </div>
+            </div>
+          }
         </main>
       </div>
       <Footer />

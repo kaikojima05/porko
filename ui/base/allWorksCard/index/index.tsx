@@ -72,7 +72,7 @@ export default function AllWorksCard({
   return (
     <>
       <div className={classNames(
-        "w-full my-6",
+        "w-full my-[3.75rem]",
       )}>
         <div
           id="worksCards"

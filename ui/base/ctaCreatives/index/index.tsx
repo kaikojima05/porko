@@ -1,10 +1,9 @@
-import Link from 'next/link'
 import { useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Creatives } from "@/ui/base/types/creatives";
 import classNames from "classnames";
 import { HeadingH2 } from '@/ui/base/heading/index'
-import { Button } from '@/ui/base/button/index'
 import { CardStyle } from "@/ui/module/cardStyle/index";
+import ClickButton from '@/ui/snippet/ClickButton';
 
 type CtaCreativesProps = {
   creatives: Creatives[];
@@ -14,7 +13,6 @@ export default function CtaCreatives({
   creatives,
 }: CtaCreativesProps) {
   const creativesRefs = useRef<RefObject<HTMLDivElement>[]>([]);
-  const creativesIntroduction = "執筆実績（企画・取材・撮影から携わったものもあります）"
 
   creatives.map((_, index) => {
     creativesRefs.current[index] = createRef<HTMLDivElement>();
@@ -107,33 +105,40 @@ export default function CtaCreatives({
           </div>
           <div className={classNames(
             "w-full",
-            "lg:hidden"
+            "md:hidden"
           )}>
             <div className='flex items-center'>
-              <HeadingH2 headingClassName="pb-2 border-b border-base-black">
+              <HeadingH2
+                outsideClassName='w-full'
+                headingClassName="text-center pb-2 w-full border-b border-base-black"
+              >
                 creatives
               </HeadingH2>
             </div>
             <div>
-              <p className="mt-4">{creativesIntroduction}</p>
+              <p className="mt-4">
+                執筆実績
+                <br />
+                （企画・取材・撮影から携わったものもあります）
+              </p>
             </div>
             <div className="mt-4">
-              <Button size="x-full" style="square" optionClassName="border-base-black rounded-md">
-                <Link href="/creatives/" className="flex justify-center items-center py-2" scroll={false}>
-                  see more ...
-                </Link>
-              </Button>
+              <ClickButton href="/creatives/" button="see more" />
             </div>
           </div>
 
           <div className={classNames(
             "hidden",
-            "lg:block lg:w-full lg:shrink"
+            "md:block md:w-full md:shrink"
           )}>
             <div className="[&>*]:mt-10 first:[&>*]:mt-0">
               <div className="flex items-center">
                 <div className='w-full h-[1px] bg-base-black'></div>
-                <HeadingH2 headingClassName="">
+                <HeadingH2 outsideClassName={classNames(
+                  'px-4',
+                  'md:px-6',
+                  'lg:px-8'
+                )}>
                   creatives
                 </HeadingH2>
                 <div className='w-full h-[1px] bg-base-black'></div>
@@ -148,9 +153,7 @@ export default function CtaCreatives({
                 <p>できるだけ丁寧に掬い取って書き連ねています。</p>
               </div>
               <div>
-                <Button size="m" style="square" optionClassName='rounded border-base-black ml-auto mr-auto'>
-                  <Link href="/creatives/" className="flex justify-center items-center py-2" scroll={false}>see more ...</Link>
-                </Button>
+                <ClickButton href="/creatives/" button="see more" />
               </div>
             </div>
           </div>

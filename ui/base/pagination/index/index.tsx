@@ -34,14 +34,15 @@ export default function Pagination({
       )}
       pageClassName={classNames(
         'border border-base-black rounded-[100%] duration-300 overflow-hidden',
-        'hover:scale-90 hover:bg-accent hover:border-accent'
+        'lg:hover:scale-90 lg:hover:bg-accent lg:hover:border-accent'
       )}
       pageLinkClassName={classNames(
-        'w-6 h-6 inline-block flex justify-center items-center',
+        'w-8 h-8 inline-block flex justify-center items-center',
+        'md:w-12 md:h-12',
         'md:w-14 md:h-14',
       )}
       activeLinkClassName='bg-accent'
-      activeClassName='border-none'
+      activeClassName='!border-accent text-white'
     />
   );
 }

@@ -21,11 +21,9 @@ export default function AllWorks({ data, currentPage, totalPage }: AllWorksProps
       src="/images/hero_works.webp"
       whats={
         <>
-          <span className="opacity-0">ひ</span>
-          <span className="opacity-0">と</span>
+          <span className="opacity-0">人</span>
           <span className="opacity-0">・</span>
-          <span className="opacity-0">も</span>
-          <span className="opacity-0">の</span>
+          <span className="opacity-0">物</span>
           <span className="opacity-0">・</span>
           <span className="opacity-0">こ</span>
           <span className="opacity-0">と</span>

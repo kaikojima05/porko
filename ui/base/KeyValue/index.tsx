@@ -16,11 +16,12 @@ export default function KeyValue({
   return (
     <div className="flex mt-4">
       <div className={classNames(
-        'w-[5rem]',
+        'w-[7rem] shrink',
         'lg:w-[10rem]'
       )}>
         <span className={classNames(
-          "font-bold text-[1.15rem]",
+          "font-bold text-[0.875rem]",
+          "lg:text-base",
           `${keyClassName}`
         )}>
           {guide}
@@ -29,7 +30,12 @@ export default function KeyValue({
       <div className={classNames(
         `${valueClassName}`
       )}>
-        <p className="text-[1.15rem]">{value}</p>
+        <p className={classNames(
+          "text-[0.875rem]",
+          "lg:text-base"
+        )}>
+          {value}
+        </p>
       </div>
     </div>
   );
