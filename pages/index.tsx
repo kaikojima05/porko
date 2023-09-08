@@ -93,18 +93,14 @@ export default function Home({
           )}
           >
             <HeadingH1 headingClassName='writing-vertical !text-[1.8125rem]' ref={pageTitleRef}>
-              <span className="opacity-0">繁</span>
-              <span className="opacity-0">り</span>
-              <span className="opacity-0">ゆ</span>
-              <span className="opacity-0">く</span>
-              <span className="opacity-0">葉</span>
-              <span className="opacity-0">に</span>
-              <span className="opacity-0">光</span>
-              <span className="opacity-0">を</span>
-              <span className="opacity-0">か</span>
-              <span className="opacity-0">ざ</span>
-              <span className="opacity-0">し</span>
-              <span className="opacity-0">て</span>
+              <span className="opacity-0">雨</span>
+              <span className="opacity-0">は</span>
+              <span className="opacity-0">ま</span>
+              <span className="opacity-0">た</span>
+              <span className="opacity-0">空</span>
+              <span className="opacity-0">へ</span>
+              <span className="opacity-0">還</span>
+              <span className="opacity-0">る</span>
             </HeadingH1>
           </div>
           <div className={classNames(
