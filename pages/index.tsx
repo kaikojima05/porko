@@ -29,6 +29,7 @@ export default function Home({
   const pageTitleRef = useRef<HTMLHeadingElement | null>(null)
   const sectionMessageRef = useOnScrollAnimation();
   const backgroundRef = useOnScrollAnimation()
+  const endingRef = useOnScrollAnimation()
 
   useEffect(() => {
     if (!pageTitleRef.current) return;
@@ -220,10 +221,12 @@ export default function Home({
             </div>
           </div>
           <div className={classNames(
-            'w-full',
+            'w-full before-scroll-once',
             'lg:min-w-[58.125rem] lg:max-w-[58.125rem]',
             'xl:min-w-[62.5rem] xl:max-w-[62.5rem]'
-          )}>
+          )}
+            ref={endingRef}
+          >
             <Article>
               <Section isTopMargin={false}>
                 <div className="">
