@@ -1,21 +1,20 @@
-import { useOnScrollAnimation } from '@/ui/hooks/useOnScrollAnimation'
+import { useOnScrollAnimation } from "@/ui/hooks/useOnScrollAnimation";
 import { useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Works } from "@/ui/base/types/works";
 import classNames from "classnames";
-import { HeadingH2 } from '@/ui/base/heading/index'
+import { HeadingH2 } from "@/ui/base/heading/index";
 import { CardStyle } from "@/ui/module/cardStyle/index";
-import ClickButton from '@/ui/snippet/ClickButton';
+import ClickButton from "@/ui/snippet/ClickButton";
 
 type CtaWorksProps = {
   works: Works[];
 };
 
-export default function CtaWorks({
-  works,
-}: CtaWorksProps) {
-  const ctaRef = useOnScrollAnimation()
+export default function CtaWorks({ works }: CtaWorksProps) {
+  const ctaRef = useOnScrollAnimation();
   const worksRefs = useRef<RefObject<HTMLDivElement>[]>([]);
-  const worksIntroduction = "執筆実績（企画・取材・撮影から携わったものもあります）"
+  const worksIntroduction =
+    "執筆実績（企画・取材・撮影から携わったものもあります）";
 
   works.map((_, index) => {
     worksRefs.current[index] = createRef<HTMLDivElement>();
@@ -77,19 +76,9 @@ export default function CtaWorks({
 
   return (
     <>
-      <div className={classNames(
-        "w-full before-scroll-once",
-      )}
-        ref={ctaRef}
-      >
-        <div className={classNames(
-          "grid grid-cols-2 gap-6 w-full",
-          "lg:flex"
-        )}>
-          <div className={classNames(
-            'w-full',
-            'lg:max-w-[50%] lg:w-[50%]'
-          )}>
+      <div className={classNames("w-full before-scroll-once")} ref={ctaRef}>
+        <div className={classNames("grid grid-cols-2 gap-6 w-full", "md:flex")}>
+          <div className={classNames("w-full", "md:max-w-[50%] md:w-[50%]")}>
             {sortWorks
               .sort((a, b) => {
                 if (a.appeal && !b.appeal) {
@@ -109,49 +98,49 @@ export default function CtaWorks({
                 ></div>
               ))}
           </div>
-          <div className={classNames(
-            "w-full",
-            "lg:hidden"
-          )}>
-            <div className='flex items-center'>
+          <div className={classNames("w-full", "md:hidden")}>
+            <div className="flex items-center">
               <HeadingH2
-                outsideClassName='w-full'
+                outsideClassName="w-full"
                 headingClassName="text-center pb-2 w-full border-b border-base-black"
               >
                 works
               </HeadingH2>
             </div>
             <div>
-              <p className="mt-4">{worksIntroduction}</p>
+              <p className="mt-4">
+                執筆実績
+                <br />
+                （企画・取材・撮影から携わったものもあります）
+              </p>
             </div>
             <div className="mt-4">
               <ClickButton href="/works/" button="see more" />
             </div>
           </div>
 
-          <div className={classNames(
-            "hidden",
-            "lg:block lg:w-full lg:shrink"
-          )}>
+          <div className={classNames("hidden", "md:block md:w-full md:shrink")}>
             <div className="[&>*]:mt-10 first:[&>*]:mt-0">
               <div className="flex items-center">
-                <div className='w-full h-[1px] bg-base-black'></div>
-                <HeadingH2 outsideClassName={classNames(
-                  'px-4',
-                  'md:px-6',
-                  'lg:px-8'
-                )}>
+                <div className="w-full h-[1px] bg-base-black"></div>
+                <HeadingH2
+                  outsideClassName={classNames("px-4", "md:px-6", "lg:px-8")}
+                >
                   works
                 </HeadingH2>
-                <div className='w-full h-[1px] bg-base-black'></div>
+                <div className="w-full h-[1px] bg-base-black"></div>
               </div>
-              <div className={classNames(
-                'mt-4',
-                '[&>*]:mt-3 [&>*]:text-center first:[&>*]:mt-0'
-              )}>
+              <div
+                className={classNames(
+                  "mt-4",
+                  "[&>*]:mt-3 [&>*]:text-center first:[&>*]:mt-0"
+                )}
+              >
                 <p>インタビュー記事・イベントレポート・プレスリリース等、</p>
                 <p>お仕事で執筆させていただいたコンテンツの一覧です。</p>
-                <p>また、記事制作のほか、企画・取材・写真撮影を併せて担当したものも一部ございます。</p>
+                <p>
+                  また、記事制作のほか、企画・取材・写真撮影を併せて担当したものも一部ございます。
+                </p>
               </div>
               <div>
                 <ClickButton href="/works/" button="see more" />
