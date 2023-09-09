@@ -1,5 +1,5 @@
+import { NextSeo } from "next-seo";
 import { useState } from "react";
-import { useCatchProfileContext } from "@/ui/hooks/useCatchProfile";
 import { useOnScrollAnimation } from "@/ui/hooks/useOnScrollAnimation";
 import Body from "@/ui/base/body";
 import AboutPage from "@/ui/pages/about/section/main/index";
@@ -9,12 +9,14 @@ export default function About() {
   const Ref = useOnScrollAnimation();
 
   return (
-    <useCatchProfileContext.Provider
-      value={{
-        isHamburgerOpen: isHamburgerOpen,
-        setIsHamburgerOpen: setIsHamburgerOpen,
-      }}
-    >
+    <>
+      <NextSeo
+        title="porko - about"
+        openGraph={{
+          url: "https://porko.jp/about",
+          title: "porko - about",
+        }}
+      />
       <Body
         heading="about"
         src="/images/hero_about.webp"
@@ -30,10 +32,8 @@ export default function About() {
           </>
         }
       >
-        <AboutPage
-          ref={Ref}
-        />
+        <AboutPage ref={Ref} />
       </Body>
-    </useCatchProfileContext.Provider>
+    </>
   );
 }

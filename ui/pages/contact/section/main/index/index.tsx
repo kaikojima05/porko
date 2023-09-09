@@ -80,16 +80,17 @@ export default function ContactPage() {
                 required: "! 氏名を入力してください",
               })}
             />
-            <p className="text-primary">{errors.name?.message}</p>
+            <p className="ml-4 text-primary">{errors.name?.message}</p>
             <FormInput
               forName="company"
               type="text"
               placeholder="your company"
               register={register("company", {
-                required: "! 企業名を入力してください",
+                required:
+                  "! 企業名を入力してください (個人の方は「個人」と入力してください)",
               })}
             />
-            <p className="text-primary">{errors.company?.message}</p>
+            <p className="ml-4 text-primary">{errors.company?.message}</p>
             <FormInput
               forName="email"
               type="text"
@@ -98,7 +99,7 @@ export default function ContactPage() {
                 required: "! メールアドレスを入力してください",
               })}
             />
-            <p className="text-primary">{errors.email?.message}</p>
+            <p className="ml-4 text-primary">{errors.email?.message}</p>
             <FormInput
               forName="message"
               type="textarea"
@@ -107,7 +108,7 @@ export default function ContactPage() {
                 required: "! お問い合わせ内容を入力してください",
               })}
             />
-            <p className="text-primary">{errors.message?.message}</p>
+            <p className="ml-4 text-primary">{errors.message?.message}</p>
           </div>
           <div
             className={classNames(

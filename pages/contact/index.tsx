@@ -1,9 +1,17 @@
+import { NextSeo } from "next-seo";
 import Body from "@/ui/base/body";
-import ContactPage from '@/ui/pages/contact/section/main/index'
+import ContactPage from "@/ui/pages/contact/section/main/index";
 
 export default function Contact() {
   return (
     <>
+      <NextSeo
+        title="porko - contact"
+        openGraph={{
+          url: "https://porko.jp/contact",
+          title: "porko - contact",
+        }}
+      />
       <Body
         heading="contact"
         src="/images/hero_contact.webp"
