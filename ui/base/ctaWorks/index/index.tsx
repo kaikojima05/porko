@@ -83,7 +83,8 @@ export default function CtaWorks({
           "lg:flex"
         )}>
           <div className={classNames(
-            'lg:max-w-[30%]'
+            'w-full',
+            'lg:max-w-[50%] lg:w-[50%]'
           )}>
             {sortWorks
               .sort((a, b) => {

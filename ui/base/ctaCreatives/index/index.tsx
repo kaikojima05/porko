@@ -82,7 +82,8 @@ export default function CtaCreatives({
           "lg:flex"
         )}>
           <div className={classNames(
-            'lg:max-w-[30%]'
+            'w-full',
+            'lg:max-w-[50%] lg:w-[50%]'
           )}>
             {sortCreatives
               .sort((a, b) => {
