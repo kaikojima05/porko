@@ -28,25 +28,21 @@ export default function CategoryList({ baseUrl, data }: CategoryListProps) {
       )}
     >
       <div className="">
-        <span className={classNames(
-          'text-[0.875rem]',
-          'md:text-[1rem]'
-        )}>
+        <span className={classNames("text-[0.875rem]", "md:text-[1rem]")}>
           category
         </span>
       </div>
       {categories && (
-        <div className={classNames(
-          "mt-5 flex flex-wrap gap-4",
-          "md:mt-0",
-        )}>
+        <div className={classNames("mt-5 flex flex-wrap gap-4", "md:mt-0")}>
           <Button
             size="custom"
             style="rounded"
             optionClassName={classNames(
-              `${currentPath === `/${baseUrl}`
-                ? "bg-primary text-white"
-                : "border-base-black"
+              `${
+                currentPath === `/${baseUrl}` ||
+                currentPath.includes(`/${baseUrl}/page`)
+                  ? "bg-primary text-white"
+                  : "border-base-black"
               }`
             )}
           >
@@ -68,9 +64,10 @@ export default function CategoryList({ baseUrl, data }: CategoryListProps) {
               size="custom"
               style="rounded"
               optionClassName={classNames(
-                `${currentPath.includes(category)
-                  ? "bg-primary text-white"
-                  : "border-base-black"
+                `${
+                  currentPath.includes(category)
+                    ? "bg-primary text-white"
+                    : "border-base-black"
                 }`
               )}
             >
