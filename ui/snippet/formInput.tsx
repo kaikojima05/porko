@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 import classNames from 'classnames'
-import { UseFormRegisterReturn, FieldValues } from 'react-hook-form'
+import { UseFormRegisterReturn } from 'react-hook-form'
 
 type FormInputProps = {
   register: UseFormRegisterReturn
@@ -43,9 +43,9 @@ export default function FormInput({
         <label
           htmlFor={forName}
           className={classNames(
-            "text-base border-b border-base-black pb-1 px-1 mr-3",
+            "text-base mr-3",
             "md:mr-0",
-            "lg:px-2"
+            "lg:px-2 lg:border-b lg:border-dashed lg:border-base-black lg:pb-1 lg:px-1",
           )}
         >
           {forName}
@@ -75,7 +75,7 @@ export default function FormInput({
             )}
             {...register}
             placeholder={placeholder}
-            rows={15}
+            rows={10}
             ref={textareaRef}
             onChange={onChange}
             value={value}
