@@ -116,13 +116,13 @@ export default function Home({
                 >
                   <div
                     className={classNames(
-                      "flex flex-row justify-center items-center gap-5",
-                      "md:flex-row-reverse md:gap-8",
+                      "flex flex-row justify-center items-center gap-5 max-w-[18rem] mx-auto",
+                      "md:flex-row-reverse md:gap-8 md:max-w-none",
                       "lg:items-start"
                     )}
                   >
                     <div className={classNames(
-                      "flex flex-row-reverse w-full justify-evenly px-4",
+                      "flex flex-row-reverse w-full justify-between",
                       "[&>div]:flex [&>div]:justify-center",
                       "sm:justify-center sm:gap-8",
                       "md:w-auto md:gap-10",
@@ -177,8 +177,8 @@ export default function Home({
                     </div>
                   </div>
                   <div className={classNames(
-                    "flex justify-center",
-                    "sm:mr-24 sm:justify-end"
+                    "flex justify-center mt-6",
+                    "sm:mr-24 sm:justify-end sm:mt-4"
                   )}>
                     <ClickButton href="/about/" button="about me" />
                   </div>
@@ -283,56 +283,18 @@ export default function Home({
                   <div className="flex items-start">
                     <HeadingH2
                       outsideClassName="!items-start"
-                      headingClassName="leading-none"
+                      headingClassName={classNames(
+                        "!text-[0.875rem]",
+                        "md:!text-[1rem]",
+                        "lg:!text-[1.25rem]"
+                      )}
                     >
                       sns
                     </HeadingH2>
                   </div>
                   <div className="flex flex-col items-end">
-                    <div className={classNames(
-                      "flex justify-center",
-                    )}>
-                      <div className={classNames(
-                        'flex gap-2 text-[0.875rem]',
-                        'md:gap-3',
-                        'lg:text-[1.25rem] lg:gap-4'
-                      )}
-                      >
-                        <span>X（Twitter）:</span>
-                        <a
-                          href="https://twitter.com/koji_mari7"
-                          className={classNames(
-                            'border-b border-base-black border-dashed pb-1',
-                            'md:pb-1'
-                          )}
-                        >
-                          @koji_mari7
-                        </a>
-                      </div>
-                    </div>
-                    <div className={classNames(
-                      "mt-2 flex justify-center",
-                      "md:mt-3",
-                      "lg:mt-4",
-                    )}>
-                      <div className={classNames(
-                        'flex gap-2 text-[0.875rem]',
-                        'md:gap-3',
-                        'lg:text-[1.25rem] lg:gap-4'
-                      )}
-                      >
-                        <span>note :</span>
-                        <a
-                          href="https://note.com/kwkm711"
-                          className={classNames(
-                            'border-b border-base-black border-dashed pb-1',
-                            'md:pb-1'
-                          )}
-                        >
-                          kwkm711
-                        </a>
-                      </div>
-                    </div>
+                    <SnsAccount sns="Twitter" account="@koji_mari7" />
+                    <SnsAccount sns="note" account="kwkm711" />
                   </div>
                 </div>
               </Section>
@@ -392,3 +354,39 @@ export const getStaticProps = async () => {
     revalidate: 5,
   };
 };
+
+type SnsAccountProps = {
+  sns: string
+  account: string
+}
+
+function SnsAccount({
+  sns,
+  account
+}: SnsAccountProps) {
+  return (
+    <div className={classNames(
+      "mt-2 flex justify-center first:mt-0",
+      "md:mt-3 md:first:mt-0",
+      "lg:mt-4 lg:first:mt-0",
+    )}>
+      <div className={classNames(
+        'flex gap-2 text-[0.875rem]',
+        'md:gap-3 md:text-[1rem]',
+        'lg:text-[1.25rem] lg:gap-4'
+      )}
+      >
+        <span>{sns} :</span>
+        <a
+          href="https://note.com/kwkm711"
+          className={classNames(
+            'border-b border-base-black border-dashed',
+            'md:pb-[2px]'
+          )}
+        >
+          {account}
+        </a>
+      </div>
+    </div>
+  )
+}
