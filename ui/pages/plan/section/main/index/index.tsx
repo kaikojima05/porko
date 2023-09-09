@@ -1,14 +1,11 @@
-import classNames from 'classnames'
+import { useOnScrollAnimation } from '@/ui/hooks/useOnScrollAnimation'
 import Section from '@/ui/base/section'
 import PlanBlock from '@/ui/snippet/PlanBlock'
 import Disclosure from '@/ui/base/Disclosure'
-import Icon from '@/ui/base/icons'
 
-type PlanPagesProps = {
+export default function PlanPages() {
+  const disclosureref = useOnScrollAnimation()
 
-}
-
-export default function PlanPages({ }: PlanPagesProps) {
   return (
     <>
       <PlanBlock
@@ -73,26 +70,31 @@ export default function PlanPages({ }: PlanPagesProps) {
         </p>
       </PlanBlock>
       <Section>
-        <Disclosure
-          icon="Q"
-          heading="納期はどれくらいですか？"
+        <div
+          className='before-scroll-once'
+          ref={disclosureref}
         >
-          <p>
-            文字数にもよりますが、SEO記事や取材記事は執筆開始から7〜10日以内を目処に納品させていただきます。
-            <br />
-            その他の案件につきましては、ボリュームや工数に応じて都度ご相談させていただきます。
-          </p>
-        </Disclosure>
-        <Disclosure
-          icon="Q"
-          heading="修正対応の回数に上限はありますか？"
-        >
-          <p>
-            〈3回まで〉をひとつの目安とさせていただきます。
-            <br className='md:inline-block' />
-            （緊急用件など、状況に応じて対応は柔軟にいたします。）
-          </p>
-        </Disclosure>
+          <Disclosure
+            icon="Q"
+            heading="納期はどれくらいですか？"
+          >
+            <p>
+              文字数にもよりますが、SEO記事や取材記事は執筆開始から7〜10日以内を目処に納品させていただきます。
+              <br />
+              その他の案件につきましては、ボリュームや工数に応じて都度ご相談させていただきます。
+            </p>
+          </Disclosure>
+          <Disclosure
+            icon="Q"
+            heading="修正対応の回数に上限はありますか？"
+          >
+            <p>
+              〈3回まで〉をひとつの目安とさせていただきます。
+              <br className='md:inline-block' />
+              （緊急用件など、状況に応じて対応は柔軟にいたします。）
+            </p>
+          </Disclosure>
+        </div>
       </Section>
     </>
   )
