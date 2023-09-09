@@ -322,8 +322,16 @@ export default function Home({ works, creatives }: HomeProps) {
                     </HeadingH2>
                   </div>
                   <div className="flex flex-col items-end">
-                    <SnsAccount sns="Twitter" account="@koji_mari7" />
-                    <SnsAccount sns="note" account="kwkm711" />
+                    <SnsAccount
+                      sns="X (Twitter)"
+                      account="@koji_mari7"
+                      href="https://twitter.com/koji_mari7"
+                    />
+                    <SnsAccount
+                      sns="note"
+                      account="kwkm711"
+                      href="https://note.com/kwkm711"
+                    />
                   </div>
                 </div>
               </Section>
@@ -382,9 +390,10 @@ export const getStaticProps = async () => {
 type SnsAccountProps = {
   sns: string;
   account: string;
+  href: string;
 };
 
-function SnsAccount({ sns, account }: SnsAccountProps) {
+function SnsAccount({ sns, account, href }: SnsAccountProps) {
   return (
     <div
       className={classNames(
@@ -402,11 +411,12 @@ function SnsAccount({ sns, account }: SnsAccountProps) {
       >
         <span>{sns} :</span>
         <a
-          href="https://note.com/kwkm711"
+          href={href}
           className={classNames(
             "border-b border-base-black border-dashed",
             "md:pb-[2px]"
           )}
+          target="_blank"
         >
           {account}
         </a>
