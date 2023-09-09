@@ -1,3 +1,4 @@
+import { useOnScrollAnimation } from '@/ui/hooks/useOnScrollAnimation'
 import { useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Works } from "@/ui/base/types/works";
 import classNames from "classnames";
@@ -12,6 +13,7 @@ type CtaWorksProps = {
 export default function CtaWorks({
   works,
 }: CtaWorksProps) {
+  const ctaRef = useOnScrollAnimation()
   const worksRefs = useRef<RefObject<HTMLDivElement>[]>([]);
   const worksIntroduction = "執筆実績（企画・取材・撮影から携わったものもあります）"
 
@@ -76,8 +78,10 @@ export default function CtaWorks({
   return (
     <>
       <div className={classNames(
-        "w-full",
-      )}>
+        "w-full before-scroll-once",
+      )}
+        ref={ctaRef}
+      >
         <div className={classNames(
           "grid grid-cols-2 gap-6 w-full",
           "lg:flex"

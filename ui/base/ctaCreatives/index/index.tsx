@@ -1,3 +1,4 @@
+import { useOnScrollAnimation } from '@/ui/hooks/useOnScrollAnimation'
 import { useMemo, useEffect, useRef, createRef, RefObject } from "react";
 import { Creatives } from "@/ui/base/types/creatives";
 import classNames from "classnames";
@@ -12,6 +13,7 @@ type CtaCreativesProps = {
 export default function CtaCreatives({
   creatives,
 }: CtaCreativesProps) {
+  const ctaRef = useOnScrollAnimation()
   const creativesRefs = useRef<RefObject<HTMLDivElement>[]>([]);
 
   creatives.map((_, index) => {
@@ -75,8 +77,10 @@ export default function CtaCreatives({
   return (
     <>
       <div className={classNames(
-        "w-full",
-      )}>
+        "w-full before-scroll-once",
+      )}
+        ref={ctaRef}
+      >
         <div className={classNames(
           "grid grid-cols-2 gap-6 w-full",
           "lg:flex"
