@@ -43,7 +43,7 @@ export default function FormInput({
         <label
           htmlFor={forName}
           className={classNames(
-            "text-base mr-3",
+            "text-[0.875rem] mr-3",
             "md:mr-0",
             "lg:px-2 lg:border-b lg:border-dashed lg:border-base-black lg:pb-1 lg:px-1",
           )}
