@@ -1,10 +1,11 @@
-import { useState, useRef } from 'react'
+import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import emailjs from 'emailjs-com'
 import classNames from "classnames";
 import Section from "@/ui/base/section";
 import { Button } from '@/ui/base/button'
 import FormInput from '@/ui/snippet/formInput'
+import { HeadingH3 } from '@/ui/base/heading'
 
 type FormData = {
   name: string;
@@ -47,7 +48,21 @@ export default function ContactPage() {
   return (
     <>
       <Section isTopMargin={false}>
-        <form onSubmit={onSubmit}>
+        <div>
+          <h3 className={classNames(
+            'text-[0.75rem] text-center',
+            'lg:text-[0.875rem]'
+          )}>
+            お仕事に関するご相談や、その他ご不明点など
+            <br className='md:hidden' />
+            下記フォームにご入力の上、送信してください。
+            <br />
+            ご連絡お待ちしております。
+          </h3>
+        </div>
+        <form onSubmit={onSubmit} className={classNames(
+          'mt-[3.75rem]',
+        )}>
           <div className={classNames(
             "[&>*]:mt-4",
             "first:[&>*]:mt-0",
