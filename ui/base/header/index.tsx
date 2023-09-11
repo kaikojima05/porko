@@ -6,12 +6,13 @@ import { useCatchProfileContext } from "@/ui/hooks/useCatchProfile";
 
 export default function Header() {
   const router = useRouter();
-  const path = router.asPath
-  const currentPath = decodeURIComponent(path)
+  const path = router.asPath;
+  const currentPath = decodeURIComponent(path);
   const [open, setOpen] = useState<boolean>(false);
   const [fontColor, setFontColor] = useState<string>("text-bas-black");
-  const { isHamburgerOpen, setIsHamburgerOpen } =
-    useContext(useCatchProfileContext);
+  const { isHamburgerOpen, setIsHamburgerOpen } = useContext(
+    useCatchProfileContext
+  );
   const navItems = [
     {
       href: "/about",
@@ -19,11 +20,11 @@ export default function Header() {
     },
     {
       href: "/works",
-      title: "wokrs"
+      title: "wokrs",
     },
     {
       href: "/creatives",
-      title: "creatives"
+      title: "creatives",
     },
     {
       href: "/plan",
@@ -78,9 +79,7 @@ export default function Header() {
         />
       )}
       <nav
-        className={classNames(
-          "z-50 w-full fixed header-border backdrop-blur",
-        )}
+        className={classNames("z-50 w-full fixed header-border backdrop-blur")}
         onClick={toggleHamburgerMenu}
       >
         <header
@@ -88,7 +87,7 @@ export default function Header() {
             "px-4 py-4 duration-500",
             "lg:px-16 lg:py-6",
             "xl:px-24",
-            `${fontColor}`,
+            `${fontColor}`
           )}
         >
           <div className="flex justify-between items-center">
@@ -100,21 +99,25 @@ export default function Header() {
               </h1>
             </div>
             <div className={classNames("hidden", "lg:block")}>
-              <ul className={classNames(
-                "flex items-center",
-                "lg:gap-0",
-                "xl:gap-8"
-              )}>
+              <ul
+                className={classNames(
+                  "flex items-center",
+                  "lg:gap-0",
+                  "xl:gap-8"
+                )}
+              >
                 {navItems.map((item, index) => {
                   return (
                     <li key={index} className="flex items-center">
                       <Link
                         href={item.href}
                         className={classNames(
-                          'px-5 py-1 rounded rounded-br-2xl',
-                          `${currentPath.includes(item.href)
-                            ? 'bg-primary text-white'
-                            : ""}`
+                          "px-5 py-1 rounded rounded-br-2xl",
+                          `${
+                            currentPath.includes(item.href)
+                              ? "bg-primary text-white"
+                              : ""
+                          }`
                         )}
                         scroll={false}
                       >
@@ -154,7 +157,7 @@ export default function Header() {
               className={classNames(
                 "block duration-700",
                 "[&>li]:text-[1.125rem] [&>li]:text-center [&>li]:mt-4",
-                `${open ? 'block delay-display' : 'hidden opacity-0'}`
+                `${open ? "block delay-display" : "hidden opacity-0"}`
               )}
             >
               {navItems.map((item, index) => {
@@ -163,10 +166,8 @@ export default function Header() {
                     <Link
                       href={item.href}
                       className={classNames(
-                        'px-2 py-[2px] rounded rounded-br-2xl',
-                        `${currentPath.includes(item.href)
-                          ? 'bg-primary text-white'
-                          : ""}`
+                        "px-2 py-[2px] rounded rounded-br-2xl",
+                        `${currentPath.includes(item.href) ? "bg-primary" : ""}`
                       )}
                       scroll={false}
                     >
