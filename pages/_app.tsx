@@ -18,7 +18,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
           url: "https://porko.jp",
           images: [
             {
-              url: "/images/hero_top.webp",
+              url: "https://porko.jp/images/hero_top.webp",
               width: 800,
               height: 600,
               alt: "",
