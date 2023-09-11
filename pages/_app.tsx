@@ -21,7 +21,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
               url: "https://porko.jp/images/hero_top.webp",
               width: 800,
               height: 600,
-              alt: "",
+              alt: "ポートフォリオサイト porko のイメージ画像",
               type: "image/webp",
             },
           ],
