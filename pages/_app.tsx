@@ -18,7 +18,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
           url: "https://porko.jp",
           images: [
             {
-              url: "https://porko.jp/images/hero_top.webp",
+              url: "https://porko.jp/images/opengraph-image.png",
               width: 800,
               height: 600,
               alt: "ポートフォリオサイト porko のイメージ画像",
