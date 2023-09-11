@@ -83,13 +83,12 @@ export default function WorksCategory({
         src="/images/hero_works.webp"
         whats={
           <>
-            <span className="opacity-0">魅</span>
-            <span className="opacity-0">力</span>
-            <span className="opacity-0">を</span>
-            <span className="opacity-0">葉</span>
-            <span className="opacity-0">で</span>
-            <span className="opacity-0">紡</span>
-            <span className="opacity-0">ぐ</span>
+            <span className="opacity-0">お</span>
+            <span className="opacity-0">仕</span>
+            <span className="opacity-0">事</span>
+            <span className="opacity-0">の</span>
+            <span className="opacity-0">実</span>
+            <span className="opacity-0">績</span>
           </>
         }
       >

@@ -94,14 +94,13 @@ export default function Home({ works, creatives }: HomeProps) {
               headingClassName="writing-vertical !text-[1.8125rem]"
               ref={pageTitleRef}
             >
-              <span className="opacity-0">雨</span>
-              <span className="opacity-0">は</span>
-              <span className="opacity-0">ま</span>
-              <span className="opacity-0">た</span>
-              <span className="opacity-0">空</span>
-              <span className="opacity-0">へ</span>
-              <span className="opacity-0">還</span>
-              <span className="opacity-0">る</span>
+              <span className="opacity-0">声</span>
+              <span className="opacity-0">を</span>
+              <span className="opacity-0">紡</span>
+              <span className="opacity-0">い</span>
+              <span className="opacity-0">で</span>
+              <span className="opacity-0">い</span>
+              <span className="opacity-0">く</span>
             </HeadingH1>
           </div>
           <div
