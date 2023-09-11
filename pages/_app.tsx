@@ -8,13 +8,14 @@ export default function App({ Component, pageProps, router }: AppProps) {
     <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo(0, 0)}>
       <DefaultSeo
         title="porko"
-        description="東京・八王子を拠点に活動するフリーランスライターのポートフォリオサイト。Webコンテンツの執筆を始め、「ことば」で表現するお仕事に幅広く対応させていただきます。"
+        description="東京を拠点に活動するフリーランスライター・小嶋 麻莉恵のポートフォリオサイト。Webコンテンツの執筆を始め、〈ことば〉で表現するお仕事に幅広く対応させていただきます。"
         openGraph={{
           type: "website",
           title: "porko",
           description:
-            "東京・八王子を拠点に活動するフリーランスライターのポートフォリオサイト。Webコンテンツの執筆を始め、「ことば」で表現するお仕事に幅広く対応させていただきます。",
-          site_name: "フリーランスライター小嶋麻莉恵のポートフォリオサイト",
+            "東京を拠点に活動するフリーランスライター・小嶋 麻莉恵のポートフォリオサイト。Webコンテンツの執筆を始め、〈ことば〉で表現するお仕事に幅広く対応させていただきます。",
+          site_name:
+            "フリーランスライター小嶋麻莉恵のポートフォリオサイト porko",
           url: "https://porko.jp",
           images: [
             {
