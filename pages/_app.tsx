@@ -22,7 +22,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
               width: 800,
               height: 600,
               alt: "ポートフォリオサイト porko のイメージ画像",
-              type: "image/webp",
+              type: "image/png",
             },
           ],
         }}
