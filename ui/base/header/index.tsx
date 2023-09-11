@@ -86,8 +86,7 @@ export default function Header() {
           className={classNames(
             "px-4 py-4 duration-500",
             "lg:px-16 lg:py-6",
-            "xl:px-24",
-            `${fontColor}`
+            "xl:px-24"
           )}
         >
           <div className="flex justify-between items-center">
@@ -98,7 +97,13 @@ export default function Header() {
                 </Link>
               </h1>
             </div>
-            <div className={classNames("hidden", "lg:block")}>
+            <div
+              className={classNames(
+                "hidden duration-300",
+                "lg:block",
+                `${fontColor}`
+              )}
+            >
               <ul
                 className={classNames(
                   "flex items-center",
@@ -148,7 +153,8 @@ export default function Header() {
           </div>
           <div
             className={classNames(
-              "lg:hidden duration-[520ms] h-0",
+              "duration-[520ms] h-0",
+              "lg:hidden",
               `${open && "!flex items-center justify-center h-[70vh]"}`
             )}
             onClick={toggleHamburgerMenu}
@@ -167,7 +173,11 @@ export default function Header() {
                       href={item.href}
                       className={classNames(
                         "px-2 py-[2px] rounded rounded-br-2xl",
-                        `${currentPath.includes(item.href) ? "bg-primary" : ""}`
+                        `${
+                          currentPath.includes(item.href)
+                            ? "text-white bg-primary"
+                            : ""
+                        }`
                       )}
                       scroll={false}
                     >
