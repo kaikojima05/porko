@@ -145,7 +145,7 @@ export default function Home({ works, creatives }: HomeProps) {
                             "lg:text-base lg:leading-8"
                           )}
                         >
-                          話すことととは違い、書くことは
+                          話すこととは違い、書くことは
                           <br />
                           ひとつの形としていつまでも残り続けるもの。
                         </p>
