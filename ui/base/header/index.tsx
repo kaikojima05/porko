@@ -20,7 +20,7 @@ export default function Header() {
     },
     {
       href: "/works",
-      title: "wokrs",
+      title: "works",
     },
     {
       href: "/creatives",
